@@ -91,6 +91,39 @@
           </form>
         </div>
 
+        <!-- Mode démo : comptes fictifs, connexion en un clic -->
+        <div v-if="modeDemo" class="mt-5 rounded-2xl border border-blue-100 bg-white p-5 shadow-sm dark:border-blue-900/40 dark:bg-gray-800">
+          <div class="flex items-center justify-between gap-3">
+            <h3 class="text-sm font-bold text-gray-900 dark:text-gray-100">Comptes de démonstration</h3>
+            <span class="rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-semibold text-fc-red dark:bg-blue-950/40 dark:text-blue-200">Mode démo</span>
+          </div>
+          <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+            Données fictives, enregistrées sur cet appareil seulement. Mot de passe commun :
+            <code class="font-semibold text-gray-700 dark:text-gray-200">{{ MOT_DE_PASSE_DEMO }}</code>
+          </p>
+          <div class="mt-3 grid gap-2 sm:grid-cols-2">
+            <button
+              v-for="c in COMPTES_DEMO"
+              :key="c.email"
+              type="button"
+              class="touch-target rounded-xl border border-gray-200 px-3 py-2 text-left transition hover:border-fc-red hover:bg-blue-50 disabled:opacity-50 dark:border-gray-700 dark:hover:bg-blue-950/30"
+              :disabled="loading"
+              @click="connexionDemo(c.email)"
+            >
+              <span class="block text-sm font-semibold text-gray-900 dark:text-gray-100">{{ c.nom }}</span>
+              <span class="block text-xs text-gray-500 dark:text-gray-400">{{ libelleRole(c.role) }} · {{ c.detail }}</span>
+            </button>
+          </div>
+          <button
+            type="button"
+            class="mt-3 text-xs text-gray-500 underline hover:text-gray-700 dark:text-gray-400"
+            :disabled="loading"
+            @click="reinitialiserDemo"
+          >
+            Remettre les données de démonstration à zéro
+          </button>
+        </div>
+
         <p class="text-center text-xs text-gray-400 dark:text-gray-500 dark:text-gray-400 mt-6">
           Field Track © {{ new Date().getFullYear() }} ·
           <NuxtLink to="/politique-de-confidentialite" class="underline hover:text-gray-600">Politique de confidentialité</NuxtLink> ·
@@ -102,8 +135,27 @@
 </template>
 
 <script setup lang="ts">
+import { COMPTES_DEMO, MOT_DE_PASSE_DEMO } from '~/demo/comptes'
 import { homePathForRole } from '~/utils/roles'
 definePageMeta({ layout: false })
+
+// Mode démo (FIELD_TRACK_DEMO=1) : aucune base distante, comptes fictifs.
+const modeDemo = useRuntimeConfig().public.modeDemo as boolean
+const libelleRole = (role: string) => ({ admin: 'Administrateur', commercial: 'Commercial', merchandiser: 'Merchandiser' }[role] || role)
+
+function connexionDemo(compte: string) {
+  email.value = compte
+  password.value = MOT_DE_PASSE_DEMO
+  return handleLogin()
+}
+
+async function reinitialiserDemo() {
+  if (!window.confirm('Effacer toutes les saisies faites sur cet appareil et revenir aux données de départ ?')) return
+  const { effacerBases } = await import('~/demo/db')
+  try { localStorage.removeItem('field-track-demo-session') } catch { /* stockage indisponible */ }
+  await effacerBases()
+  window.location.reload()
+}
 
 const authStore = useAuthStore()
 const router = useRouter()

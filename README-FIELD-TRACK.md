@@ -22,6 +22,61 @@ Pour changer encore de marque : remplacer `resources/logo.svg` et
 `resources/glyphe.svg`, puis `node scripts/generate-brand-assets.mjs`.
 La couleur se règle dans `tailwind.config.ts` et `assets/css/main.css`.
 
+## Deux façons de lancer Field Track
+
+| | Mode démo | Mode Supabase |
+|---|---|---|
+| Base de données | embarquée dans le navigateur ou le téléphone | projet Supabase dédié |
+| Installation | aucune | voir « Installer la base » plus bas |
+| Données partagées entre appareils | non | oui |
+| Usage | démonstration commerciale | usage réel à plusieurs |
+
+## Mode démo (sans Supabase)
+
+L'application tourne seule, admin et mobile. La base est un vrai PostgreSQL
+compilé pour le navigateur (PGlite) : mêmes tables, mêmes calculs Perfect Store,
+mêmes droits par rôle que la version Supabase. Les écrans ne changent pas.
+
+```bash
+pnpm dev:demo              # essai en local
+pnpm generate:demo         # site statique dans .output/public
+pnpm android:apk:demo      # APK de démonstration
+```
+
+- **Connexion** : l'écran de connexion liste les 9 comptes fictifs, un clic suffit.
+  Mot de passe commun : `fieldtrack`.
+- **Données** : les 15 PDV et 15 visites sont chargés au premier lancement, puis
+  les saisies restent sur l'appareil. Les dates des visites sont recalées sur le
+  jour du premier lancement.
+- **Remise à zéro** : lien « Remettre les données de démonstration à zéro » sur
+  l'écran de connexion.
+- **Hébergement web** : dossier `.output/public`, sur un hébergeur statique avec
+  repli vers `200.html` pour les adresses inconnues (Vercel, Netlify et
+  Cloudflare Pages le font).
+
+Limites du mode démo :
+
+- Une saisie faite sur un téléphone n'apparaît pas sur un autre appareil.
+- Les photos sont gardées dans la base de l'appareil, pas sur un serveur.
+- Pas de notifications push, pas de mise à jour en temps réel entre comptes.
+- Premier lancement : 3 à 4 secondes (ouverture de la base, environ 15 Mo à télécharger).
+- Aucune tournée n'est préparée : l'écran Routing est vide tant qu'on n'en crée pas.
+
+Fichiers du mode démo : dossier `demo/`.
+
+| Fichier | Rôle |
+|---|---|
+| `demo/seed.sql` | schéma et données, fabriqué par `scripts/field-track-build-demo-seed.sh` |
+| `demo/db.ts` | ouvre la base embarquée et charge les données |
+| `demo/postgrest.ts` | traduit les requêtes de l'application en SQL |
+| `demo/client.ts` | faux client Supabase (lectures, écritures, connexion, photos) |
+| `demo/api.ts` | routes d'administration, rejouées dans le navigateur |
+| `demo/comptes.ts` | comptes fictifs et mot de passe |
+
+Pour changer les données de démonstration : modifier `supabase/field-track/90_demo.sql`,
+rejouer `scripts/field-track-setup.sh` sur une base de travail, puis
+`scripts/field-track-build-demo-seed.sh "<DATABASE_URL>"`.
+
 ## Données de démonstration
 
 - **15 points de vente** fictifs à Abidjan (Cocody 1, Marcory, Plateau, Treichville, Yopougon 1).
@@ -43,7 +98,7 @@ La couleur se règle dans `tailwind.config.ts` et `assets/css/main.css`.
 Le mot de passe commun est celui que vous mettez dans `FIELD_TRACK_DEMO_PASSWORD`.
 Distributeurs et marques concurrentes sont rebaptisés (`Distributeur 07`, `Concurrent A`).
 
-## Installer la base (projet Supabase neuf)
+## Mode Supabase : installer la base (projet neuf)
 
 Field Track a besoin de **sa propre base**. Ne jamais utiliser celle d'un client :
 l'étape `demo` vide les points de vente et les visites. Le script s'arrête s'il
@@ -78,7 +133,12 @@ sans effet, la fonction est recréée juste après.
 - Vérifié sur un PostgreSQL 16 local : le schéma se construit de zéro, toutes les
   tables et fonctions appelées par l'application existent, la démo se charge et se
   rejoue sans doublon, les scores Perfect Store sont calculés.
-- Vérifié : `pnpm vitest run` (147 tests) et `pnpm build`.
+- Vérifié : `pnpm vitest run` (160 tests, dont 13 sur le mode démo) et `pnpm build`.
+- Vérifié en mode démo, dans un navigateur : connexion, les 41 écrans admin et les
+  écrans mobiles (merchandiser et commercial) s'ouvrent sans erreur ; la version
+  native (`CAPACITOR_BUILD=1`) se génère.
+- **Non vérifié** en mode démo : l'APK sur un vrai téléphone, et la saisie
+  complète d'une visite à la main (l'enregistrement est couvert par les tests).
 - **Non vérifié** : l'installation sur un vrai projet Supabase et la création des
   comptes par `scripts/field-track-create-accounts.mjs` (aucune base Field Track
   n'était accessible).
