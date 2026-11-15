@@ -1,19 +1,19 @@
 <template>
   <div class="min-h-screen bg-gray-50 px-6 py-12 dark:bg-gray-900">
     <main class="mx-auto max-w-2xl">
-      <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Supprimer mon compte — Bonnet Rouge</h1>
+      <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Supprimer mon compte — Field Track</h1>
       <p class="mt-1 text-sm text-gray-400">Demande de suppression du compte et des données associées</p>
 
       <div class="mt-8 space-y-6 text-[15px] leading-relaxed text-gray-700 dark:text-gray-300">
         <p>
-          Vous pouvez demander la suppression de votre compte <strong>Bonnet Rouge</strong> et des données
+          Vous pouvez demander la suppression de votre compte <strong>Field Track</strong> et des données
           personnelles qui lui sont rattachées. Les comptes étant créés par l'administrateur de votre
           organisation, la demande lui est transmise et traitée sous <strong>30 jours</strong>.
         </p>
 
         <p class="text-sm text-gray-500 dark:text-gray-400">
-          Application concernée : <strong>Friesland Bonnet Rouge</strong>
-          (<code class="text-[13px]">com.bdco.bonnetrouge</code>), éditée par
+          Application concernée : <strong>Field Track</strong>
+          (<code class="text-[13px]">com.fieldtrack.app</code>), éditée par
           <strong>BD &amp; CO</strong> (BUSINESS DEVELOPMENT &amp; COMMUNICATION),
           60 rue François Ier, 75008 Paris, France.
         </p>
@@ -68,7 +68,7 @@
           <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">Autre moyen</h2>
           <p>
             Vous pouvez également adresser votre demande par e-mail à
-            <a href="mailto:jeanluc@bigfiveabidjan.com?subject=Suppression%20de%20mon%20compte%20Bonnet%20Rouge" class="text-fc-red underline">jeanluc@bigfiveabidjan.com</a>,
+            <a href="mailto:jeanluc@bigfiveabidjan.com?subject=Suppression%20de%20mon%20compte%20Field%20Track" class="text-fc-red underline">jeanluc@bigfiveabidjan.com</a>,
             en précisant l'adresse e-mail de votre compte.
           </p>
         </section>
@@ -89,7 +89,7 @@
 // L'alias garde l'ancienne URL vivante : la modale de divulgation de l'AAB 1.0.4
 // déjà signé pointe dessus, et un lien mort casserait le parcours Play.
 definePageMeta({ layout: false, alias: ['/supprimer-compte'] })
-useHead({ title: 'Supprimer mon compte — Bonnet Rouge' })
+useHead({ title: 'Supprimer mon compte — Field Track' })
 
 const user = useSupabaseUser()
 const email = ref(user.value?.email || '')

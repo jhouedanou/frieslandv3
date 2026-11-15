@@ -1,4 +1,4 @@
-package com.bdco.bonnetrouge;
+package com.fieldtrack.app;
 
 import android.content.Context;
 import android.content.Intent;

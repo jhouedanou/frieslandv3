@@ -11,7 +11,7 @@
           :to="item.to"
           class="flex min-h-16 items-center gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-3 transition hover:border-red-100 hover:bg-red-50/40 active:scale-[0.99] dark:border-gray-700 dark:bg-gray-800 dark:hover:border-red-900/50 dark:hover:bg-red-950/20"
         >
-          <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-red-50 text-fc-red dark:bg-red-950/30 dark:text-red-200">
+          <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-fc-red dark:bg-blue-950/30 dark:text-blue-200">
             <UIcon :name="item.icon" class="h-5 w-5" aria-hidden="true" />
           </span>
           <span class="min-w-0 flex-1">

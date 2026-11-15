@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 useHead({
-  title: 'Friesland Bonnet Rouge',
+  title: 'Field Track',
   htmlAttrs: { lang: 'fr' },
 })
 </script>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Friesland Bonnet Rouge</string>
-    <string name="title_activity_main">Friesland Bonnet Rouge</string>
-    <string name="package_name">com.bdco.bonnetrouge</string>
-    <string name="custom_url_scheme">com.bdco.bonnetrouge</string>
+    <string name="app_name">Field Track</string>
+    <string name="title_activity_main">Field Track</string>
+    <string name="package_name">com.fieldtrack.app</string>
+    <string name="custom_url_scheme">com.fieldtrack.app</string>
 </resources>

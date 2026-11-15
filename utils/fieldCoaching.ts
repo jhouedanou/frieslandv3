@@ -18,7 +18,7 @@ export const BLOCS_COACHING = {
 // Libellés repris mot pour mot du formulaire Kobo (PDF du 7 sept. 2026).
 export const QUESTIONS_COACHING: QuestionCoaching[] = [
   { code: 'hot_spot', bloc: 'visibilite', libelle: 'Présence dans le Hot Spot' },
-  { code: 'maison_br_habillee', bloc: 'visibilite', libelle: 'Maison Bonnet Rouge habillé ou délimité' },
+  { code: 'maison_br_habillee', bloc: 'visibilite', libelle: 'Maison de marque habillé ou délimité' },
   { code: 'rangement', bloc: 'visibilite', libelle: 'Rangement des produits (catégorie & format)' },
   { code: 'presentoir', bloc: 'visibilite', libelle: 'Présence de présentoir (Hanger, etc)' },
   { code: 'emplacement_secondaire', bloc: 'visibilite', libelle: 'Présence emplacement secondaire' },

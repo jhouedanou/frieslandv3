@@ -6,7 +6,7 @@
         <div>
           <h2 class="text-lg font-bold text-gray-900 dark:text-gray-100">Utilisation de votre position</h2>
           <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">
-            <strong>Bonnet Rouge collecte des données de localisation</strong> pour valider votre présence
+            <strong>Field Track collecte des données de localisation</strong> pour valider votre présence
             en point de vente lors d'une visite et pour reconstituer votre trajet pendant une tournée,
             <strong>y compris lorsque l'application est fermée ou n'est pas utilisée</strong>
             (uniquement entre « Démarrer » et « Terminer la tournée »).

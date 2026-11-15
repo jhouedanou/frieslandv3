@@ -1,4 +1,4 @@
-package com.bdco.bonnetrouge;
+package com.fieldtrack.app;
 
 import android.os.Bundle;
 

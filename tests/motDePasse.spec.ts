@@ -8,17 +8,17 @@ describe('erreurMotDePasse', () => {
   })
 
   it('refuse l\'ancien mot de passe admin', () => {
-    expect(erreurMotDePasse('Test1234!', 'admin', 'admin@friesland.ci')).not.toBeNull()
+    expect(erreurMotDePasse('Test1234!', 'admin', 'admin@fieldtrack.demo')).not.toBeNull()
   })
 
   it('exige 12 caractères et 3 types pour un compte privilégié', () => {
     expect(erreurMotDePasse('Abcdefgh12!', 'admin')).toMatch(/12 caractères/)
     expect(erreurMotDePasse('abcdefghijklmn', 'superviseur')).toMatch(/3 types/)
-    expect(erreurMotDePasse('Lagune-Cocody-2026', 'admin', 'admin@friesland.ci')).toBeNull()
+    expect(erreurMotDePasse('Lagune-Cocody-2026', 'admin', 'admin@fieldtrack.demo')).toBeNull()
   })
 
   it('refuse les mots courants et l\'identifiant', () => {
     expect(erreurMotDePasse('MonAzerty-2026', 'admin')).toMatch(/mot courant/)
-    expect(erreurMotDePasse('Kouassi.jean-2026', 'admin', 'kouassi@friesland.ci')).toMatch(/identifiant/)
+    expect(erreurMotDePasse('Kouassi.jean-2026', 'admin', 'kouassi@fieldtrack.demo')).toMatch(/identifiant/)
   })
 })

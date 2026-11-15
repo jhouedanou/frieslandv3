@@ -12,7 +12,7 @@
         :aria-current="isActive(item.to) ? 'page' : undefined"
         :aria-label="item.ariaLabel"
         :class="isActive(item.to)
-          ? 'bg-red-50 text-fc-red dark:bg-red-950/40 dark:text-red-200'
+          ? 'bg-blue-50 text-fc-red dark:bg-blue-950/40 dark:text-blue-200'
           : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-200'"
       >
         <span class="relative">

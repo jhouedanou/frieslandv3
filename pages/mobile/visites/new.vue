@@ -388,7 +388,7 @@
               class="rounded-2xl bg-white p-4 shadow-sm dark:bg-gray-800"
             >
               <div class="mb-4 flex items-center gap-3">
-                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-red-50 text-fc-red dark:bg-red-950/30">
+                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-fc-red dark:bg-blue-950/30">
                   <UIcon :name="section.icon" class="h-5 w-5" />
                 </div>
                 <div>
@@ -495,7 +495,7 @@
           <div class="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm space-y-4">
             <button
               type="button"
-              class="flex min-h-[150px] w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 py-8 transition-colors hover:border-fc-red hover:bg-red-50 active:bg-red-100 dark:border-gray-600 dark:hover:bg-red-950/20"
+              class="flex min-h-[150px] w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 py-8 transition-colors hover:border-fc-red hover:bg-blue-50 active:bg-blue-100 dark:border-gray-600 dark:hover:bg-blue-950/20"
               aria-label="Prendre une photo ou importer depuis la galerie"
               @click="triggerCamera"
             >
@@ -960,42 +960,42 @@ const userEmail = computed(() => user.value?.email || '')
 
 // Product definitions
 const evapProducts: { key: ProductKey<VisiteProduits['evap']>; label: string }[] = [
-  { key: 'br_gold', label: 'BR Gold' },
-  { key: 'br_160g', label: 'BR 150g' },
-  { key: 'brb_160g', label: 'BRB 150g' },
-  { key: 'br_400g', label: 'BR 380g' },
-  { key: 'brb_400g', label: 'BRB 380g' },
-  { key: 'pearl_400g', label: 'Pearl 380g' },
+  { key: 'br_gold', label: 'FT Gold' },
+  { key: 'br_160g', label: 'FT 150g' },
+  { key: 'brb_160g', label: 'FTB 150g' },
+  { key: 'br_400g', label: 'FT 380g' },
+  { key: 'brb_400g', label: 'FTB 380g' },
+  { key: 'pearl_400g', label: 'Opale 380g' },
 ]
 
 const impProducts: { key: ProductKey<VisiteProduits['imp']>; label: string }[] = [
-  { key: 'br_400g', label: 'BR tin 2500g' },
-  { key: 'br_20g', label: 'BR 15g' },
-  { key: 'brb_25g', label: 'BRB 16g' },
-  { key: 'br_375g', label: 'BR 360g' },
-  { key: 'br_900g', label: 'BR 400g Tin' },
-  { key: 'brb_400g', label: 'BRB 360g' },
-  { key: 'br_2_5kg', label: 'BR 900g Tin' },
+  { key: 'br_400g', label: 'FT tin 2500g' },
+  { key: 'br_20g', label: 'FT 15g' },
+  { key: 'brb_25g', label: 'FTB 16g' },
+  { key: 'br_375g', label: 'FT 360g' },
+  { key: 'br_900g', label: 'FT 400g Tin' },
+  { key: 'brb_400g', label: 'FTB 360g' },
+  { key: 'br_2_5kg', label: 'FT 900g Tin' },
   { key: 'brd_15g', label: 'BRD 15g' },
-  { key: 'brd_350g', label: 'BR Délice Pouch 350g' },
+  { key: 'brd_350g', label: 'FT Délice Pouch 350g' },
 ]
 
 const scmProducts: { key: ProductKey<VisiteProduits['scm']>; label: string }[] = [
-  { key: 'pearl_1kg', label: 'Pearl 1Kg' },
-  { key: 'br_1kg', label: 'BR 1Kg' },
+  { key: 'pearl_1kg', label: 'Opale 1Kg' },
+  { key: 'br_1kg', label: 'FT 1Kg' },
 ]
 
 const uhtProducts: { key: ProductKey<VisiteProduits['uht']>; label: string }[] = [
-  { key: 'demi_ecreme', label: 'BR 516ml' },
+  { key: 'demi_ecreme', label: 'FT 516ml' },
   { key: 'elopack_500ml', label: 'Elopack 500 ml' },
   { key: 'brique_1l', label: 'Brique 1L' },
 ]
 
 const yaourtProducts: { key: ProductKey<VisiteProduits['yaourt']>; label: string }[] = [
-  { key: 'br_yogoo_fraise_mini_90ml', label: 'BR Yogoo fraise mini 90 ml' },
-  { key: 'br_yogoo_fraise_maxi_318ml', label: 'BR Yogoo fraise maxi 318 ml' },
-  { key: 'br_yogoo_nature_mini_90ml', label: 'BR Yogoo nature mini 90 ml' },
-  { key: 'br_yogoo_nature_maxi_318ml', label: 'BR Yogoo nature maxi 318 ml' },
+  { key: 'br_yogoo_fraise_mini_90ml', label: 'FT Yaourt fraise mini 90 ml' },
+  { key: 'br_yogoo_fraise_maxi_318ml', label: 'FT Yaourt fraise maxi 318 ml' },
+  { key: 'br_yogoo_nature_mini_90ml', label: 'FT Yaourt nature mini 90 ml' },
+  { key: 'br_yogoo_nature_maxi_318ml', label: 'FT Yaourt nature maxi 318 ml' },
 ]
 
 const cerealesProducts = getSkus('cereales').map(s => ({ key: s.key, label: s.label }))

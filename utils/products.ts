@@ -1,5 +1,5 @@
 // utils/products.ts
-// Catalogue central des SKU produits Friesland — source de vérité unique.
+// Catalogue central des SKU produits — source de vérité unique.
 // Remplace les listes dupliquées dans new.vue / [category].vue / useCsvExport.
 import type { ProductStatus } from '~/types'
 
@@ -24,55 +24,55 @@ const DEFAULT_SEUIL_BAS = 3
 export const PRODUCT_CATALOG: ProductCategoryDef[] = [
   {
     key: 'evap', label: 'EVAP', color: '#3B82F6', skus: [
-      { key: 'br_gold', label: 'BR Gold', seuilBasDefaut: DEFAULT_SEUIL_BAS },
-      { key: 'br_160g', label: 'BR 150g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
-      { key: 'brb_160g', label: 'BRB 150g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
-      { key: 'br_400g', label: 'BR 380g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
-      { key: 'brb_400g', label: 'BRB 380g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
-      { key: 'pearl_400g', label: 'Pearl 380g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'br_gold', label: 'FT Gold', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'br_160g', label: 'FT 150g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'brb_160g', label: 'FTB 150g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'br_400g', label: 'FT 380g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'brb_400g', label: 'FTB 380g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'pearl_400g', label: 'Opale 380g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
     ],
   },
   {
     // Libellés alignés sur reference_produit.nom (référentiel) — clés JSONB inchangées.
     key: 'imp', label: 'IMP', color: '#10B981', skus: [
-      { key: 'br_400g', label: 'BR tin 2500g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
-      { key: 'br_20g', label: 'BR 15g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
-      { key: 'brb_25g', label: 'BRB 16g', seuilBasDefaut: DEFAULT_SEUIL_BAS }, // TODO confirmer client (pas de référence IMP BRB)
-      { key: 'br_375g', label: 'BR Pouch 360g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
-      { key: 'br_900g', label: 'BR tin 400g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
-      { key: 'brb_400g', label: 'BRB 360g', seuilBasDefaut: DEFAULT_SEUIL_BAS }, // TODO confirmer client (pas de référence IMP BRB)
-      { key: 'br_2_5kg', label: 'BR tin 900g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
-      { key: 'brd_15g', label: 'BR Délice 15g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
-      { key: 'brd_350g', label: 'BR Délice Pouch 350g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'br_400g', label: 'FT tin 2500g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'br_20g', label: 'FT 15g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'brb_25g', label: 'FTB 16g', seuilBasDefaut: DEFAULT_SEUIL_BAS }, // TODO confirmer client (pas de référence IMP BRB)
+      { key: 'br_375g', label: 'FT Pouch 360g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'br_900g', label: 'FT tin 400g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'brb_400g', label: 'FTB 360g', seuilBasDefaut: DEFAULT_SEUIL_BAS }, // TODO confirmer client (pas de référence IMP BRB)
+      { key: 'br_2_5kg', label: 'FT tin 900g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'brd_15g', label: 'FT Délice 15g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'brd_350g', label: 'FT Délice Pouch 350g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
     ],
   },
   {
-    // SCM = 2 produits seulement (confirmé Friesland 2026-07-15).
+    // SCM = 2 produits seulement (confirmé 2026-07-15).
     key: 'scm', label: 'SCM', color: '#F59E0B', skus: [
-      { key: 'pearl_1kg', label: 'Pearl 1Kg', seuilBasDefaut: DEFAULT_SEUIL_BAS },
-      { key: 'br_1kg', label: 'BR 1Kg', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'pearl_1kg', label: 'Opale 1Kg', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'br_1kg', label: 'FT 1Kg', seuilBasDefaut: DEFAULT_SEUIL_BAS },
     ],
   },
   {
     key: 'uht', label: 'UHT', color: '#8B5CF6', skus: [
-      { key: 'demi_ecreme', label: 'BR 516ml', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'demi_ecreme', label: 'FT 516ml', seuilBasDefaut: DEFAULT_SEUIL_BAS },
       { key: 'elopack_500ml', label: 'Elopack 500ml', seuilBasDefaut: DEFAULT_SEUIL_BAS },
       { key: 'brique_1l', label: 'Brique 1L', seuilBasDefaut: DEFAULT_SEUIL_BAS },
     ],
   },
   {
     key: 'yaourt', label: 'YAOURT', color: '#EC4899', skus: [
-      { key: 'br_yogoo_fraise_mini_90ml', label: 'Yogoo Fraise Mini 90ml', seuilBasDefaut: DEFAULT_SEUIL_BAS },
-      { key: 'br_yogoo_fraise_maxi_318ml', label: 'Yogoo Fraise Maxi 318ml', seuilBasDefaut: DEFAULT_SEUIL_BAS },
-      { key: 'br_yogoo_nature_mini_90ml', label: 'Yogoo Nature Mini 90ml', seuilBasDefaut: DEFAULT_SEUIL_BAS },
-      { key: 'br_yogoo_nature_maxi_318ml', label: 'Yogoo Nature Maxi 318ml', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'br_yogoo_fraise_mini_90ml', label: 'Yaourt Fraise Mini 90ml', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'br_yogoo_fraise_maxi_318ml', label: 'Yaourt Fraise Maxi 318ml', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'br_yogoo_nature_mini_90ml', label: 'Yaourt Nature Mini 90ml', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'br_yogoo_nature_maxi_318ml', label: 'Yaourt Nature Maxi 318ml', seuilBasDefaut: DEFAULT_SEUIL_BAS },
     ],
   },
   {
     key: 'cereales', label: 'CÉRÉALES', color: '#06B6D4', skus: [
       // Libellés provisoires (à confirmer) — modifiables en base.
-      { key: 'brcv', label: 'Céréales BRCV', seuilBasDefaut: DEFAULT_SEUIL_BAS },
-      { key: 'brcc', label: 'Céréales BRCC', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'brcv', label: 'Céréales FTCV', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'brcc', label: 'Céréales FTCC', seuilBasDefaut: DEFAULT_SEUIL_BAS },
     ],
   },
 ]

@@ -9,15 +9,15 @@
     <!-- Logo -->
     <div class="h-20 flex items-center justify-center border-b border-slate-200/80 px-4 dark:border-gray-700">
       <div v-if="!collapsed" class="flex items-center gap-3">
-        <div class="flex h-11 w-11 items-center justify-center rounded-xl border border-red-100 bg-white shadow-[0_12px_28px_-24px_rgba(200,16,46,0.9)]">
-          <img src="~/assets/logo.png" alt="Friesland" class="h-8 w-8 rounded-lg object-contain" />
+        <div class="flex h-11 w-11 items-center justify-center rounded-xl border border-blue-100 bg-white shadow-[0_12px_28px_-24px_rgba(29,78,216,0.9)]">
+          <img src="~/assets/logo.png" alt="Field Track" class="h-8 w-8 rounded-lg object-contain" />
         </div>
         <div>
-          <h2 class="text-sm font-bold leading-none text-slate-950 dark:text-white">Friesland</h2>
-          <p class="mt-1 text-[10px] font-semibold uppercase tracking-normal text-fc-red">Bonnet Rouge</p>
+          <h2 class="text-sm font-bold leading-none text-slate-950 dark:text-white">Field Track</h2>
+          <p class="mt-1 text-[10px] font-semibold uppercase tracking-normal text-fc-red">Pilotage terrain</p>
         </div>
       </div>
-      <img v-else src="~/assets/logo.png" alt="FC" class="w-8 h-8 rounded-lg object-contain" />
+      <img v-else src="~/assets/logo.png" alt="Field Track" class="w-8 h-8 rounded-lg object-contain" />
     </div>
 
     <!-- Navigation -->
@@ -43,7 +43,7 @@
           :to="item.to"
           class="group relative mb-1 flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-all duration-200"
           :class="isActive(item.to, item.activePaths)
-            ? 'bg-white text-fc-red font-semibold shadow-[0_12px_30px_-26px_rgba(200,16,46,0.9)] ring-1 ring-red-100 dark:bg-red-950/30 dark:ring-red-900/40'
+            ? 'bg-white text-fc-red font-semibold shadow-[0_12px_30px_-26px_rgba(29,78,216,0.9)] ring-1 ring-blue-100 dark:bg-blue-950/30 dark:ring-blue-900/40'
             : 'text-slate-600 hover:bg-white/80 hover:text-slate-950 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white'"
           @click="$emit('navigate')"
         >

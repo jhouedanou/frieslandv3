@@ -42,7 +42,7 @@
         <button
           type="button"
           class="mt-3 flex min-h-10 w-full items-center justify-between rounded-xl border px-3 text-left text-xs font-semibold transition-colors"
-          :class="sortByProximity ? 'border-red-100 bg-red-50 text-fc-red dark:border-red-900/50 dark:bg-red-950/30 dark:text-red-200' : 'border-gray-200 bg-gray-50 text-gray-700 dark:border-gray-700 dark:bg-gray-700/60 dark:text-gray-300'"
+          :class="sortByProximity ? 'border-blue-100 bg-blue-50 text-fc-red dark:border-blue-900/50 dark:bg-blue-950/30 dark:text-blue-200' : 'border-gray-200 bg-gray-50 text-gray-700 dark:border-gray-700 dark:bg-gray-700/60 dark:text-gray-300'"
           :aria-pressed="sortByProximity"
           @click="sortByProximity = !sortByProximity"
         >
@@ -168,7 +168,7 @@
             v-if="pdv.geolocation_lat"
             :to="`https://www.google.com/maps?q=${pdv.geolocation_lat},${pdv.geolocation_lng}`"
             target="_blank"
-            class="touch-target inline-flex items-center justify-center rounded-xl text-fc-red hover:bg-red-50 dark:hover:bg-red-950/30"
+            class="touch-target inline-flex items-center justify-center rounded-xl text-fc-red hover:bg-blue-50 dark:hover:bg-blue-950/30"
             :aria-label="`Ouvrir ${pdv.nom_pdv} dans Google Maps`"
           >
             <UIcon name="i-heroicons-map-pin" class="w-5 h-5 text-fc-red" />

@@ -28,10 +28,10 @@ if (!keystorePropertiesFile.exists()) {
 def signingReady = (signingProblem == null)
 
 android {
-    namespace "com.bdco.bonnetrouge"
+    namespace "com.fieldtrack.app"
     compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.bdco.bonnetrouge"
+        applicationId "com.fieldtrack.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 13
