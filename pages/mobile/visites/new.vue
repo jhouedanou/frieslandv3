@@ -106,8 +106,8 @@
               <span class="text-lg font-bold text-fc-red">E</span>
             </div>
             <div>
-              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">EVAP — Évaporé</h3>
-              <p class="text-xs text-gray-400">Disponibilité et prix des produits évaporés</p>
+              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">Gamme A</h3>
+              <p class="text-xs text-gray-400">Disponibilité et prix Gamme A</p>
             </div>
           </div>
 
@@ -143,8 +143,8 @@
               <span class="text-lg font-bold text-orange-600">I</span>
             </div>
             <div>
-              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">IMP — Importé</h3>
-              <p class="text-xs text-gray-400">Disponibilité et prix des produits importés</p>
+              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">Gamme B</h3>
+              <p class="text-xs text-gray-400">Disponibilité et prix Gamme B</p>
             </div>
           </div>
 
@@ -180,8 +180,8 @@
               <span class="text-lg font-bold text-emerald-600">S</span>
             </div>
             <div>
-              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">SCM — Sweetened Condensed</h3>
-              <p class="text-xs text-gray-400">Disponibilité et prix SCM</p>
+              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">Gamme C</h3>
+              <p class="text-xs text-gray-400">Disponibilité et prix Gamme C</p>
             </div>
           </div>
 
@@ -217,8 +217,8 @@
               <span class="text-lg font-bold text-sky-600">U</span>
             </div>
             <div>
-              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">UHT</h3>
-              <p class="text-xs text-gray-400">Disponibilité et prix UHT</p>
+              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">Gamme D</h3>
+              <p class="text-xs text-gray-400">Disponibilité et prix Gamme D</p>
             </div>
           </div>
 
@@ -251,8 +251,8 @@
               <span class="text-lg font-bold text-pink-600">Y</span>
             </div>
             <div>
-              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">YAOURT</h3>
-              <p class="text-xs text-gray-400">Disponibilité et prix yaourts</p>
+              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">Gamme E</h3>
+              <p class="text-xs text-gray-400">Disponibilité et prix Gamme E</p>
             </div>
           </div>
 
@@ -285,7 +285,7 @@
               <span class="text-lg font-bold text-cyan-600">C</span>
             </div>
             <div>
-              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">CÉRÉALES</h3>
+              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">Gamme F</h3>
               <p class="text-xs text-gray-400">Quantités et prix céréales</p>
             </div>
           </div>
@@ -355,7 +355,7 @@
                   <ToggleStatus v-model="form.concurrence[fam.key].autre" />
                 </div>
                 <div v-if="form.concurrence[fam.key].autre === 'Présent'" class="space-y-1">
-                  <label class="text-sm font-medium text-gray-600">Nom du concurrent {{ fam.key.toUpperCase() }} *</label>
+                  <label class="text-sm font-medium text-gray-600">Nom du concurrent {{ getCategoryDef(fam.key)?.label || fam.key.toUpperCase() }} *</label>
                   <UInput v-model="form.concurrence[fam.key].nom_concurrent" placeholder="Nom du concurrent" size="lg" />
                 </div>
               </template>
@@ -438,7 +438,7 @@
             <p class="text-sm font-semibold text-amber-900 dark:text-amber-100">Aucun standard paramétré pour ce type de PDV</p>
             <p class="mt-1 text-xs text-amber-700 dark:text-amber-300">
               Le type « {{ typePdvLabel(selectedPDV?.sous_categorie_pdv) || 'non renseigné' }} » n’est lié à aucune matrice de visibilité.
-              La visite sera enregistrée, mais aucun niveau Perfect Store ne sera attribué avant son paramétrage dans Dashboard → Perfect Store → Standards.
+              La visite sera enregistrée, mais aucun niveau de conformité ne sera attribué avant son paramétrage dans Dashboard → Conformité → Standards.
             </p>
           </div>
 
@@ -701,12 +701,12 @@ const saveProgress = ref(0)
 // parcours, y compris hors ligne grâce au repli du composable.
 const ALL_WIZARD_STEPS = [
   { key: 'general', label: 'Général', phase: 'Général' },
-  { key: 'evap', label: 'EVAP', phase: 'Produits' },
-  { key: 'imp', label: 'IMP', phase: 'Produits' },
-  { key: 'scm', label: 'SCM', phase: 'Produits' },
-  { key: 'uht', label: 'UHT', phase: 'Produits' },
-  { key: 'yaourt', label: 'Yaourt', phase: 'Produits' },
-  { key: 'cereales', label: 'Céréales', phase: 'Produits' },
+  { key: 'evap', label: 'Gamme A', phase: 'Produits' },
+  { key: 'imp', label: 'Gamme B', phase: 'Produits' },
+  { key: 'scm', label: 'Gamme C', phase: 'Produits' },
+  { key: 'uht', label: 'Gamme D', phase: 'Produits' },
+  { key: 'yaourt', label: 'Gamme E', phase: 'Produits' },
+  { key: 'cereales', label: 'Gamme F', phase: 'Produits' },
   { key: 'concurrence', label: 'Concurrence', phase: 'Visibilité & concurrence' },
   { key: 'visibilite', label: 'Visibilité', phase: 'Visibilité & concurrence' },
   { key: 'actions', label: 'Actions', phase: 'Actions & photos' },
@@ -716,7 +716,7 @@ const { filtrer: filtrerCategoriesReleve, charger: chargerCategoriesReleve } = u
 
 // Les étapes produit sont OBLIGATOIRES. Constat en base le 7 sept. 2026 : 17
 // visites sur 6 098 depuis avril portaient une quantité, parce que ces étapes
-// se traversaient sans rien saisir — et le score Perfect Store, la
+// se traversaient sans rien saisir — et le score de conformité, la
 // disponibilité et l'analyse des gaps se calculent uniquement à partir d'elles.
 // Une quantité à 0 vaut réponse (« rupture ») : il suffit d'avoir touché un SKU.
 const wizardSteps = computed<WizardStep[]>(() =>
@@ -992,10 +992,10 @@ const uhtProducts: { key: ProductKey<VisiteProduits['uht']>; label: string }[] =
 ]
 
 const yaourtProducts: { key: ProductKey<VisiteProduits['yaourt']>; label: string }[] = [
-  { key: 'br_yogoo_fraise_mini_90ml', label: 'FT Yaourt fraise mini 90 ml' },
-  { key: 'br_yogoo_fraise_maxi_318ml', label: 'FT Yaourt fraise maxi 318 ml' },
-  { key: 'br_yogoo_nature_mini_90ml', label: 'FT Yaourt nature mini 90 ml' },
-  { key: 'br_yogoo_nature_maxi_318ml', label: 'FT Yaourt nature maxi 318 ml' },
+  { key: 'br_yogoo_fraise_mini_90ml', label: 'FT Fraise mini 90 ml' },
+  { key: 'br_yogoo_fraise_maxi_318ml', label: 'FT Fraise maxi 318 ml' },
+  { key: 'br_yogoo_nature_mini_90ml', label: 'FT Nature mini 90 ml' },
+  { key: 'br_yogoo_nature_maxi_318ml', label: 'FT Nature maxi 318 ml' },
 ]
 
 const cerealesProducts = getSkus('cereales').map(s => ({ key: s.key, label: s.label }))
@@ -1061,7 +1061,7 @@ const visibilitySections = computed(() => [
 
 const ALL_PRODUCT_CATEGORY_KEYS: (keyof VisiteProduits)[] = ['evap', 'imp', 'scm', 'uht', 'yaourt', 'cereales']
 const productCategoryKeys = computed(() => filtrerCategoriesReleve(ALL_PRODUCT_CATEGORY_KEYS, k => k))
-const productCategoryLabels: Record<string, string> = { evap: 'EVAP', imp: 'IMP', scm: 'SCM', uht: 'UHT', yaourt: 'Yaourt', cereales: 'Céréales' }
+const productCategoryLabels: Record<string, string> = { evap: 'Gamme A', imp: 'Gamme B', scm: 'Gamme C', uht: 'Gamme D', yaourt: 'Gamme E', cereales: 'Gamme F' }
 // L'étape courante est une catégorie produit ? (l'ordre des étapes dépend des catégories actives)
 const quickCategory = computed<keyof VisiteProduits | null>(() => {
   const key = wizardSteps.value[currentTab.value]?.key as keyof VisiteProduits | undefined

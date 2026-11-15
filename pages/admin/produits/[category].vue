@@ -214,7 +214,7 @@ const { estActive, charger: chargerCategoriesReleve } = useCategoriesReleve()
 watchEffect(() => {
   if (!estActive(cat.value)) navigateTo('/admin/produits/recap', { replace: true })
 })
-const title = computed(() => cat.value.toUpperCase())
+const title = computed(() => getCategoryDef(cat.value)?.label || cat.value.toUpperCase())
 
 // Tab management
 const tabs = [
@@ -253,14 +253,14 @@ const productDefs: Record<string, { key: string; name: string }[]> = {
     { key: 'brique_1l', name: 'Brique 1L' },
   ],
   yaourt: [
-    { key: 'br_yogoo_fraise_mini_90ml', name: 'Yaourt Fraise Mini 90ml' },
-    { key: 'br_yogoo_fraise_maxi_318ml', name: 'Yaourt Fraise Maxi 318ml' },
-    { key: 'br_yogoo_nature_mini_90ml', name: 'Yaourt Nature Mini 90ml' },
-    { key: 'br_yogoo_nature_maxi_318ml', name: 'Yaourt Nature Maxi 318ml' },
+    { key: 'br_yogoo_fraise_mini_90ml', name: 'FT Fraise Mini 90ml' },
+    { key: 'br_yogoo_fraise_maxi_318ml', name: 'FT Fraise Maxi 318ml' },
+    { key: 'br_yogoo_nature_mini_90ml', name: 'FT Nature Mini 90ml' },
+    { key: 'br_yogoo_nature_maxi_318ml', name: 'FT Nature Maxi 318ml' },
   ],
   cereales: [
-    { key: 'brcv', name: 'Céréales FTCV' },
-    { key: 'brcc', name: 'Céréales FTCC' },
+    { key: 'brcv', name: 'FTCV' },
+    { key: 'brcc', name: 'FTCC' },
   ],
 }
 

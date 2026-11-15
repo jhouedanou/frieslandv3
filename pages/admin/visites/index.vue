@@ -41,7 +41,7 @@
 
     <div class="admin-surface overflow-hidden">
       <div class="border-b border-slate-100 px-5 py-4 dark:border-slate-700">
-        <h2 class="font-semibold text-slate-900 dark:text-white">Visites et résultats Perfect Store</h2>
+        <h2 class="font-semibold text-slate-900 dark:text-white">Visites et résultats de conformité</h2>
       </div>
 
       <div class="overflow-x-auto">
@@ -55,10 +55,10 @@
               <th>Distributeur</th>
               <th class="text-center">Niveau</th>
               <th class="text-center">Score</th>
-              <th class="text-center">EVAP</th>
-              <th class="text-center">IMP</th>
-              <th class="text-center">SCM</th>
-              <th class="text-center">UHT</th>
+              <th class="text-center">Gamme A</th>
+              <th class="text-center">Gamme B</th>
+              <th class="text-center">Gamme C</th>
+              <th class="text-center">Gamme D</th>
               <th class="text-center">GPS</th>
               <th class="text-center">Photos</th>
               <th class="text-center">Actions</th>

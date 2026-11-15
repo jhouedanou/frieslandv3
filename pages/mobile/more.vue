@@ -42,7 +42,7 @@ const roleItems = computed(() => {
   }
   // Le commercial a le coaching en onglet du bas : pas de doublon ici.
   if (authStore.isSuperviseur) {
-    items.push({ label: 'Field coaching', description: 'Questionnaire de suivi des activités de prospection', to: '/mobile/coaching', icon: 'i-heroicons-academic-cap' })
+    items.push({ label: 'Accompagnement terrain', description: 'Questionnaire de suivi des activités de prospection', to: '/mobile/coaching', icon: 'i-heroicons-academic-cap' })
   }
   // Analyse filtrée : surface WEB uniquement. Dans l'APK, native-scope.global.ts
   // renvoie tout /admin vers /mobile — proposer le lien y serait une impasse.

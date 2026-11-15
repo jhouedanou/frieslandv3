@@ -5,7 +5,7 @@
       <div>
         <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Référentiels</h1>
         <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-          Géographie, distribution, points de vente, produits et paramètres Perfect Store <span class="text-xs">(Système B)</span>.
+          Géographie, distribution, points de vente, produits et paramètres de conformité <span class="text-xs">(Système B)</span>.
         </p>
       </div>
       <UButton v-if="!activeDef.lectureSeule" icon="i-heroicons-plus" class="bg-fc-blue" @click="openCreate">Ajouter — {{ activeDef.label }}</UButton>
@@ -750,7 +750,7 @@ const defs: Def[] = [
     ],
     fields: [
       { key: 'famille', label: 'Famille', type: 'select', opts: () => FAMILLES_CONCURRENCE.map(f => ({ value: f.key, label: f.key.toUpperCase() })), required: true, lockEdit: true },
-      { key: 'nom', label: 'Nom de la marque', type: 'text', required: true, hint: 'ex. Cowmilk — apparaît tel quel dans le formulaire mobile' },
+      { key: 'nom', label: 'Nom de la marque', type: 'text', required: true, hint: 'ex. Concurrent A' },
       { key: 'ordre', label: 'Ordre d\'affichage', type: 'num', min: 0 },
       { key: 'actif', label: 'Actif', type: 'bool' },
     ],
@@ -780,7 +780,7 @@ const defs: Def[] = [
     ],
     fields: [
       { key: 'marque_id', label: 'Marque', type: 'select', opts: marqueConcurrenteOpts, required: true, lockEdit: true },
-      { key: 'libelle', label: 'Libellé', type: 'text', required: true, hint: 'ex. Nido 400g — affiché tel quel dans le formulaire mobile' },
+      { key: 'libelle', label: 'Libellé', type: 'text', required: true, hint: 'ex. Concurrent A 400g' },
       { key: 'grammage_g', label: 'Grammage (g)', type: 'num', min: 0 },
       { key: 'format', label: 'Format', type: 'text', hint: 'Sachet, Pouch, Boîte…' },
       { key: 'colisage', label: 'Colisage', type: 'num', min: 0 },
@@ -841,7 +841,7 @@ const defs: Def[] = [
   },
   // ===== PERFECT STORE =====
   {
-    id: 'niveau_perfect_store', section: 'ps', label: 'Niveaux Perfect Store', table: 'niveau_perfect_store',
+    id: 'niveau_perfect_store', section: 'ps', label: 'Niveaux de conformité', table: 'niveau_perfect_store',
     select: 'code, rang, dispo_rayon_min, visibilite_min, promotion_min', order: q => q.order('rang', { ascending: false }),
     columns: [
       { label: 'Niveau', cell: r => r.code },
@@ -1034,7 +1034,7 @@ const sections = [
   { key: 'distrib', label: 'Distribution' },
   { key: 'pdv', label: 'Points de vente' },
   { key: 'produit', label: 'Produits' },
-  { key: 'ps', label: 'Perfect Store' },
+  { key: 'ps', label: 'Conformité' },
   { key: 'app', label: 'Application mobile' },
 ]
 

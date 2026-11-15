@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-6">
-    <AdminPageHeader title="Field coaching" eyebrow="Domaine visites" />
+    <AdminPageHeader title="Accompagnement terrain" eyebrow="Domaine visites" />
 
-    <AdminListToolbar :result-count="filtres.length" result-label="coaching(s)" :chips="chips" @reset="resetFilters" @remove-chip="removeChip">
+    <AdminListToolbar :result-count="filtres.length" result-label="accompagnement(s)" :chips="chips" @reset="resetFilters" @remove-chip="removeChip">
       <template #filters>
         <PeriodFilter v-model="periode" />
         <UFormGroup label="Superviseur" class="min-w-56">
@@ -35,7 +35,7 @@
         </thead>
         <tbody>
           <tr v-if="loading"><td colspan="12" class="py-8 text-center text-gray-400">Chargement…</td></tr>
-          <tr v-else-if="!pagines.length"><td colspan="12" class="py-8 text-center text-gray-400">Aucun field coaching sur la période.</td></tr>
+          <tr v-else-if="!pagines.length"><td colspan="12" class="py-8 text-center text-gray-400">Aucun accompagnement terrain sur la période.</td></tr>
           <tr v-for="c in pagines" :key="c.id">
             <td>{{ formatDate(c.date_coaching) }}</td>
             <td class="font-medium">{{ c.pdv?.nom_pdv || c.pdv_id }}</td>
@@ -58,7 +58,7 @@
 </template>
 
 <script setup lang="ts">
-// Rapport des field coaching effectués (lot 4.5) : filtres, table, export, impression.
+// Rapport des accompagnements terrain effectués (lot 4.5) : filtres, table, export, impression.
 import type { FieldCoaching } from '~/types'
 import type { PeriodeValue } from '~/components/PeriodFilter.vue'
 import { plageDePeriode } from '~/utils/periode'
@@ -115,10 +115,10 @@ const kpis = computed(() => {
     return t.length ? Math.round(t.reduce((a, b) => a + b, 0) / t.length) + ' %' : '—'
   }
   return [
-    { label: 'Coachings', value: n },
+    { label: 'Accompagnements', value: n },
     { label: 'PDV couverts', value: new Set(filtres.value.map(c => c.pdv_id)).size },
-    { label: 'Perfect Visibility', value: moy('visibilite') },
-    { label: 'Effective Promotion', value: moy('promotion') },
+    { label: 'Visibilité', value: moy('visibilite') },
+    { label: 'Promotion', value: moy('promotion') },
   ]
 })
 
@@ -169,7 +169,7 @@ async function charger() {
     rows.value = (data || []) as unknown as FieldCoaching[]
   }
   catch (err) {
-    console.warn('Field coaching : chargement impossible', err)
+    console.warn('Accompagnement terrain : chargement impossible', err)
     rows.value = []
   }
   finally {

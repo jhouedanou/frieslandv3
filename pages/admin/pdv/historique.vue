@@ -2,7 +2,7 @@
   <div class="space-y-6">
     <AdminPageHeader
       title="Historique d'un point de vente"
-      eyebrow="Évolution Perfect Store"
+      eyebrow="Évolution de conformité"
     />
 
     <!-- Choix du PDV : recherche par nom, PDV du périmètre actif -->
@@ -160,7 +160,7 @@
                 <td class="px-4 py-2 text-sm">{{ formatDateFr(h.date_visite, { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }) }}</td>
                 <td class="px-4 py-2 text-sm text-slate-500">{{ h.commercial || '—' }}</td>
                 <td class="px-4 py-2 text-center text-sm">
-                  <UBadge :color="h.niveau ? 'green' : 'gray'" variant="soft" size="xs">{{ h.niveau ? h.niveau.toUpperCase() : 'Non conforme' }}</UBadge>
+                  <UBadge :color="h.niveau ? 'green' : 'gray'" variant="soft" size="xs">{{ libelleNiveau(h.niveau) }}</UBadge>
                 </td>
                 <td class="px-4 py-2 text-center text-sm tabular-nums">{{ pct(h.score_global) }}</td>
                 <td class="px-4 py-2 text-center text-sm tabular-nums">{{ pct(h.dispo_rayon) }}</td>
@@ -187,7 +187,7 @@
 <script setup lang="ts">
 // Historique et évolution par PDV (lot 5, 1.0.4). Rien de comparable
 // n'existait : VisitesLineChart est mono-série. Ici, les quatre métriques
-// Perfect Store visite par visite, la comparaison de deux périodes (moyennes
+// Conformité visite par visite, la comparaison de deux périodes (moyennes
 // calculées côté serveur) et, en option, le score de deux PDV superposés.
 import { formatDateFr } from '~/utils/dates'
 import { plageDePeriode } from '~/utils/periode'
@@ -335,7 +335,7 @@ const lignesComparaison = computed(() => {
     ligne('Disponibilité moyenne', 'dispo_moyenne'),
     ligne('Visibilité moyenne', 'visibilite_moyenne'),
     ligne('Promotion moyenne', 'promotion_moyenne'),
-    ligne('Taux de Perfect Store', 'perfect_store_pct'),
+    ligne('Taux de conformité', 'perfect_store_pct'),
   ]
 })
 

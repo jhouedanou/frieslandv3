@@ -86,7 +86,7 @@
               <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Code area</th>
               <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Quartier</th>
               <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Distributeur</th>
-              <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Perfect Store</th>
+              <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Conformité</th>
               <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase whitespace-nowrap">Actions</th>
             </tr>
           </thead>
@@ -138,7 +138,7 @@
               <td class="px-4 py-3 text-center">
                 <div v-if="perfectStoreByPdv[pdv.pdv_id]" class="flex items-center justify-center gap-1.5">
                   <span class="h-2 w-2 rounded-full" :class="tierDotClass(perfectStoreByPdv[pdv.pdv_id].niveau)" />
-                  <span class="text-xs font-medium text-gray-700 dark:text-gray-300">{{ perfectStoreByPdv[pdv.pdv_id].niveau }}</span>
+                  <span class="text-xs font-medium text-gray-700 dark:text-gray-300">{{ libelleNiveau(perfectStoreByPdv[pdv.pdv_id].niveau) }}</span>
                   <span class="text-xs text-gray-400">({{ perfectStoreByPdv[pdv.pdv_id].score_global }}%)</span>
                 </div>
                 <span v-else class="text-xs text-gray-300">—</span>
@@ -251,7 +251,7 @@
                     @update:model-value="onCategorieChange"
                   />
                 </UFormGroup>
-                <UFormGroup label="Sous-catégorie" help="Type de PDV utilisé pour le scoring Perfect Store." size="md">
+                <UFormGroup label="Sous-catégorie" help="Type de PDV utilisé pour le scoring de conformité." size="md">
                   <USelectMenu
                     v-model="pdvForm.sous_categorie_pdv"
                     :options="sousCategorieOptions"
@@ -385,7 +385,7 @@
               </div>
 
               <div class="grid grid-cols-1 gap-x-5 gap-y-5 sm:grid-cols-2">
-                <UFormGroup label="Objectif Perfect Store" size="md">
+                <UFormGroup label="Objectif de conformité" size="md">
                   <USelectMenu
                     v-model="pdvForm.objectif_perfect_store"
                     :options="['', 'FLAGSHIP', 'VIP', 'CORE', 'BASIC']"
@@ -427,7 +427,7 @@
         <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-4">Import CSV PDV</h3>
         <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
           Colonnes : PDV ID, Nom du PDV, Canal, Catégorie de PDV, Région, Zone, Quartier, Geolocation, Adressage…
-          <br>Référentiels (optionnel) : <strong>Territoire</strong> (code), <strong>Area</strong> (code), <strong>Distributeur</strong>, <strong>Objectif Perfect Store</strong> (FLAGSHIP/VIP/CORE/BASIC).
+          <br>Référentiels (optionnel) : <strong>Territoire</strong> (code), <strong>Area</strong> (code), <strong>Distributeur</strong>, <strong>Objectif de conformité</strong> (FLAGSHIP/VIP/CORE/BASIC).
           <br>Astuce : exporte d'abord (bouton Export) pour récupérer le modèle avec les bons en-têtes.
         </p>
 
@@ -596,7 +596,7 @@ const { typePdvLabel, fetchTypePdvLabels } = useTypePdvLabels()
 
 // Cascade Catégorie (level3 / groupe) → Sous-catégorie (level4 / type de PDV).
 // Options {label: nom_fr, value: nom EN} : affichage français, valeur stockée
-// inchangée (nom EN du référentiel, utilisé par le matching Perfect Store).
+// inchangée (nom EN du référentiel, utilisé par le matching de conformité).
 const categorieOptions = computed(() => {
   const byNom = new Map(posTypes.value.filter(p => p.level3_group).map(p => [p.level3_group, p.level3_fr]))
   return [...byNom.entries()]
@@ -604,7 +604,7 @@ const categorieOptions = computed(() => {
     .sort((a, b) => a.label.localeCompare(b.label, 'fr'))
 })
 // Canal dérivé de la catégorie (categorie_pdv.canal), aligné sur le calcul
-// Perfect Store — plus de saisie manuelle.
+// Conformité — plus de saisie manuelle.
 const derivedCanal = computed(() => {
   const pos = posTypes.value.find(p => p.level3_group === pdvForm.value.categorie_pdv)
   return canalLabelFromCode((pos as any)?.canal)
@@ -876,7 +876,7 @@ async function handleImport() {
   }
 }
 
-// Dernier niveau Perfect Store connu par PDV (vue v_perfect_store_liste : 1 ligne/PDV, visite la plus récente).
+// Dernier niveau de conformité connu par PDV (vue v_perfect_store_liste : 1 ligne/PDV, visite la plus récente).
 const perfectStoreByPdv = ref<Record<string, { niveau: string; score_global: number | null }>>({})
 
 function tierDotClass(tier: string): string {

@@ -214,13 +214,13 @@ const pageTitle = computed(() => {
     '/mobile/more': 'Plus',
     '/mobile/equipe': "Visites de l'équipe",
     '/mobile/actions': 'Actions commerciales',
-    '/mobile/coaching': 'Field coaching',
-    '/mobile/coaching/new': 'Nouveau field coaching',
+    '/mobile/coaching': 'Accompagnement terrain',
+    '/mobile/coaching/new': 'Nouvel accompagnement terrain',
   }
   if (titles[route.path]) return titles[route.path]
   if (route.path.startsWith('/mobile/pdv/')) return 'Détail PDV'
   if (route.path.startsWith('/mobile/visites/')) return 'Détail Visite'
-  if (route.path.startsWith('/mobile/coaching/')) return 'Field coaching'
+  if (route.path.startsWith('/mobile/coaching/')) return 'Accompagnement terrain'
   return 'Field Track'
 })
 

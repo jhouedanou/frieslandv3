@@ -1,5 +1,5 @@
 // utils/fieldCoaching.ts
-// Field coaching (lot 4) : questionnaire Kobo « Suivi des activités de
+// Accompagnement terrain (lot 4) : questionnaire Kobo « Suivi des activités de
 // prospection (Rooting) ». Les 13 questions à trois états gardent un code
 // stable pour rester comparables avec l'historique Kobo.
 export type ReponseCoaching = 'oui' | 'non' | 'na'
@@ -11,8 +11,8 @@ export interface QuestionCoaching {
 }
 
 export const BLOCS_COACHING = {
-  visibilite: 'II_1.2 — Perfect Visibility',
-  promotion: 'II_1.3 — Effective Promotion',
+  visibilite: 'II_1.2 — Visibilité',
+  promotion: 'II_1.3 — Promotion',
 } as const
 
 // Libellés repris mot pour mot du formulaire Kobo (PDF du 7 sept. 2026).

@@ -36,6 +36,15 @@ where nom ~ '\m(BR|BRB)\M|Pearl';
 
 update public.element_visibilite set nom = regexp_replace(nom, '\mBR\M', 'FT', 'g') where nom ~ '\mBR\M';
 
+-- Gammes de produits : libellés génériques (les codes evap / imp / scm restent).
+update public.categorie_produit set nom = v.nom
+from (values ('EVAP', 'Gamme A'), ('IMP', 'Gamme B'), ('SCM', 'Gamme C')) as v(code, nom)
+where categorie_produit.code = v.code;
+
+update public.categorie_releve set libelle = v.libelle
+from (values ('evap', 'Gamme A'), ('imp', 'Gamme B'), ('scm', 'Gamme C'), ('uht', 'Gamme D'), ('yaourt', 'Gamme E'), ('cereales', 'Gamme F')) as v(code, libelle)
+where categorie_releve.code = v.code;
+
 -- Distributeurs : noms fictifs, identifiants conservés (liens territoire intacts).
 update public.distributeur set nom = 'Distributeur ' || lpad(id::text, 2, '0') where nom not like 'Distributeur __';
 

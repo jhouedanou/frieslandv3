@@ -1,5 +1,5 @@
 // composables/useVisibilityAggregation.ts
-// Agrégations de visibilité alignées Perfect Store : lit data.visibilite.standards
+// Agrégations de visibilité alignées Conformité : lit data.visibilite.standards
 // ({ code: bool }) et classe les éléments par segment/emplacement via le référentiel
 // (element_visibilite / segment_visibilite_type_pdv), exposé par useVisibilityStandards.
 // Remplace l'ancienne lecture data.visibilite.{exterieure,interieure}.<clé legacy>.

@@ -103,12 +103,12 @@ const dashboard = useDashboardDirection()
 
 // Catégories filtrées par le paramètre categorie_releve (lot 6).
 const ALL_PRODUCT_CATEGORIES = [
-  { key: 'evap', label: 'EVAP', color: '#3B82F6' },
-  { key: 'imp', label: 'IMP', color: '#10B981' },
-  { key: 'scm', label: 'SCM', color: '#F59E0B' },
-  { key: 'uht', label: 'UHT', color: '#8B5CF6' },
-  { key: 'yaourt', label: 'YAOURT', color: '#EC4899' },
-  { key: 'cereales', label: 'CÉRÉALES', color: '#06B6D4' },
+  { key: 'evap', label: 'Gamme A', color: '#3B82F6' },
+  { key: 'imp', label: 'Gamme B', color: '#10B981' },
+  { key: 'scm', label: 'Gamme C', color: '#F59E0B' },
+  { key: 'uht', label: 'Gamme D', color: '#8B5CF6' },
+  { key: 'yaourt', label: 'Gamme E', color: '#EC4899' },
+  { key: 'cereales', label: 'Gamme F', color: '#06B6D4' },
 ]
 const { filtrer: filtrerCategoriesReleve, charger: chargerCategoriesReleve } = useCategoriesReleve()
 const productCategories = computed(() => filtrerCategoriesReleve(ALL_PRODUCT_CATEGORIES, c => c.key))

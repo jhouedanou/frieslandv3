@@ -19,7 +19,7 @@
       <section class="mb-7 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700">
         <div class="flex flex-col gap-3 bg-slate-950 px-4 py-4 text-white sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p class="text-xs font-medium text-slate-400">Résultat Perfect Store</p>
+            <p class="text-xs font-medium text-slate-400">Résultat de conformité</p>
             <p class="mt-1 text-lg font-semibold">{{ perfectStore?.tierAtteint || 'Non conforme' }}</p>
           </div>
           <p class="text-3xl font-semibold tabular-nums">{{ ratio(perfectStore?.scoreGlobal) }}</p>
@@ -31,7 +31,7 @@
           </div>
         </div>
         <p v-else class="px-4 py-3 text-sm text-slate-500 dark:text-slate-400">
-          Le résultat sera disponible lorsque les standards Perfect Store seront chargés.
+          Le résultat sera disponible lorsque les standards de conformité seront chargés.
         </p>
       </section>
 
@@ -233,7 +233,7 @@ const { typePdvLabel, fetchTypePdvLabels } = useTypePdvLabels()
 const { skus: skusConcurrents, marquesVisibilite, charger: chargerMarques } = useMarquesConcurrentes()
 onMounted(() => { void fetchTypePdvLabels(); void chargerMarques() })
 
-const productLabels: Record<string, string> = { evap: 'Lait évaporé (EVAP)', imp: 'Lait en poudre (IMP)', scm: 'Lait concentré sucré (SCM)' }
+const productLabels: Record<string, string> = { evap: 'Gamme A', imp: 'Gamme B', scm: 'Gamme C' }
 
 const dispoSegmentGrade = computed(() => {
   const sousCategorie = props.visite?.pdv?.sous_categorie_pdv || ''
@@ -300,10 +300,10 @@ const actionItems = [
 ]
 
 const competitorCategories = [
-  { key: 'evap', label: 'EVAP' },
-  { key: 'imp', label: 'IMP' },
-  { key: 'scm', label: 'SCM' },
-  { key: 'uht', label: 'UHT' },
+  { key: 'evap', label: 'Gamme A' },
+  { key: 'imp', label: 'Gamme B' },
+  { key: 'scm', label: 'Gamme C' },
+  { key: 'uht', label: 'Gamme D' },
 ]
 
 const generalInfo = computed(() => [

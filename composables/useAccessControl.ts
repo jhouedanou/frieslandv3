@@ -14,7 +14,7 @@ export const DASHBOARD_SECTIONS: DashboardSection[] = [
   { key: 'principal', title: 'Principal' },
   { key: 'pdv', title: 'Stats · PDV' },
   { key: 'visites', title: 'Stats · Visites & commerciaux' },
-  { key: 'perfect-store', title: 'Stats · Perfect Store' },
+  { key: 'perfect-store', title: 'Stats · Conformité' },
   { key: 'visibilite', title: 'Stats · Visibilité' },
   { key: 'concurrence', title: 'Stats · Concurrence' },
   { key: 'produits', title: 'Stats · Produits' },

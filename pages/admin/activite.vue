@@ -16,7 +16,7 @@
           <p class="text-sm font-medium text-fc-red">Pilotage commercial</p>
           <h2 class="mt-1 text-3xl font-semibold tracking-tight text-slate-950 dark:text-white">Vue d’ensemble</h2>
           <p class="mt-2 max-w-2xl text-sm text-slate-500 dark:text-slate-400">
-            Suivi du Perfect Store, de la couverture terrain et de la disponibilité produit.
+            Suivi de la conformité, de la couverture terrain et de la disponibilité produit.
           </p>
           <p class="mt-2 text-xs text-slate-400 dark:text-slate-500">{{ lastRefreshLabel }}</p>
         </div>
@@ -70,7 +70,7 @@
           <div class="flex h-full flex-col justify-between gap-8 pl-2">
             <div class="flex items-start justify-between gap-4">
               <div>
-                <p id="performance-heading" class="text-sm font-semibold text-slate-500 dark:text-slate-400">Performance Perfect Store</p>
+                <p id="performance-heading" class="text-sm font-semibold text-slate-500 dark:text-slate-400">Performance de conformité</p>
                 <div class="mt-3 flex items-end gap-3">
                   <span class="text-6xl font-semibold tracking-[-0.06em] text-slate-950 dark:text-white">
                     {{ formatPercent(psGlobal.perfect_store_pct) }}
@@ -116,7 +116,7 @@
         <div class="mb-4 flex items-end justify-between gap-4">
           <div>
             <h3 id="pillars-heading" class="text-lg font-semibold tracking-tight text-slate-950 dark:text-white">Santé des piliers</h3>
-            <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Les composantes qui déterminent la conformité Perfect Store.</p>
+            <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Les composantes qui déterminent la conformité.</p>
           </div>
           <NuxtLink to="/admin/perfect-store/standards" class="text-sm font-semibold text-fc-red hover:underline">Voir les standards</NuxtLink>
         </div>
@@ -337,7 +337,7 @@ const dashboardShortcuts = [
   { label: 'Visites terrain', hint: 'Consulter les visites', to: '/admin/visites', icon: 'i-heroicons-clipboard-document-list' },
   { label: 'Points de vente', hint: 'Gérer le parc actif', to: '/admin/pdv', icon: 'i-heroicons-map-pin' },
   { label: 'Disponibilité produit', hint: 'Contrôler les stocks', to: '/admin/produits/inventaire', icon: 'i-heroicons-cube' },
-  { label: 'Perfect Store', hint: 'Analyser la conformité', to: '/admin', icon: 'i-heroicons-trophy' },
+  { label: 'Conformité', hint: 'Analyser la conformité', to: '/admin', icon: 'i-heroicons-trophy' },
 ]
 
 const dashboardAlerts = computed(() => {
@@ -347,7 +347,7 @@ const dashboardAlerts = computed(() => {
     alerts.push({ key: 'products-low', title: 'Disponibilité', description: `${lowCategories.map(category => category.label).join(', ')} sous le seuil de 40 %.`, value: String(lowCategories.length), to: '/admin/produits/recap', level: 'critical' })
   }
   if (psGlobal.value && Number(psGlobal.value.perfect_store_pct ?? 0) < 40) {
-    alerts.push({ key: 'perfect-store-low', title: 'Perfect Store', description: 'Le score global est sous le seuil critique.', value: formatPercent(psGlobal.value.perfect_store_pct), to: '/admin', level: 'critical' })
+    alerts.push({ key: 'perfect-store-low', title: 'Conformité', description: 'Le score global est sous le seuil critique.', value: formatPercent(psGlobal.value.perfect_store_pct), to: '/admin', level: 'critical' })
   }
   return alerts.slice(0, 4)
 })
@@ -420,11 +420,11 @@ const perfectStoreProgress = computed(() => {
 
 const { filtrer: filtrerCategoriesReleve, charger: chargerCategoriesReleve } = useCategoriesReleve()
 const productCategories = computed(() => filtrerCategoriesReleve([
-  { key: 'evap', label: 'EVAP', value: stats.value?.taux_evap ?? 0 },
-  { key: 'imp', label: 'IMP', value: stats.value?.taux_imp ?? 0 },
-  { key: 'scm', label: 'SCM', value: stats.value?.taux_scm ?? 0 },
-  { key: 'uht', label: 'UHT', value: stats.value?.taux_uht ?? 0 },
-  { key: 'yaourt', label: 'YAOURT', value: stats.value?.taux_yaourt ?? 0 },
+  { key: 'evap', label: 'Gamme A', value: stats.value?.taux_evap ?? 0 },
+  { key: 'imp', label: 'Gamme B', value: stats.value?.taux_imp ?? 0 },
+  { key: 'scm', label: 'Gamme C', value: stats.value?.taux_scm ?? 0 },
+  { key: 'uht', label: 'Gamme D', value: stats.value?.taux_uht ?? 0 },
+  { key: 'yaourt', label: 'Gamme E', value: stats.value?.taux_yaourt ?? 0 },
 ], c => c.key))
 
 function getPercentColor(val: number) {
@@ -487,14 +487,14 @@ function exportKPIs() {
     'Visites aujourd\'hui': stats.value.visites_today,
     'Total PDV': stats.value.total_pdv,
     'Total Commerciaux': stats.value.total_commerciaux,
-    'Taux EVAP (%)': stats.value.taux_evap,
-    'Taux IMP (%)': stats.value.taux_imp,
-    'Taux SCM (%)': stats.value.taux_scm,
-    'Taux UHT (%)': stats.value.taux_uht,
-    'Taux YAOURT (%)': stats.value.taux_yaourt,
-    'Prix EVAP respectés (%)': stats.value.taux_prix_evap,
-    'Prix IMP respectés (%)': stats.value.taux_prix_imp,
-    'Prix SCM respectés (%)': stats.value.taux_prix_scm,
+    'Taux Gamme A (%)': stats.value.taux_evap,
+    'Taux Gamme B (%)': stats.value.taux_imp,
+    'Taux Gamme C (%)': stats.value.taux_scm,
+    'Taux Gamme D (%)': stats.value.taux_uht,
+    'Taux Gamme E (%)': stats.value.taux_yaourt,
+    'Prix Gamme A respectés (%)': stats.value.taux_prix_evap,
+    'Prix Gamme B respectés (%)': stats.value.taux_prix_imp,
+    'Prix Gamme C respectés (%)': stats.value.taux_prix_scm,
   }]
   exportToCsv(data, `dashboard-kpis-${new Date().toISOString().slice(0, 10)}.csv`)
   toast.add({ title: 'KPIs exportés', color: 'green' })

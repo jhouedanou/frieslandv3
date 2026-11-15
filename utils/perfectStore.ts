@@ -1,5 +1,5 @@
 // utils/perfectStore.ts
-// Scorer Perfect Store TS PUR — parité avec les fonctions SQL Big Five.
+// Scorer Conformité TS PUR — parité avec les fonctions SQL Big Five.
 // Sert à l'aperçu offline dans l'app mobile (cohérent avec useOfflineSync).
 // La logique de référence reste le SQL ; voir FORMULE_ET_TESTS_perfect_store.md.
 import type { VisiteData } from '~/types'
@@ -104,7 +104,7 @@ interface ScorePdv {
 }
 
 /**
- * Score Perfect Store complet — réplique exacte de compute_perfect_store (SQL).
+ * Score de conformité complet — réplique exacte de compute_perfect_store (SQL).
  */
 export function scorePerfectStore(
   data: VisiteData,
@@ -250,7 +250,7 @@ export interface PerfectStoreRefsB {
     requis: boolean
   }[]
   visibilitySegmentMap: { type_pdv_nom: string; segment: VisibilitySegment }[]
-  /** Niveaux Perfect Store : disponibilité + visibilité parfaite + promotion optionnelle. */
+  /** Niveaux de conformité : disponibilité + visibilité parfaite + promotion optionnelle. */
   niveaux: {
     code: string
     rang: number
@@ -278,7 +278,7 @@ export interface PerfectStoreResultB {
 interface ScorePdvB { sous_categorie_pdv?: string | null; canal?: string | null }
 
 /**
- * Aperçu Perfect Store (Système B) pour une visite. Réplique exacte de la
+ * Aperçu Conformité (Système B) pour une visite. Réplique exacte de la
  * fonction SQL calculer_perfect_store : moyenne des catégories EVAP/IMP/SCM
  * évaluables, gating conjonctif par dispo_rayon_min.
  */

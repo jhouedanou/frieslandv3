@@ -131,7 +131,7 @@ const navSections: Array<{ key: string; title: string; items: AdminNavItem[] }> 
     key: 'principal',
     title: 'Principal',
     items: [
-      { label: 'Perfect Store', to: '/admin', icon: Trophy },
+      { label: 'Conformité', to: '/admin', icon: Trophy },
       { label: 'Activité', to: '/admin/activite', icon: LayoutDashboard },
       { label: 'Routing & Planning', to: '/admin/routing', icon: Route, privilegie: true },
       { label: 'Carte', to: '/admin/map', icon: Map },
@@ -150,7 +150,7 @@ const navSections: Array<{ key: string; title: string; items: AdminNavItem[] }> 
     title: 'Visites',
     items: [
       { label: 'Visites', to: '/admin/visites', icon: ClipboardList },
-      { label: 'Field coaching', to: '/admin/visites/coaching', icon: GraduationCap },
+      { label: 'Accompagnement terrain', to: '/admin/visites/coaching', icon: GraduationCap },
     ],
   },
   {

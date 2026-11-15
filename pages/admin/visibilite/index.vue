@@ -2,7 +2,7 @@
   <div class="space-y-6">
     <AdminPageHeader
       title="Visibilité extérieure"
-      eyebrow="Perfect Store · Visibilité"
+      eyebrow="Conformité · Visibilité"
     />
 
     <DashboardFilters
@@ -52,7 +52,7 @@
       </div>
       <p class="mb-4 mt-3 text-xs text-slate-500 dark:text-slate-400">
         Part des PDV dont <strong>tous</strong> les éléments extérieurs <em>requis</em> du niveau sont présents (gate = 100 %).
-        Le score Perfect Store combine extérieur + intérieur ; ceci en est la composante extérieure.
+        Le score de conformité combine extérieur + intérieur ; ceci en est la composante extérieure.
       </p>
       <div class="grid grid-cols-2 gap-3 lg:grid-cols-4">
         <VisibilityLevelCard

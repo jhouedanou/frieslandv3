@@ -19,10 +19,10 @@ import {
 
 /** Les 4 familles du relevé. Fixes : elles structurent le JSONB des visites. */
 export const FAMILLES_CONCURRENCE = [
-  { key: 'evap', label: 'Concurrent EVAP' },
-  { key: 'imp', label: 'Concurrent IMP' },
-  { key: 'scm', label: 'Concurrent SCM' },
-  { key: 'uht', label: 'Concurrent UHT' },
+  { key: 'evap', label: 'Concurrent Gamme A' },
+  { key: 'imp', label: 'Concurrent Gamme B' },
+  { key: 'scm', label: 'Concurrent Gamme C' },
+  { key: 'uht', label: 'Concurrent Gamme D' },
 ] as const
 
 export function useMarquesConcurrentes() {

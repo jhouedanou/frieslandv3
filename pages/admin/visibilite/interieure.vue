@@ -2,10 +2,10 @@
   <div class="space-y-6">
     <!-- En-tête -->
     <header class="space-y-1">
-      <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-fc-red">Perfect Store · Visibilité</p>
+      <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-fc-red">Conformité · Visibilité</p>
       <h1 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Visibilité intérieure</h1>
       <p class="max-w-2xl text-sm text-slate-500 dark:text-slate-400">
-        Taux de présence des éléments intérieurs mesurés, par canal, issus du référentiel Perfect Store
+        Taux de présence des éléments intérieurs mesurés, par canal, issus du référentiel de conformité
         (<code class="rounded bg-slate-100 px-1 py-0.5 text-[11px] dark:bg-slate-700">data.visibilite.standards</code>).
       </p>
     </header>
@@ -76,7 +76,7 @@
       </div>
       <p class="mb-4 mt-3 text-xs text-slate-500 dark:text-slate-400">
         Part des PDV dont <strong>tous</strong> les éléments intérieurs <em>requis</em> du niveau sont présents (gate = 100 %).
-        Le score Perfect Store combine extérieur + intérieur ; ceci en est la composante intérieure.
+        Le score de conformité combine extérieur + intérieur ; ceci en est la composante intérieure.
       </p>
       <div class="grid grid-cols-2 gap-3 lg:grid-cols-4">
         <VisibilityLevelCard

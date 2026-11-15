@@ -1,13 +1,13 @@
 <template>
   <div class="space-y-6">
     <AdminPageHeader
-      title="Perfect Store"
+      title="Conformité"
       eyebrow="Vue de synthèse"
     />
 
     <!-- Filtres cascade Division → Territoire → Quartier + Distributeur (pilotent KPI + tableaux) -->
     <div class="admin-toolbar">
-      <!-- Période : un PDV peut être Perfect Store cette semaine et plus la
+      <!-- Période : un PDV peut être conforme cette semaine et plus la
            suivante — le KPI n'a pas de sens sans fenêtre de temps explicite. -->
       <div class="mb-3 border-b border-slate-100 pb-3 dark:border-slate-700">
         <PeriodFilter v-model="periode" />
@@ -50,13 +50,13 @@
     </div>
 
     <template v-else-if="global">
-      <!-- Compteur global : le NOMBRE de Perfect Stores d'abord, le taux ensuite.
+      <!-- Compteur global : le NOMBRE de PDV conformes d'abord, le taux ensuite.
            Un pourcentage seul ne dit pas sur quoi il porte. -->
       <div class="admin-surface relative overflow-hidden p-4 sm:p-5">
         <div class="absolute inset-y-0 left-0 w-1 bg-fc-red" />
         <div class="flex flex-wrap items-center justify-between gap-x-8 gap-y-4">
           <div>
-            <p class="text-[11px] font-semibold uppercase tracking-[0.12em] text-fc-red">Perfect Stores · {{ periodeLabel }}</p>
+            <p class="text-[11px] font-semibold uppercase tracking-[0.12em] text-fc-red">PDV conformes · {{ periodeLabel }}</p>
             <p class="mt-1.5 text-5xl font-semibold leading-none tracking-tight tabular-nums text-slate-950 dark:text-white">
               {{ global.pdv_perfect_stores }}
             </p>
@@ -85,10 +85,10 @@
         </div>
       </div>
 
-      <!-- Liste des PDV Perfect Store (tâche 1.3 : disponible dès la page 1) -->
+      <!-- Liste des PDV conformes (tâche 1.3 : disponible dès la page 1) -->
       <section class="admin-surface overflow-hidden" aria-labelledby="ps-liste-heading">
         <div class="flex items-center justify-between gap-3 border-b border-slate-100 px-5 py-4 dark:border-slate-700">
-          <h2 id="ps-liste-heading" class="font-bold text-gray-900 dark:text-gray-100">Points de vente Perfect Store</h2>
+          <h2 id="ps-liste-heading" class="font-bold text-gray-900 dark:text-gray-100">Points de vente conformes</h2>
           <span class="text-xs text-slate-400">{{ psList.total }} PDV · {{ periodeLabel }}</span>
         </div>
 
@@ -121,7 +121,7 @@
         </ul>
 
         <div v-else class="px-5 py-10 text-center text-sm text-slate-400">
-          Aucun Perfect Store sur cette période et ce périmètre.
+          Aucun PDV conforme sur cette période et ce périmètre.
         </div>
 
         <div v-if="psList.total > psListPerPage" class="border-t border-slate-100 px-5 py-3 dark:border-slate-700">
@@ -168,7 +168,7 @@
             <ul class="space-y-3">
               <li v-for="c in global.par_categorie" :key="c.categorie">
                 <div class="mb-1 flex items-baseline justify-between gap-3">
-                  <span class="text-sm font-medium uppercase text-slate-700 dark:text-slate-300">{{ c.categorie }}</span>
+                  <span class="text-sm font-medium uppercase text-slate-700 dark:text-slate-300">{{ getCategoryDef(String(c.categorie).toLowerCase())?.label || c.categorie }}</span>
                   <span class="text-xs tabular-nums text-slate-500 dark:text-slate-400">
                     <span class="text-amber-600">{{ fmtPct(c.presence_pct) }}</span>
                     <span class="mx-1 text-slate-300">/</span>
@@ -282,13 +282,13 @@
         </div>
       </div>
 
-      <!-- Évolution du taux de Perfect Stores -->
+      <!-- Évolution du taux de PDV conformes -->
       <div v-if="evolution.length">
         <ClientOnly>
           <ChartsVisitesLineChart
-            title="Évolution du taux de Perfect Stores (%)"
-            subtitle="Taux de Perfect Stores par jour sur la période disponible."
-            series-label="Perfect Stores (%)"
+            title="Évolution du taux de PDV conformes (%)"
+            subtitle="Taux de PDV conformes par jour sur la période disponible."
+            series-label="PDV conformes (%)"
             :data="evolution"
           />
         </ClientOnly>
@@ -297,7 +297,7 @@
       <!-- Ventilation par type de PDV (accordéons) -->
       <div class="admin-surface overflow-hidden">
         <div class="flex items-center justify-between gap-3 px-5 py-3 border-b border-gray-100 dark:border-gray-700">
-          <h2 class="font-bold text-gray-900 dark:text-gray-100">Perfect Store par type de magasin</h2>
+          <h2 class="font-bold text-gray-900 dark:text-gray-100">Conformité par type de magasin</h2>
           <span class="text-xs text-gray-400">{{ parType.length }} type(s)</span>
         </div>
 
@@ -356,7 +356,7 @@
                         <span class="truncate text-sm font-semibold text-gray-900 dark:text-white">{{ store.nom_pdv || store.pdv_id }}</span>
                       </span>
                       <span class="mt-1 block truncate pl-4 text-xs text-gray-500 dark:text-gray-400">
-                        {{ store.niveau }}<template v-if="store.zone"> · {{ store.zone }}</template><template v-if="store.commercial"> · {{ store.commercial }}</template>
+                        {{ libelleNiveau(store.niveau) }}<template v-if="store.zone"> · {{ store.zone }}</template><template v-if="store.commercial"> · {{ store.commercial }}</template>
                       </span>
                     </span>
                     <span class="shrink-0 text-right">
@@ -447,7 +447,7 @@
         </div>
 
         <div v-if="storesError" class="border-t border-amber-200 bg-amber-50 px-5 py-3 text-sm text-amber-700 dark:border-amber-900 dark:bg-amber-950/20 dark:text-amber-300">
-          La liste détaillée sera disponible après l’application de la migration Perfect Store la plus récente.
+          La liste détaillée sera disponible après l’application de la migration de conformité la plus récente.
         </div>
       </section>
 
@@ -505,7 +505,7 @@
         <p class="mt-1">{{ dashboardMessage }}</p>
       </template>
       <template v-else>
-        Vues Perfect Store indisponibles. Lance les migrations <code>supabase/nouveau</code> dans Supabase.
+        Vues de conformité indisponibles. Lance les migrations <code>supabase/nouveau</code> dans Supabase.
       </template>
       <UButton class="mt-3" size="xs" variant="soft" :loading="retrying" @click="retryDashboard">Réessayer</UButton>
     </div>
@@ -765,8 +765,8 @@ const tierStoreState = reactive<Record<string, {
   loading: boolean
 }>>({})
 
-// ---- Liste des PDV Perfect Store, en page 1 du dashboard (tâche 1.3) ----
-// 'CONFORMES' = tous niveaux Perfect Store confondus, non conformes exclus.
+// ---- Liste des PDV conformes, en page 1 du dashboard (tâche 1.3) ----
+// 'CONFORMES' = tous niveaux de conformité confondus, non conformes exclus.
 const psListPerPage = 10
 const psList = reactive({
   items: [] as PerfectStoreListItem[],

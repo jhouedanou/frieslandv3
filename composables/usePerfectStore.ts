@@ -133,7 +133,7 @@ export interface CoverageKpi {
 }
 
 /**
- * Retour de dashboard_perfect_store_filtre : les KPI Perfect Store en base PDV
+ * Retour de dashboard_perfect_store_filtre : les KPI Conformité en base PDV
  * distincts (un PDV = sa dernière visite scorée de la période), la couverture
  * effective (PDV uniques / parc) et la couverture des visites (tous passages).
  */
@@ -490,7 +490,7 @@ export function usePerfectStore() {
     return { items: (data || []) as PerfectStoreListItem[], total: count || 0 }
   }
 
-  /** Évolution du taux de Perfect Stores par jour (RPC filtrée si filtres actifs). */
+  /** Évolution du taux de PDV conformes par jour (RPC filtrée si filtres actifs). */
   async function fetchPerfectStoreEvolution(filters?: DashFilters): Promise<PerfectStoreEvolutionPoint[]> {
     if (hasDashFilters(filters)) {
       const { data, error } = await (supabase.rpc as any)('perfect_store_evolution_filtre', dashFilterParams(filters!))
@@ -582,7 +582,7 @@ export function usePerfectStore() {
     return (data || []) as SyntheseZone[]
   }
 
-  /** Historique Perfect Store d'un PDV, visite par visite (lot 5). */
+  /** Historique de conformité d'un PDV, visite par visite (lot 5). */
   async function fetchPdvHistorique(pdvId: string): Promise<PdvHistoriquePoint[]> {
     const { data, error } = await (supabase.rpc as any)('pdv_historique_perfect_store', { p_pdv_id: pdvId })
     if (error) {

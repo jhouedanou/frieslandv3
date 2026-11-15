@@ -14,9 +14,15 @@ La branche `main` reste la version du client d'origine.
 | Logo, icônes, écran de démarrage | logo du client | repère bleu (`resources/logo.svg`) |
 | Libellés produits | `BR`, `BRB`, `Pearl`, `Yogoo` | `FT`, `FTB`, `Opale`, `Yaourt` |
 | Mot de passe provisoire | `BR-xxxx-xxxx` | `FT-xxxx-xxxx` |
+| « Perfect Store » | concept du client | « conformité » (PDV conformes, niveau de conformité) |
+| « Field coaching » | concept du client | « accompagnement terrain » |
+| Catégories de produits | `EVAP`, `IMP`, `SCM`, `UHT`… | `Gamme A` à `Gamme F` |
+| Marques concurrentes | noms réels | `Concurrent A`, `Concurrent B`… |
 
-Les clés techniques (`br_160g`, `maison_br`, `fc-red`…) ne changent pas : le calcul
-Perfect Store et les données enregistrées en dépendent.
+Seul l'affichage change. Les clés techniques (`br_160g`, `evap`, `maison_br`,
+`perfect_store`, `field_coaching`, `fc-red`, les adresses `/admin/perfect-store`…)
+restent : les calculs et les données enregistrées en dépendent. Les niveaux
+s'affichent `Flagship`, `VIP`, `Core`, `Basic`.
 
 Pour changer encore de marque : remplacer `resources/logo.svg` et
 `resources/glyphe.svg`, puis `node scripts/generate-brand-assets.mjs`.
@@ -34,7 +40,7 @@ La couleur se règle dans `tailwind.config.ts` et `assets/css/main.css`.
 ## Mode démo (sans Supabase)
 
 L'application tourne seule, admin et mobile. La base est un vrai PostgreSQL
-compilé pour le navigateur (PGlite) : mêmes tables, mêmes calculs Perfect Store,
+compilé pour le navigateur (PGlite) : mêmes tables, mêmes calculs de conformité,
 mêmes droits par rôle que la version Supabase. Les écrans ne changent pas.
 
 ```bash
@@ -82,7 +88,7 @@ rejouer `scripts/field-track-setup.sh` sur une base de travail, puis
 ## Données de démonstration
 
 - **15 points de vente** fictifs à Abidjan (Cocody 1, Marcory, Plateau, Treichville, Yopougon 1).
-- **15 visites**, une par point de vente : 3 Flagship, 3 VIP, 4 Core, 5 sous le niveau Core.
+- **15 visites**, une par point de vente : 3 Flagship, 3 VIP, 4 Core, 5 non conformes.
 - **9 comptes**, tous en `@fieldtrack.demo` :
 
 | Rôle | E-mail | Territoires | Encadre |
@@ -134,7 +140,7 @@ sans effet, la fonction est recréée juste après.
 
 - Vérifié sur un PostgreSQL 16 local : le schéma se construit de zéro, toutes les
   tables et fonctions appelées par l'application existent, la démo se charge et se
-  rejoue sans doublon, les scores Perfect Store sont calculés.
+  rejoue sans doublon, les scores de conformité sont calculés.
 - Vérifié : `pnpm vitest run` (160 tests, dont 13 sur le mode démo) et `pnpm build`.
 - Vérifié en mode démo, dans un navigateur : connexion, les 41 écrans admin et les
   écrans mobiles (merchandiser et commercial) s'ouvrent sans erreur ; la version

@@ -23,7 +23,7 @@ const DEFAULT_SEUIL_BAS = 3
 
 export const PRODUCT_CATALOG: ProductCategoryDef[] = [
   {
-    key: 'evap', label: 'EVAP', color: '#3B82F6', skus: [
+    key: 'evap', label: 'Gamme A', color: '#3B82F6', skus: [
       { key: 'br_gold', label: 'FT Gold', seuilBasDefaut: DEFAULT_SEUIL_BAS },
       { key: 'br_160g', label: 'FT 150g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
       { key: 'brb_160g', label: 'FTB 150g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
@@ -34,7 +34,7 @@ export const PRODUCT_CATALOG: ProductCategoryDef[] = [
   },
   {
     // Libellés alignés sur reference_produit.nom (référentiel) — clés JSONB inchangées.
-    key: 'imp', label: 'IMP', color: '#10B981', skus: [
+    key: 'imp', label: 'Gamme B', color: '#10B981', skus: [
       { key: 'br_400g', label: 'FT tin 2500g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
       { key: 'br_20g', label: 'FT 15g', seuilBasDefaut: DEFAULT_SEUIL_BAS },
       { key: 'brb_25g', label: 'FTB 16g', seuilBasDefaut: DEFAULT_SEUIL_BAS }, // TODO confirmer client (pas de référence IMP BRB)
@@ -48,31 +48,31 @@ export const PRODUCT_CATALOG: ProductCategoryDef[] = [
   },
   {
     // SCM = 2 produits seulement (confirmé 2026-07-15).
-    key: 'scm', label: 'SCM', color: '#F59E0B', skus: [
+    key: 'scm', label: 'Gamme C', color: '#F59E0B', skus: [
       { key: 'pearl_1kg', label: 'Opale 1Kg', seuilBasDefaut: DEFAULT_SEUIL_BAS },
       { key: 'br_1kg', label: 'FT 1Kg', seuilBasDefaut: DEFAULT_SEUIL_BAS },
     ],
   },
   {
-    key: 'uht', label: 'UHT', color: '#8B5CF6', skus: [
+    key: 'uht', label: 'Gamme D', color: '#8B5CF6', skus: [
       { key: 'demi_ecreme', label: 'FT 516ml', seuilBasDefaut: DEFAULT_SEUIL_BAS },
       { key: 'elopack_500ml', label: 'Elopack 500ml', seuilBasDefaut: DEFAULT_SEUIL_BAS },
       { key: 'brique_1l', label: 'Brique 1L', seuilBasDefaut: DEFAULT_SEUIL_BAS },
     ],
   },
   {
-    key: 'yaourt', label: 'YAOURT', color: '#EC4899', skus: [
-      { key: 'br_yogoo_fraise_mini_90ml', label: 'Yaourt Fraise Mini 90ml', seuilBasDefaut: DEFAULT_SEUIL_BAS },
-      { key: 'br_yogoo_fraise_maxi_318ml', label: 'Yaourt Fraise Maxi 318ml', seuilBasDefaut: DEFAULT_SEUIL_BAS },
-      { key: 'br_yogoo_nature_mini_90ml', label: 'Yaourt Nature Mini 90ml', seuilBasDefaut: DEFAULT_SEUIL_BAS },
-      { key: 'br_yogoo_nature_maxi_318ml', label: 'Yaourt Nature Maxi 318ml', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+    key: 'yaourt', label: 'Gamme E', color: '#EC4899', skus: [
+      { key: 'br_yogoo_fraise_mini_90ml', label: 'FT Fraise Mini 90ml', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'br_yogoo_fraise_maxi_318ml', label: 'FT Fraise Maxi 318ml', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'br_yogoo_nature_mini_90ml', label: 'FT Nature Mini 90ml', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'br_yogoo_nature_maxi_318ml', label: 'FT Nature Maxi 318ml', seuilBasDefaut: DEFAULT_SEUIL_BAS },
     ],
   },
   {
-    key: 'cereales', label: 'CÉRÉALES', color: '#06B6D4', skus: [
+    key: 'cereales', label: 'Gamme F', color: '#06B6D4', skus: [
       // Libellés provisoires (à confirmer) — modifiables en base.
-      { key: 'brcv', label: 'Céréales FTCV', seuilBasDefaut: DEFAULT_SEUIL_BAS },
-      { key: 'brcc', label: 'Céréales FTCC', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'brcv', label: 'FTCV', seuilBasDefaut: DEFAULT_SEUIL_BAS },
+      { key: 'brcc', label: 'FTCC', seuilBasDefaut: DEFAULT_SEUIL_BAS },
     ],
   },
 ]

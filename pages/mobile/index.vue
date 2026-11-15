@@ -183,7 +183,7 @@
                 ? 'bg-emerald-50 text-emerald-700'
                 : 'bg-gray-100 text-gray-400'"
             >
-              {{ cat.toUpperCase() }}
+              {{ getCategoryDef(cat)?.label || cat.toUpperCase() }}
             </span>
           </div>
         </button>

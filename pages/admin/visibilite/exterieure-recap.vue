@@ -1,10 +1,10 @@
 <template>
   <div class="space-y-6">
     <header class="space-y-1">
-      <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-fc-red">Perfect Store · Visibilité</p>
+      <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-fc-red">Conformité · Visibilité</p>
       <h1 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Visibilité extérieure — récapitulatif</h1>
       <p class="max-w-2xl text-sm text-slate-500 dark:text-slate-400">
-        Détail par PDV des éléments extérieurs mesurés (référentiel Perfect Store).
+        Détail par PDV des éléments extérieurs mesurés (référentiel de conformité).
       </p>
     </header>
 

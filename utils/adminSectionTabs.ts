@@ -8,7 +8,7 @@ export type AdminSectionTab = {
 
 export const adminSectionLabels: Record<AdminSection, string> = {
   visites: 'des visites',
-  'perfect-store': 'du Perfect Store',
+  'perfect-store': 'de la conformité',
   pdv: 'des points de vente',
   visibilite: 'de la visibilité',
   concurrence: 'de la concurrence',
@@ -23,7 +23,7 @@ export const adminSectionTabs: Record<AdminSection, AdminSectionTab[]> = {
     { label: 'Évolution', to: '/admin/visites/evolution', icon: 'i-heroicons-chart-bar' },
     { label: 'Par catégorie', to: '/admin/visites/categories', icon: 'i-heroicons-squares-2x2' },
     { label: 'Commerciaux', to: '/admin/visites/commerciaux', icon: 'i-heroicons-users' },
-    { label: 'Field coaching', to: '/admin/visites/coaching', icon: 'i-heroicons-academic-cap' },
+    { label: 'Accompagnement terrain', to: '/admin/visites/coaching', icon: 'i-heroicons-academic-cap' },
   ],
   'perfect-store': [
     { label: 'Tableau de bord', to: '/admin', icon: 'i-heroicons-trophy' },
@@ -56,12 +56,12 @@ export const adminSectionTabs: Record<AdminSection, AdminSectionTab[]> = {
   produits: [
     { label: 'Récapitulatif', to: '/admin/produits/recap', icon: 'i-heroicons-clipboard-document-list' },
     { label: 'Inventaire SKU', to: '/admin/produits/inventaire', icon: 'i-heroicons-cube' },
-    { label: 'EVAP', to: '/admin/produits/evap', icon: 'i-heroicons-squares-2x2' },
-    { label: 'IMP', to: '/admin/produits/imp', icon: 'i-heroicons-squares-2x2' },
-    { label: 'SCM', to: '/admin/produits/scm', icon: 'i-heroicons-squares-2x2' },
-    { label: 'UHT', to: '/admin/produits/uht', icon: 'i-heroicons-squares-2x2' },
-    { label: 'Yaourt', to: '/admin/produits/yaourt', icon: 'i-heroicons-squares-2x2' },
-    { label: 'Céréales', to: '/admin/produits/cereales', icon: 'i-heroicons-squares-2x2' },
+    { label: 'Gamme A', to: '/admin/produits/evap', icon: 'i-heroicons-squares-2x2' },
+    { label: 'Gamme B', to: '/admin/produits/imp', icon: 'i-heroicons-squares-2x2' },
+    { label: 'Gamme C', to: '/admin/produits/scm', icon: 'i-heroicons-squares-2x2' },
+    { label: 'Gamme D', to: '/admin/produits/uht', icon: 'i-heroicons-squares-2x2' },
+    { label: 'Gamme E', to: '/admin/produits/yaourt', icon: 'i-heroicons-squares-2x2' },
+    { label: 'Gamme F', to: '/admin/produits/cereales', icon: 'i-heroicons-squares-2x2' },
   ],
   actions: [
     { label: 'Synthèse', to: '/admin/actions', icon: 'i-heroicons-bolt' },
@@ -69,7 +69,7 @@ export const adminSectionTabs: Record<AdminSection, AdminSectionTab[]> = {
     { label: 'Visites terrain', to: '/admin/visites', icon: 'i-heroicons-clipboard-document-list' },
   ],
   parametres: [
-    { label: 'Standards Perfect Store', to: '/admin/perfect-store/standards', icon: 'i-heroicons-adjustments-horizontal' },
+    { label: 'Standards de conformité', to: '/admin/perfect-store/standards', icon: 'i-heroicons-adjustments-horizontal' },
     { label: 'Seuils de stock', to: '/admin/produits/seuils', icon: 'i-heroicons-adjustments-horizontal' },
     { label: 'Référentiels', to: '/admin/referentiels', icon: 'i-heroicons-circle-stack' },
     { label: 'Utilisateurs', to: '/admin/users', icon: 'i-heroicons-users' },
