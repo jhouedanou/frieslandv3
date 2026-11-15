@@ -51,8 +51,10 @@ pnpm android:apk:demo      # APK de démonstration
 - **Remise à zéro** : lien « Remettre les données de démonstration à zéro » sur
   l'écran de connexion.
 - **Hébergement web** : dossier `.output/public`, sur un hébergeur statique avec
-  repli vers `200.html` pour les adresses inconnues (Vercel, Netlify et
-  Cloudflare Pages le font).
+  repli vers `200.html` pour les adresses inconnues.
+- **Vercel** : `vercel.json` règle tout sur cette branche (build en mode démo,
+  dossier de sortie, repli des adresses). Aucune variable d'environnement à
+  saisir. Ce fichier n'existe pas sur `main`, qui garde son build habituel.
 
 Limites du mode démo :
 
