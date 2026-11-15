@@ -320,7 +320,7 @@
               <span class="min-w-0 flex-1">
                 <span class="block truncate text-sm font-semibold text-gray-900 dark:text-gray-100">{{ typePdvLabel(row.type_pdv) }}</span>
                 <span class="mt-0.5 block text-xs text-gray-500 dark:text-gray-400">
-                  {{ row.pdv_scores }} PDV · <span class="text-emerald-600 font-medium">{{ row.pdv_perfect_stores }} perfect</span>
+                  {{ row.pdv_scores }} PDV · <span class="text-emerald-600 font-medium">{{ row.pdv_perfect_stores }} conformes</span>
                   <span class="text-gray-400"> · {{ row.visites_scorees }} visite(s)</span>
                 </span>
               </span>
@@ -399,7 +399,7 @@
             <div class="mb-4 flex items-center justify-between gap-3">
               <div class="flex items-center gap-2">
                 <span class="h-2.5 w-2.5 rounded-full" :class="tierDotClass(tier.code)" />
-                <h3 class="font-semibold text-slate-900 dark:text-white">{{ tier.code }}</h3>
+                <h3 class="font-semibold text-slate-900 dark:text-white">{{ libelleNiveau(tier.code) }}</h3>
               </div>
               <span class="text-xs font-medium text-slate-400">{{ tier.total }} magasin(s)</span>
             </div>
@@ -529,7 +529,7 @@
             </thead>
             <tbody class="divide-y divide-gray-100 dark:divide-gray-700">
               <tr v-for="t in tiers" :key="t.ps_tier">
-                <td class="px-4 py-2 font-bold text-gray-900 dark:text-gray-100">{{ t.ps_tier }}</td>
+                <td class="px-4 py-2 font-bold text-gray-900 dark:text-gray-100">{{ libelleNiveau(t.ps_tier) }}</td>
                 <td class="px-4 py-2 text-center">{{ fmtRatio(t.osa_min) }}</td>
                 <td class="px-4 py-2 text-center">{{ fmtRatio(t.assort_min) }}</td>
                 <td class="px-4 py-2 text-center">{{ fmtRatio(t.visi_min) }}</td>

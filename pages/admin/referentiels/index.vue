@@ -844,7 +844,7 @@ const defs: Def[] = [
     id: 'niveau_perfect_store', section: 'ps', label: 'Niveaux de conformité', table: 'niveau_perfect_store',
     select: 'code, rang, dispo_rayon_min, visibilite_min, promotion_min', order: q => q.order('rang', { ascending: false }),
     columns: [
-      { label: 'Niveau', cell: r => r.code },
+      { label: 'Niveau', cell: r => libelleNiveau(r.code) },
       { label: 'Rang', cell: r => r.rang, align: 'c', kind: 'num' },
       { label: 'Dispo min %', cell: r => r.dispo_rayon_min ?? '—', align: 'c', kind: 'num' },
       { label: 'Visi min %', cell: r => r.visibilite_min ?? '—', align: 'c', kind: 'num' },
@@ -1007,7 +1007,7 @@ const defs: Def[] = [
     select: 'segment, niveau_perfect_store, element_visibilite_id, requis',
     columns: [
       { label: 'Segment', cell: r => r.segment, kind: 'badge' },
-      { label: 'Niveau', cell: r => r.niveau_perfect_store, align: 'c', kind: 'badge' },
+      { label: 'Niveau', cell: r => libelleNiveau(r.niveau_perfect_store), align: 'c', kind: 'badge' },
       { label: 'Élément', cell: r => elementVisNameOf(r.element_visibilite_id) },
       { label: 'Requis', cell: r => r.requis, align: 'c', kind: 'bool' },
     ],
