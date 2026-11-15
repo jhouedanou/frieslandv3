@@ -53,14 +53,14 @@ describe('mode démo — lectures', () => {
     const { data, error } = await client.from('pdv').select('pdv_id, zone')
     expect(error).toBeNull()
     expect(data.length).toBe(3)
-    expect(new Set(data.map((p: any) => p.zone))).toEqual(new Set(['Cocody 1']))
+    expect(new Set(data.map((p: any) => p.zone))).toEqual(new Set(['Territoire Est']))
   })
 
   it('gère or(), ilike, in, not, single et maybeSingle', async () => {
     await connecter('admin@fieldtrack.demo')
     const ou = await client.from('pdv').select('pdv_id').or('nom_pdv.ilike.%baobab%,pdv_id.ilike.%FT-002%')
     expect(ou.data.map((p: any) => p.pdv_id).sort()).toEqual(['FT-001', 'FT-002'])
-    const dans = await client.from('pdv').select('pdv_id').in('zone', ['Marcory', 'Plateau']).not('geolocation_lat', 'is', null)
+    const dans = await client.from('pdv').select('pdv_id').in('zone', ['Territoire Sud', 'Territoire Centre']).not('geolocation_lat', 'is', null)
     expect(dans.data).toHaveLength(6)
     const un = await client.from('pdv').select('nom_pdv').eq('pdv_id', 'FT-001').single()
     expect(un.data.nom_pdv).toBe('Boutique Le Baobab')
@@ -118,10 +118,10 @@ describe('mode démo — écritures', () => {
 
   it('upsert sur une clé de conflit', async () => {
     await connecter('admin@fieldtrack.demo')
-    const r = await client.service.from('territoire_alias').upsert({ alias: 'COCO TEST', territoire_code: 'COC 1' }, { onConflict: 'alias' })
+    const r = await client.service.from('territoire_alias').upsert({ alias: 'COCO TEST', territoire_code: 'T-EST' }, { onConflict: 'alias' })
     expect(r.error).toBeNull()
-    const r2 = await client.service.from('territoire_alias').upsert({ alias: 'COCO TEST', territoire_code: 'COC 2' }, { onConflict: 'alias' }).select()
-    expect(r2.data[0].territoire_code).toBe('COC 2')
+    const r2 = await client.service.from('territoire_alias').upsert({ alias: 'COCO TEST', territoire_code: 'T-CEN' }, { onConflict: 'alias' }).select()
+    expect(r2.data[0].territoire_code).toBe('T-CEN')
   })
 })
 
@@ -151,11 +151,11 @@ describe('mode démo — routes d\'administration rejouées dans le navigateur',
     await connecter('admin@fieldtrack.demo')
     const profil = await appelerApiDemo(client, '/api/admin/users', {
       method: 'POST',
-      body: { email: 'Recrue@FieldTrack.demo', password: 'motdepasse1', nom: 'Recrue Essai', role: 'merchandiser', territoires_assignes: ['Marcory'] },
+      body: { email: 'Recrue@FieldTrack.demo', password: 'motdepasse1', nom: 'Recrue Essai', role: 'merchandiser', territoires_assignes: ['Territoire Sud'] },
     })
     expect(profil.email).toBe('recrue@fieldtrack.demo')
-    expect(profil.zone_assignee).toBe('Marcory')
-    expect(profil.territoires_assignes).toEqual(['Marcory'])
+    expect(profil.zone_assignee).toBe('Territoire Sud')
+    expect(profil.territoires_assignes).toEqual(['Territoire Sud'])
 
     await expect(appelerApiDemo(client, '/api/admin/users', {
       method: 'POST', body: { email: 'recrue@fieldtrack.demo', password: 'motdepasse1', nom: 'Doublon' },

@@ -18,6 +18,7 @@ La branche `main` reste la version du client d'origine.
 | « Field coaching » | concept du client | « accompagnement terrain » |
 | Catégories de produits | `EVAP`, `IMP`, `SCM`, `UHT`… | `Gamme A` à `Gamme F` |
 | Marques concurrentes | noms réels | `Concurrent A`, `Concurrent B`… |
+| Découpage territorial | régions, territoires et quartiers du client | 2 régions, 6 territoires génériques, 3 quartiers chacun |
 
 Seul l'affichage change. Les clés techniques (`br_160g`, `evap`, `maison_br`,
 `perfect_store`, `field_coaching`, `fc-red`, les adresses `/admin/perfect-store`…)
@@ -87,21 +88,21 @@ rejouer `scripts/field-track-setup.sh` sur une base de travail, puis
 
 ## Données de démonstration
 
-- **15 points de vente** fictifs à Abidjan (Cocody 1, Marcory, Plateau, Treichville, Yopougon 1).
+- **15 points de vente** fictifs, répartis sur 5 territoires génériques (Est, Centre, Sud, Lagune, Ouest). Sur la carte, ils sont placés à Abidjan.
 - **15 visites**, une par point de vente : 3 Flagship, 3 VIP, 4 Core, 5 non conformes.
 - **9 comptes**, tous en `@fieldtrack.demo` :
 
 | Rôle | E-mail | Territoires | Encadre |
 |---|---|---|---|
 | admin | `admin@fieldtrack.demo` | tous | — |
-| commercial | `commercial1@fieldtrack.demo` | Cocody 1, Plateau | merchandisers 1 et 2 |
-| commercial | `commercial2@fieldtrack.demo` | Marcory, Treichville | merchandisers 3 et 4 |
-| commercial | `commercial3@fieldtrack.demo` | Yopougon 1 | merchandiser 5 |
-| merchandiser | `merchandiser1@fieldtrack.demo` | Cocody 1 | |
-| merchandiser | `merchandiser2@fieldtrack.demo` | Plateau | |
-| merchandiser | `merchandiser3@fieldtrack.demo` | Marcory | |
-| merchandiser | `merchandiser4@fieldtrack.demo` | Treichville | |
-| merchandiser | `merchandiser5@fieldtrack.demo` | Yopougon 1 | |
+| commercial | `commercial1@fieldtrack.demo` | Territoires Est et Centre | merchandisers 1 et 2 |
+| commercial | `commercial2@fieldtrack.demo` | Territoires Sud et Lagune | merchandisers 3 et 4 |
+| commercial | `commercial3@fieldtrack.demo` | Territoire Ouest | merchandiser 5 |
+| merchandiser | `merchandiser1@fieldtrack.demo` | Territoire Est | |
+| merchandiser | `merchandiser2@fieldtrack.demo` | Territoire Centre | |
+| merchandiser | `merchandiser3@fieldtrack.demo` | Territoire Sud | |
+| merchandiser | `merchandiser4@fieldtrack.demo` | Territoire Lagune | |
+| merchandiser | `merchandiser5@fieldtrack.demo` | Territoire Ouest | |
 
 Le mot de passe commun est celui que vous mettez dans `FIELD_TRACK_DEMO_PASSWORD`.
 Distributeurs et marques concurrentes sont rebaptisés (`Distributeur 07`, `Concurrent A`).

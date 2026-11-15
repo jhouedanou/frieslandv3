@@ -416,7 +416,7 @@ const defs: Def[] = [
       { label: 'Code', cell: r => r.territoire_code, muted: true },
     ],
     fields: [
-      { key: 'alias', label: 'Libellé hors référentiel', type: 'text', required: true, lockEdit: true, hint: 'Tel qu\'il apparaît sur les PDV (pdv.zone) ou les profils, ex. MARCORY TREICHVILLE' },
+      { key: 'alias', label: 'Libellé hors référentiel', type: 'text', required: true, lockEdit: true, hint: 'Tel qu\'il apparaît sur les PDV (pdv.zone) ou les profils, ex. SUD LAGUNE' },
       { key: 'territoire_code', label: 'Territoire réel', type: 'select', opts: territoireOpts, required: true },
     ],
     blank: () => ({ alias: '', territoire_code: '' }),

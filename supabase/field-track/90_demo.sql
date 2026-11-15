@@ -1,13 +1,14 @@
 -- ============================================================================
 -- Field Track — données de démonstration (marque blanche)
---   15 points de vente fictifs, 15 visites (une par PDV), équipes fictives.
+--   15 points de vente fictifs, 15 visites (une par PDV), équipes fictives,
+--   découpage territorial générique (6 territoires).
 --
 -- À jouer sur une base Field Track NEUVE uniquement :
 --   1. schéma (supabase/_archive + 00_prelude.sql + supabase/nouveau) ;
 --   2. comptes (scripts/field-track-create-accounts.mjs) ;
 --   3. ce fichier.
--- ⚠️ Il VIDE visites, pdv, tournées et rebaptise les référentiels (produits,
---    distributeurs, marques concurrentes). Ne jamais le jouer sur une base client.
+-- ⚠️ Il VIDE visites, pdv, tournées, REMPLACE le découpage territorial et
+--    rebaptise les référentiels (produits, distributeurs, marques concurrentes). Ne jamais le jouer sur une base client.
 -- Rejouable : même résultat à chaque passage.
 -- ============================================================================
 begin;
@@ -82,20 +83,73 @@ delete from public.routing_data;
 delete from public.sales_reps;
 
 -- ----------------------------------------------------------------------------
+-- 2 bis. Découpage territorial générique : il remplace celui du client d'origine
+--        (régions, territoires, zones, quartiers, rattachement des distributeurs).
+-- ----------------------------------------------------------------------------
+delete from public.territoire_alias;
+delete from public.zone_distributeur;
+delete from public.territoire_distributeur;
+delete from public.quartier;
+delete from public.zone;
+delete from public.territoire;
+delete from public.sous_region;
+delete from public.region;
+delete from public.distributeur where id not in (select id from public.distributeur order by id limit 6);
+update public.distributeur d set nom = 'Distributeur ' || lpad(r.rang::text, 2, '0')
+from (select id, row_number() over (order by id) as rang from public.distributeur) r where r.id = d.id;
+
+insert into public.region(code, nom, nom_affichage, pays_code)
+select v.code, v.nom, v.nom, (select code from public.pays order by id limit 1)
+from (values ('SUD', 'Région Sud'), ('NORD', 'Région Nord')) as v(code, nom);
+
+insert into public.sous_region(code, nom, nom_affichage, region_code) values
+  ('SUD-1', 'Secteur Sud 1', 'Sud 1', 'SUD'),
+  ('NORD-1', 'Secteur Nord 1', 'Nord 1', 'NORD');
+
+insert into public.territoire(code, nom, sous_region_code) values
+  ('T-EST', 'Territoire Est', 'SUD-1'),
+  ('T-CEN', 'Territoire Centre', 'SUD-1'),
+  ('T-SUD', 'Territoire Sud', 'SUD-1'),
+  ('T-LAG', 'Territoire Lagune', 'SUD-1'),
+  ('T-OUE', 'Territoire Ouest', 'SUD-1'),
+  ('T-NOR', 'Territoire Nord', 'NORD-1');
+
+-- Une zone par territoire, trois quartiers par zone.
+insert into public.zone(code, nom, territoire_code)
+select replace(code, 'T-', 'Z-'), replace(nom, 'Territoire', 'Zone'), code from public.territoire order by id;
+
+insert into public.quartier(zone_id, nom, ordre)
+select z.id, replace(z.nom, 'Zone', 'Quartier') || ' ' || n, n
+from public.zone z cross join generate_series(1, 3) as n
+order by z.id, n;
+
+-- Un distributeur par territoire, dans l'ordre.
+insert into public.territoire_distributeur(territoire_id, distributeur_id)
+select t.id, d.id
+from (select id, row_number() over (order by id) as rang from public.territoire) t
+join (select id, row_number() over (order by id) as rang from public.distributeur) d using (rang);
+
+insert into public.zone_distributeur(zone_id, distributeur_id)
+select z.id, td.distributeur_id
+from public.zone z
+join public.territoire t on t.code = z.territoire_code
+join public.territoire_distributeur td on td.territoire_id = t.id;
+
+-- ----------------------------------------------------------------------------
 -- 3. Équipes : chaque commercial encadre ses merchandisers, par territoire.
 -- ----------------------------------------------------------------------------
 update public.profiles p set
-  zone_assignee = v.zone, territoires_assignes = to_jsonb(v.territoires), quartiers_assignes = '[]'::jsonb, region = 'Abidjan',
+  zone_assignee = v.zone, territoires_assignes = to_jsonb(v.territoires), quartiers_assignes = '[]'::jsonb, region = 'Région Sud',
   commercial_id = (select c.id from public.profiles c where c.email = v.chef)
 from (values
-  ('commercial1@fieldtrack.demo',   'Cocody 1',    array['Cocody 1','Plateau'],      null),
-  ('commercial2@fieldtrack.demo',   'Marcory',     array['Marcory','Treichville'],   null),
-  ('commercial3@fieldtrack.demo',   'Yopougon 1',  array['Yopougon 1'],              null),
-  ('merchandiser1@fieldtrack.demo', 'Cocody 1',    array['Cocody 1'],    'commercial1@fieldtrack.demo'),
-  ('merchandiser2@fieldtrack.demo', 'Plateau',     array['Plateau'],     'commercial1@fieldtrack.demo'),
-  ('merchandiser3@fieldtrack.demo', 'Marcory',     array['Marcory'],     'commercial2@fieldtrack.demo'),
-  ('merchandiser4@fieldtrack.demo', 'Treichville', array['Treichville'], 'commercial2@fieldtrack.demo'),
-  ('merchandiser5@fieldtrack.demo', 'Yopougon 1',  array['Yopougon 1'],  'commercial3@fieldtrack.demo')
+  ('commercial1@fieldtrack.demo',   'Territoire Est',    array['Territoire Est','Territoire Centre'],      null),
+  ('commercial2@fieldtrack.demo',   'Territoire Sud',     array['Territoire Sud','Territoire Lagune'],   null),
+  ('commercial3@fieldtrack.demo',   'Territoire Ouest',  array['Territoire Ouest'],              null),
+  ('merchandiser1@fieldtrack.demo', 'Territoire Est',    array['Territoire Est'],    'commercial1@fieldtrack.demo'),
+  ('merchandiser2@fieldtrack.demo', 'Territoire Centre',     array['Territoire Centre'],     'commercial1@fieldtrack.demo'),
+  ('merchandiser3@fieldtrack.demo', 'Territoire Sud',     array['Territoire Sud'],     'commercial2@fieldtrack.demo'),
+  ('merchandiser4@fieldtrack.demo', 'Territoire Lagune', array['Territoire Lagune'], 'commercial2@fieldtrack.demo'),
+  ('merchandiser5@fieldtrack.demo', 'Territoire Ouest',  array['Territoire Ouest'],  'commercial3@fieldtrack.demo')
 ) as v(email, zone, territoires, chef)
 where p.email = v.email;
 
@@ -109,36 +163,36 @@ insert into public.pdv(pdv_id, nom_pdv, canal, categorie_pdv, sous_categorie_pdv
                        quartier, geolocation_lat, geolocation_lng, rayon_geofence, adressage, objectif_perfect_store,
                        gps_source, ajoute_par, is_active)
 values
-  ('FT-001','Boutique Le Baobab','General trade','Point de vente détail','Boutique A','Abidjan','Cocody 1','COC 1',
-   'PALMERAIE',5.3697,-3.959,200,'Carrefour Palmeraie, face à la pharmacie','FLAGSHIP','admin','admin@fieldtrack.demo',true),
-  ('FT-002','Superette Les Flamboyants','General trade','Point de vente détail','Superettes A','Abidjan','Cocody 1','COC 1',
-   'PERLE',5.3581,-3.9712,200,'Rue des Jardins, près du rond-point','FLAGSHIP','admin','admin@fieldtrack.demo',true),
-  ('FT-003','Supermarché Horizon','Modern trade','Point de vente détail','Supermarket A','Abidjan','Cocody 1','COC 1',
-   'LYCEE TECHNIQUE',5.3452,-4.0018,200,'Boulevard de France, galerie commerciale','FLAGSHIP','admin','admin@fieldtrack.demo',true),
-  ('FT-004','Boutique Chez Tantie Rose','General trade','Point de vente détail','Boutique B','Abidjan','Marcory','MAR',
-   'RÉSIDENTIEL',5.3011,-3.9921,200,'Rue du Canal, à côté de la boulangerie','VIP','admin','admin@fieldtrack.demo',true),
-  ('FT-005','Boutique La Confiance','General trade','Point de vente détail','Boutique B','Abidjan','Marcory','MAR',
-   'SICOGI',5.3062,-3.9853,200,'Marché Sicogi, allée centrale','VIP','admin','admin@fieldtrack.demo',true),
-  ('FT-006','Boutique Le Bon Coin','General trade','Point de vente détail','Boutique B','Abidjan','Marcory','MAR',
-   'HIBISCUS',5.2987,-3.9802,200,'Cité Hibiscus, entrée principale','VIP','admin','admin@fieldtrack.demo',true),
-  ('FT-007','Boutique Le Palmier','General trade','Point de vente détail','Boutique C','Abidjan','Plateau','PLA',
-   'PLATEAU CENTRE',5.3231,-4.0203,200,'Avenue du Commerce, immeuble Les Arcades','CORE','admin','admin@fieldtrack.demo',true),
-  ('FT-008','Boutique Étoile du Matin','General trade','Point de vente détail','Boutique C','Abidjan','Plateau','PLA',
-   'CITE FERMONT',5.3274,-4.0171,200,'Cité Fermont, bloc B','CORE','admin','admin@fieldtrack.demo',true),
-  ('FT-009','Boutique Aux Trois Frères','General trade','Point de vente détail','Boutique C','Abidjan','Plateau','PLA',
-   'MARCHE DE FRUIT',5.3302,-4.0236,200,'Marché de fruits, rangée 2','CORE','admin','admin@fieldtrack.demo',true),
-  ('FT-010','Boutique La Lagune','General trade','Point de vente détail','Boutique C','Abidjan','Treichville','TRE',
-   'ZONE 3',5.2952,-4.0021,200,'Zone 3, rue des Pêcheurs','CORE','admin','admin@fieldtrack.demo',true),
-  ('FT-011','Kiosque du Carrefour','General trade','Point de vente détail','Kiosk A','Abidjan','Treichville','TRE',
-   'ARAS',5.3003,-4.0082,200,'Carrefour Aras, côté gare','BASIC','admin','admin@fieldtrack.demo',true),
-  ('FT-012','Kiosque Le Rendez-vous','General trade','Point de vente détail','Kiosk A','Abidjan','Treichville','TRE',
-   'BELLEVILLE',5.3051,-4.0043,200,'Belleville, face à lécole primaire','BASIC','admin','admin@fieldtrack.demo',true),
-  ('FT-013','Boutique Petit Marché','General trade','Point de vente détail','Boutique C','Abidjan','Yopougon 1','YOP 1',
-   'WASSAKARA',5.3412,-4.0703,200,'Wassakara, près du terminus','CORE','admin','admin@fieldtrack.demo',true),
-  ('FT-014','Supermarché Bel Air','Modern trade','Point de vente détail','Supermarket C','Abidjan','Yopougon 1','YOP 1',
-   'YOPOUGON SABLE',5.3361,-4.0781,200,'Sable, boulevard principal','CORE','admin','admin@fieldtrack.demo',true),
-  ('FT-015','Boutique Wassa','General trade','Point de vente détail','Boutique B','Abidjan','Yopougon 1','YOP 1',
-   'TOIT ROUGE',5.3304,-4.0852,200,'Toit Rouge, derrière la station','VIP','admin','admin@fieldtrack.demo',true);
+  ('FT-001','Boutique Le Baobab','General trade','Point de vente détail','Boutique A','Région Sud','Territoire Est','T-EST',
+   'Quartier Est 1',5.3697,-3.959,200,'Rue du Marché, face à la pharmacie','FLAGSHIP','admin','admin@fieldtrack.demo',true),
+  ('FT-002','Superette Les Flamboyants','General trade','Point de vente détail','Superettes A','Région Sud','Territoire Est','T-EST',
+   'Quartier Est 2',5.3581,-3.9712,200,'Avenue des Jardins, près du rond-point','FLAGSHIP','admin','admin@fieldtrack.demo',true),
+  ('FT-003','Supermarché Horizon','Modern trade','Point de vente détail','Supermarket A','Région Sud','Territoire Est','T-EST',
+   'Quartier Est 3',5.3452,-4.0018,200,'Boulevard principal, galerie commerciale','FLAGSHIP','admin','admin@fieldtrack.demo',true),
+  ('FT-004','Boutique Chez Tantie Rose','General trade','Point de vente détail','Boutique B','Région Sud','Territoire Sud','T-SUD',
+   'Quartier Sud 1',5.3011,-3.9921,200,'Rue du Canal, à côté de la boulangerie','VIP','admin','admin@fieldtrack.demo',true),
+  ('FT-005','Boutique La Confiance','General trade','Point de vente détail','Boutique B','Région Sud','Territoire Sud','T-SUD',
+   'Quartier Sud 2',5.3062,-3.9853,200,'Place du marché, allée centrale','VIP','admin','admin@fieldtrack.demo',true),
+  ('FT-006','Boutique Le Bon Coin','General trade','Point de vente détail','Boutique B','Région Sud','Territoire Sud','T-SUD',
+   'Quartier Sud 3',5.2987,-3.9802,200,'Résidence des Fleurs, entrée principale','VIP','admin','admin@fieldtrack.demo',true),
+  ('FT-007','Boutique Le Palmier','General trade','Point de vente détail','Boutique C','Région Sud','Territoire Centre','T-CEN',
+   'Quartier Centre 1',5.3231,-4.0203,200,'Avenue du Commerce, immeuble Les Arcades','CORE','admin','admin@fieldtrack.demo',true),
+  ('FT-008','Boutique Étoile du Matin','General trade','Point de vente détail','Boutique C','Région Sud','Territoire Centre','T-CEN',
+   'Quartier Centre 2',5.3274,-4.0171,200,'Cité administrative, bloc B','CORE','admin','admin@fieldtrack.demo',true),
+  ('FT-009','Boutique Aux Trois Frères','General trade','Point de vente détail','Boutique C','Région Sud','Territoire Centre','T-CEN',
+   'Quartier Centre 3',5.3302,-4.0236,200,'Marché central, rangée 2','CORE','admin','admin@fieldtrack.demo',true),
+  ('FT-010','Boutique La Lagune','General trade','Point de vente détail','Boutique C','Région Sud','Territoire Lagune','T-LAG',
+   'Quartier Lagune 1',5.2952,-4.0021,200,'Rue des Pêcheurs, près du quai','CORE','admin','admin@fieldtrack.demo',true),
+  ('FT-011','Kiosque du Carrefour','General trade','Point de vente détail','Kiosk A','Région Sud','Territoire Lagune','T-LAG',
+   'Quartier Lagune 2',5.3003,-4.0082,200,'Carrefour de la gare','BASIC','admin','admin@fieldtrack.demo',true),
+  ('FT-012','Kiosque Le Rendez-vous','General trade','Point de vente détail','Kiosk A','Région Sud','Territoire Lagune','T-LAG',
+   'Quartier Lagune 3',5.3051,-4.0043,200,'Rue de l''École, face à l''école primaire','BASIC','admin','admin@fieldtrack.demo',true),
+  ('FT-013','Boutique Petit Marché','General trade','Point de vente détail','Boutique C','Région Sud','Territoire Ouest','T-OUE',
+   'Quartier Ouest 1',5.3412,-4.0703,200,'Rue du Terminus','CORE','admin','admin@fieldtrack.demo',true),
+  ('FT-014','Supermarché Bel Air','Modern trade','Point de vente détail','Supermarket C','Région Sud','Territoire Ouest','T-OUE',
+   'Quartier Ouest 2',5.3361,-4.0781,200,'Boulevard de l''Ouest','CORE','admin','admin@fieldtrack.demo',true),
+  ('FT-015','Boutique du Rond-Point','General trade','Point de vente détail','Boutique B','Région Sud','Territoire Ouest','T-OUE',
+   'Quartier Ouest 3',5.3304,-4.0852,200,'Derrière la station-service','VIP','admin','admin@fieldtrack.demo',true);
 
 -- Distributeur : celui du territoire (le premier, par nom).
 update public.pdv p set distributor_name = (
@@ -149,7 +203,7 @@ update public.pdv p set distributor_name = (
 
 -- Référentiel zone / quartier / équipe lu par l'application mobile.
 insert into public.zones_secteurs(zone, secteur, merchandiser, email_merchandiser, sales_rep, email_sales_rep, region)
-select p.zone, p.quartier, m.nom, m.email, c.nom, c.email, 'Abidjan'
+select p.zone, p.quartier, m.nom, m.email, c.nom, c.email, 'Région Sud'
 from public.pdv p
 join public.profiles m on m.role = 'merchandiser' and m.zone_assignee = p.zone
 join public.profiles c on c.id = m.commercial_id

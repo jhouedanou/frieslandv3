@@ -12,7 +12,7 @@
         <PeriodFilter v-model="periode" />
       </div>
       <div class="grid grid-cols-2 gap-2 sm:grid-cols-4">
-        <UFormGroup label="Division (North/South)" size="xs">
+        <UFormGroup label="Région" size="xs">
           <USelectMenu v-model="fDivision" :options="divisionOptions" placeholder="Toutes" size="xs" searchable />
         </UFormGroup>
         <UFormGroup label="Distributeur" size="xs">
