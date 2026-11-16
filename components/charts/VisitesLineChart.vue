@@ -44,13 +44,13 @@ const chartData = computed(() => {
     datasets: [{
       label: props.seriesLabel,
       data: sorted.map(d => d.count),
-      borderColor: '#603080',
-      backgroundColor: 'rgba(96,48,128, 0.08)',
+      borderColor: couleurMarque(),
+      backgroundColor: couleurMarque(0.08),
       fill: true,
       tension: 0.4,
       pointRadius: 3,
       pointHoverRadius: 6,
-      pointBackgroundColor: '#603080',
+      pointBackgroundColor: couleurMarque(),
     }],
   }
 })

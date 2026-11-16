@@ -2592,6 +2592,22 @@ CREATE TABLE public.marque_concurrente_sku (
 COMMENT ON TABLE public.marque_concurrente_sku IS 'SKU concurrents suivis (marque + grammage), source fichier client du 7 sept. 2026. Relevés sous visites.data.concurrence.<famille>.skus.<code>.';
 COMMENT ON COLUMN public.marque_concurrente_sku.code IS 'Clé JSONB du statut. Figée à la création — en changer orphelinerait les relevés existants.';
 COMMENT ON COLUMN public.marque_concurrente_sku.image_url IS 'Photo du SKU (bucket visite-images). Nulle tant que le client n''a pas fourni les visuels.';
+CREATE TABLE public.parametre_marque (
+    id smallint DEFAULT 1 NOT NULL,
+    nom text DEFAULT 'Big Five Force'::text NOT NULL,
+    sous_titre text,
+    logo_url text,
+    couleur_principale text DEFAULT '#603080'::text NOT NULL,
+    couleur_secondaire text DEFAULT '#403080'::text NOT NULL,
+    maj_le timestamp with time zone DEFAULT now() NOT NULL,
+    CONSTRAINT parametre_marque_couleur_principale_check CHECK ((couleur_principale ~ '^#[0-9A-Fa-f]{6}$'::text)),
+    CONSTRAINT parametre_marque_couleur_secondaire_check CHECK ((couleur_secondaire ~ '^#[0-9A-Fa-f]{6}$'::text)),
+    CONSTRAINT parametre_marque_id_check CHECK ((id = 1)),
+    CONSTRAINT parametre_marque_logo_url_check CHECK (((logo_url IS NULL) OR ((logo_url ~~ 'data:image/%'::text) AND (char_length(logo_url) <= 400000)))),
+    CONSTRAINT parametre_marque_nom_check CHECK (((char_length(nom) >= 1) AND (char_length(nom) <= 40))),
+    CONSTRAINT parametre_marque_sous_titre_check CHECK (((sous_titre IS NULL) OR (char_length(sous_titre) <= 60)))
+);
+COMMENT ON TABLE public.parametre_marque IS 'Marque affichée par l''application (nom, logo, couleurs). Une seule ligne, id = 1.';
 CREATE TABLE public.parametre_suivi (
     cle text NOT NULL,
     valeur integer NOT NULL,
@@ -3539,6 +3555,8 @@ INSERT INTO public.niveau_perfect_store VALUES
 	('VIP PERFECT STORE', 3, 85, 100, 100),
 	('CORE PERFECT STORE', 2, 75, 100, 100),
 	('BASIC PERFECT STORE', 1, 60, 100, 100);
+INSERT INTO public.parametre_marque VALUES
+	(1, 'Big Five Force', 'La force de vente maîtrisée', NULL, '#603080', '#403080', '2026-11-16 10:01:12.604086+00');
 INSERT INTO public.parametre_suivi VALUES
 	('fenetre_suivi_mois', 12, 'Fenêtre de suivi (mois)', 'Un PDV visité au moins une fois dans cette fenêtre est « suivi » et compte dans les alertes. Au-delà, il bascule dans « à prospecter ».');
 INSERT INTO public.pays OVERRIDING SYSTEM VALUE VALUES
@@ -4536,6 +4554,8 @@ ALTER TABLE ONLY public.marque_concurrente_sku
     ADD CONSTRAINT marque_concurrente_sku_pkey PRIMARY KEY (id);
 ALTER TABLE ONLY public.niveau_perfect_store
     ADD CONSTRAINT niveau_perfect_store_pkey PRIMARY KEY (code);
+ALTER TABLE ONLY public.parametre_marque
+    ADD CONSTRAINT parametre_marque_pkey PRIMARY KEY (id);
 ALTER TABLE ONLY public.parametre_suivi
     ADD CONSTRAINT parametre_suivi_pkey PRIMARY KEY (cle);
 ALTER TABLE ONLY public.pays
@@ -4945,6 +4965,9 @@ CREATE POLICY marque_concurrente_write ON public.marque_concurrente TO authentic
 ALTER TABLE public.niveau_perfect_store ENABLE ROW LEVEL SECURITY;
 CREATE POLICY niveau_perfect_store_authenticated_read ON public.niveau_perfect_store FOR SELECT TO authenticated USING (true);
 CREATE POLICY niveau_perfect_store_manager_write ON public.niveau_perfect_store TO authenticated USING (public.est_gestionnaire_perfect_store()) WITH CHECK (public.est_gestionnaire_perfect_store());
+ALTER TABLE public.parametre_marque ENABLE ROW LEVEL SECURITY;
+CREATE POLICY parametre_marque_ecriture ON public.parametre_marque TO authenticated USING ((( SELECT public.role_actif_courant() AS role_actif_courant) = 'admin'::text)) WITH CHECK ((( SELECT public.role_actif_courant() AS role_actif_courant) = 'admin'::text));
+CREATE POLICY parametre_marque_lecture ON public.parametre_marque FOR SELECT TO anon, authenticated USING (true);
 ALTER TABLE public.parametre_suivi ENABLE ROW LEVEL SECURITY;
 CREATE POLICY parametre_suivi_read ON public.parametre_suivi FOR SELECT TO authenticated USING (true);
 CREATE POLICY parametre_suivi_write ON public.parametre_suivi TO authenticated USING (public.est_gestionnaire_perfect_store()) WITH CHECK (public.est_gestionnaire_perfect_store());
@@ -5202,6 +5225,8 @@ GRANT ALL ON FUNCTION public.role_actif_courant() TO authenticated;
 GRANT ALL ON FUNCTION public.routing_regles_du_jour(p_user_id uuid, p_date date) TO authenticated;
 GRANT ALL ON FUNCTION public.transferer_field_coaching(p_coaching_id uuid, p_vers uuid, p_motif text) TO authenticated;
 REVOKE ALL ON FUNCTION public.visites_garde_statut() FROM PUBLIC;
+GRANT SELECT ON TABLE public.parametre_marque TO anon;
+GRANT SELECT,INSERT,UPDATE ON TABLE public.parametre_marque TO authenticated;
 GRANT SELECT ON TABLE stats.mv_distribution_pdv TO authenticated;
 GRANT SELECT ON TABLE stats.mv_distribution_pdv TO service_role;
 GRANT SELECT ON TABLE public.v_distribution_pdv TO authenticated;

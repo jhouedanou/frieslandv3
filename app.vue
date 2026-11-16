@@ -9,8 +9,10 @@
 </template>
 
 <script setup lang="ts">
+// Nom de l'application : celui réglé dans Paramètres > Personnalisation.
+const { marque } = useMarque()
 useHead({
-  title: 'Big Five Force',
+  title: () => marque.value.nom,
   htmlAttrs: { lang: 'fr' },
 })
 </script>

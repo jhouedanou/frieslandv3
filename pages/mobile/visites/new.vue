@@ -388,7 +388,7 @@
               class="rounded-2xl bg-white p-4 shadow-sm dark:bg-gray-800"
             >
               <div class="mb-4 flex items-center gap-3">
-                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-50 text-fc-red dark:bg-purple-950/30">
+                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-fc-red-50 text-fc-red dark:bg-fc-red-900/30">
                   <UIcon :name="section.icon" class="h-5 w-5" />
                 </div>
                 <div>
@@ -495,7 +495,7 @@
           <div class="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm space-y-4">
             <button
               type="button"
-              class="flex min-h-[150px] w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 py-8 transition-colors hover:border-fc-red hover:bg-purple-50 active:bg-purple-100 dark:border-gray-600 dark:hover:bg-purple-950/20"
+              class="flex min-h-[150px] w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 py-8 transition-colors hover:border-fc-red hover:bg-fc-red-50 active:bg-fc-red-100 dark:border-gray-600 dark:hover:bg-fc-red-900/20"
               aria-label="Prendre une photo ou importer depuis la galerie"
               @click="triggerCamera"
             >

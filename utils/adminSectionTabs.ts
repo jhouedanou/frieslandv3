@@ -76,6 +76,7 @@ export const adminSectionTabs: Record<AdminSection, AdminSectionTab[]> = {
     { label: 'Équipes', to: '/admin/users/equipes', icon: 'i-heroicons-user-group' },
     { label: 'Permissions', to: '/admin/permissions', icon: 'i-heroicons-shield-check' },
     { label: 'Import / Export', to: '/admin/import-export', icon: 'i-heroicons-arrow-up-tray' },
+    { label: 'Personnalisation', to: '/admin/marque', icon: 'i-heroicons-swatch' },
   ],
 }
 
@@ -86,6 +87,7 @@ export function detectAdminSection(path: string): AdminSection | null {
     || path.startsWith('/admin/referentiels')
     || path.startsWith('/admin/users')
     || path.startsWith('/admin/permissions')
+    || path.startsWith('/admin/marque')
     || path.startsWith('/admin/import-export')
   ) return 'parametres'
   if (path === '/admin' || path.startsWith('/admin/perfect-store')) return 'perfect-store'

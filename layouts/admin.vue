@@ -188,6 +188,7 @@ const pageTitle = computed(() => {
     '/admin/pdv': 'Points de Vente',
     '/admin/users': 'Utilisateurs',
     '/admin/permissions': 'Permissions & accès',
+    '/admin/marque': 'Personnalisation',
     '/admin/referentiels': 'Référentiels',
     '/admin/perfect-store': 'Conformité',
     '/admin/perfect-store/standards': 'Standards de conformité',
@@ -211,6 +212,7 @@ const pageTitle = computed(() => {
     ['/admin/actions', 'Actions'],
     ['/admin/users', 'Utilisateurs'],
     ['/admin/permissions', 'Permissions & accès'],
+    ['/admin/marque', 'Personnalisation'],
     ['/admin/referentiels', 'Référentiels'],
   ]
   return prefixes.find(([prefix]) => route.path.startsWith(prefix))?.[1] || 'Dashboard'

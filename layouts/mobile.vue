@@ -21,7 +21,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
         </button>
-        <img src="~/assets/logo.png" alt="FC" class="w-7 h-7 rounded object-contain bg-white/90 p-0.5" />
+        <img :src="logo" :alt="marque.nom" class="w-7 h-7 rounded object-contain bg-white/90 p-0.5" />
         <h1 class="truncate text-base font-semibold leading-tight">{{ pageTitle }}</h1>
       </div>
 
@@ -104,6 +104,7 @@
 </template>
 
 <script setup lang="ts">
+const { marque, logo } = useMarque()
 import { canWriteTerrain } from '~/utils/roles'
 const route = useRoute()
 const authStore = useAuthStore()
@@ -221,7 +222,7 @@ const pageTitle = computed(() => {
   if (route.path.startsWith('/mobile/pdv/')) return 'Détail PDV'
   if (route.path.startsWith('/mobile/visites/')) return 'Détail Visite'
   if (route.path.startsWith('/mobile/coaching/')) return 'Accompagnement terrain'
-  return 'Big Five Force'
+  return marque.value.nom
 })
 
 // ---------------------------------------------------------------------------

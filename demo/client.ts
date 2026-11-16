@@ -7,6 +7,8 @@ import { Requete, lireSchema, lit, sqlRpc, versErreur, type Schema } from './pos
 
 /** Base embarquée : exécute du SQL dans une transaction. */
 export interface BaseDemo {
+  /** Copie la base sur le disque de l'appareil (IndexedDB), jusqu'au bout. Absent en mémoire. */
+  copierSurDisque?(): Promise<void>
   transaction<T>(fn: (tx: { exec(sql: string): Promise<any>; query(sql: string): Promise<{ rows: any[] }> }) => Promise<T>): Promise<T>
 }
 
@@ -34,9 +36,9 @@ export function creerClientDemo(options: OptionsClient) {
   let rafraichissement: Promise<void> | null = null
 
   /** Exécute en tant que superutilisateur (service) ou que le compte connecté (RLS appliquée). */
-  async function executer(sql: string, service: boolean): Promise<any[]> {
+  async function executer(sql: string, service: boolean, ecriture = false): Promise<any[]> {
     const base = await options.base
-    return base.transaction(async (tx) => {
+    const lignes = await base.transaction(async (tx) => {
       await tx.exec('set local search_path = public, extensions')
       if (!service) {
         const uid = session?.user.id || ''
@@ -46,13 +48,17 @@ export function creerClientDemo(options: OptionsClient) {
       }
       return (await tx.query(sql)).rows
     })
+    // La base ne se copie pas d'elle-même sur le disque à la fin d'une transaction :
+    // sans cette ligne, une saisie suivie d'un rechargement de page était perdue.
+    if (ecriture) await base.copierSurDisque?.()
+    return lignes
   }
 
   const lireSchemaUneFois = () => (schema ||= lireSchema(sql => executer(sql, true)))
 
   function apresEcriture(table: string) {
     if (!TABLES_STATS.has(table) || rafraichissement) return
-    rafraichissement = executer('select public.refresh_stats_dashboard()', true)
+    rafraichissement = executer('select public.refresh_stats_dashboard()', true, true)
       .then(() => {}, () => {})
       .finally(() => { rafraichissement = null })
   }
@@ -88,7 +94,7 @@ export function creerClientDemo(options: OptionsClient) {
           if (prop === 'then') {
             return (ok: any, ko: any) => lireSchemaUneFois()
               .then((s) => {
-                reelle = new Requete(s, sql => executer(sql, service), table, apresEcriture)
+                reelle = new Requete(s, (sql, ecriture) => executer(sql, service, ecriture), table, apresEcriture)
                 for (const [m, args] of attente) (reelle as any)[m](...args)
                 // Une Requete est « thenable » : la renvoyer ici donne directement son résultat.
                 return reelle
@@ -115,7 +121,7 @@ export function creerClientDemo(options: OptionsClient) {
             `select p.proretset, p.provolatile, p.prorettype::regtype::text as type from pg_proc p join pg_namespace n on n.oid = p.pronamespace where n.nspname = 'public' and p.proname = ${lit(nom)} limit 1`, true))[0]
           if (!meta) return { data: null, error: { code: 'PGRST202', message: `Fonction introuvable : ${nom}`, details: null, hint: null } }
           const queue = `${limite !== undefined ? ` limit ${Number(limite)}` : ''}${decalage ? ` offset ${Number(decalage)}` : ''}`
-          const lignes = (await executer(sqlRpc(nom, args) + queue, service)).map(r => r.r)
+          const lignes = (await executer(sqlRpc(nom, args) + queue, service, meta.provolatile === 'v')).map(r => r.r)
           // Une fonction qui écrit (recalcul, géolocalisation…) : les statistiques suivent.
           if (meta.provolatile === 'v') apresEcriture('visites')
           if (meta.type === 'void') return { data: null, error: null }
@@ -196,7 +202,7 @@ export function creerClientDemo(options: OptionsClient) {
     async createUser(p: { email: string; password?: string; user_metadata?: Record<string, any> }) {
       try {
         const u = (await executer(
-          `insert into auth.users(email, encrypted_password, raw_user_meta_data, email_confirmed_at) values (${lit(p.email)}, ${lit(p.password ?? null)}, ${lit(p.user_metadata || {})}::jsonb, now()) returning *`, true))[0]
+          `insert into auth.users(email, encrypted_password, raw_user_meta_data, email_confirmed_at) values (${lit(p.email)}, ${lit(p.password ?? null)}, ${lit(p.user_metadata || {})}::jsonb, now()) returning *`, true, true))[0]
         return { data: { user: versUtilisateur(u) }, error: null }
       }
       catch (err: any) {
@@ -205,7 +211,7 @@ export function creerClientDemo(options: OptionsClient) {
       }
     },
     async deleteUser(id: string) {
-      try { await executer(`delete from auth.users where id = ${lit(id)}`, true); return { data: {}, error: null } }
+      try { await executer(`delete from auth.users where id = ${lit(id)}`, true, true); return { data: {}, error: null } }
       catch (err: any) { return { data: null, error: erreurAuth(err.message, 500) } }
     },
     async getUserById(id: string) {
@@ -217,7 +223,7 @@ export function creerClientDemo(options: OptionsClient) {
         const sets: string[] = []
         if (maj.password) sets.push(`encrypted_password = ${lit(maj.password)}`)
         if (maj.user_metadata) sets.push(`raw_user_meta_data = ${lit(maj.user_metadata)}::jsonb`)
-        if (sets.length) await executer(`update auth.users set ${sets.join(', ')} where id = ${lit(id)}`, true)
+        if (sets.length) await executer(`update auth.users set ${sets.join(', ')} where id = ${lit(id)}`, true, true)
         return admin.getUserById(id)
       }
       catch (err: any) { return { data: { user: null }, error: erreurAuth(err.message, 500) } }
@@ -275,7 +281,7 @@ export function creerClientDemo(options: OptionsClient) {
     /** Client sans restriction d'accès : remplace les routes serveur d'administration. */
     service: { ...serviceBase, auth: { admin } },
     /** SQL direct en superutilisateur (initialisation, tests). */
-    sql: (requete: string) => executer(requete, true),
+    sql: (requete: string) => executer(requete, true, true),
   }
 }
 

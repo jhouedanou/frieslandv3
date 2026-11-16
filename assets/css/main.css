@@ -7,22 +7,34 @@
 @tailwind utilities;
 
 :root {
+  /* Palette de marque (r v b) : valeurs par défaut Big Five Force, remplacées
+     à l'exécution par la personnalisation (composables/useMarque.ts). */
+  --marque-50: 245 241 247;
+  --marque-100: 230 222 235;
+  --marque-200: 201 185 211;
+  --marque-300: 163 135 181;
+  --marque-400: 128 89 153;
+  --marque-500: 96 48 128;
+  --marque-600: 77 38 102;
+  --marque-700: 64 48 128;
+  --marque-800: 40 30 79;
+  --marque-900: 20 15 41;
   --admin-bg: #f3f5f2;
   --admin-ink: #172018;
   --admin-muted: #687466;
   --admin-line: #dfe5dc;
   --admin-panel: #ffffff;
   --admin-panel-soft: #f8faf6;
-  --admin-accent: #603080;
-  --admin-accent-dark: #4D2668;
+  --admin-accent: rgb(var(--marque-500));
+  --admin-accent-dark: rgb(var(--marque-600));
   --admin-green: #2f7d52;
   --admin-amber: #b36b16;
-  --fc-blue: #603080;
-  --fc-blue-dark: #4D2668;
-  --fc-blue-light: #F4EEF8;
-  --fc-red: #603080;
-  --fc-red-dark: #4D2668;
-  --fc-red-light: #F4EEF8;
+  --fc-blue: rgb(var(--marque-500));
+  --fc-blue-dark: rgb(var(--marque-600));
+  --fc-blue-light: rgb(var(--marque-50));
+  --fc-red: rgb(var(--marque-500));
+  --fc-red-dark: rgb(var(--marque-600));
+  --fc-red-light: rgb(var(--marque-50));
   --fc-green: #10B981;
   --fc-green-light: #ECFDF5;
   --fc-orange: #F59E0B;
@@ -43,7 +55,7 @@
 
   body {
     background:
-      radial-gradient(circle at top left, rgb(96 48 128 / 8%), transparent 34rem),
+      radial-gradient(circle at top left, rgb(var(--marque-500) / 8%), transparent 34rem),
       linear-gradient(180deg, #f8faf6 0%, var(--admin-bg) 100%);
     color: var(--admin-ink);
     touch-action: manipulation;
@@ -65,7 +77,7 @@
   }
 
   :focus-visible {
-    outline: 3px solid rgb(96 48 128 / 35%);
+    outline: 3px solid rgb(var(--marque-500) / 35%);
     outline-offset: 2px;
   }
 
@@ -181,7 +193,7 @@
   }
 
   .admin-list-toolbar__chip {
-    @apply inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 transition hover:bg-purple-50 hover:text-fc-red dark:bg-slate-700/60 dark:text-slate-300 dark:hover:bg-purple-950/40 dark:hover:text-red-300;
+    @apply inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 transition hover:bg-fc-red-50 hover:text-fc-red dark:bg-slate-700/60 dark:text-slate-300 dark:hover:bg-fc-red-900/40 dark:hover:text-fc-red-300;
   }
 
   .admin-list-toolbar__footer {

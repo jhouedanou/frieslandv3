@@ -75,12 +75,12 @@
                   <span class="text-6xl font-semibold tracking-[-0.06em] text-slate-950 dark:text-white">
                     {{ formatPercent(psGlobal.perfect_store_pct) }}
                   </span>
-                  <span class="mb-2 rounded-lg bg-purple-50 px-2.5 py-1 text-xs font-semibold text-fc-red dark:bg-purple-950/40">
+                  <span class="mb-2 rounded-lg bg-fc-red-50 px-2.5 py-1 text-xs font-semibold text-fc-red dark:bg-fc-red-900/40">
                     {{ psGlobal.perfect_stores }} conformes
                   </span>
                 </div>
               </div>
-              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-purple-50 text-fc-red transition group-hover:scale-105 dark:bg-purple-950/40">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-fc-red-50 text-fc-red transition group-hover:scale-105 dark:bg-fc-red-900/40">
                 <Trophy class="h-6 w-6" />
               </div>
             </div>
@@ -270,7 +270,7 @@
                     to="/admin/visites"
                     class="flex items-center gap-3 px-5 py-3 transition hover:bg-slate-50 dark:hover:bg-slate-800/70 sm:px-6"
                   >
-                    <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-purple-50 text-fc-red dark:bg-purple-950/30">
+                    <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-fc-red-50 text-fc-red dark:bg-fc-red-900/30">
                       <UIcon name="i-heroicons-clipboard-document-check" class="h-4 w-4" aria-hidden="true" />
                     </span>
                     <span class="min-w-0 flex-1">

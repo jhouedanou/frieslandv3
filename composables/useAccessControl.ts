@@ -35,6 +35,7 @@ export function sectionKeyForPath(path: string): string | null {
     path.startsWith('/admin/referentiels') ||
     path.startsWith('/admin/import') ||
     path.startsWith('/admin/permissions') ||
+    path.startsWith('/admin/marque') ||
     path.startsWith('/admin/profile') ||
     path.startsWith('/admin/distributeurs')
   ) return 'parametres'

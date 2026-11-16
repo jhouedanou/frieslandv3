@@ -180,3 +180,35 @@ describe('mode démo — routes d\'administration rejouées dans le navigateur',
     expect(reste.data).toHaveLength(0)
   })
 })
+
+describe('mode démo — personnalisation de la marque', () => {
+  const lire = () => client.from('parametre_marque').select('nom, couleur_principale').eq('id', 1).maybeSingle()
+
+  it('se lit sans connexion (écran de connexion)', async () => {
+    await client.auth.signOut()
+    const { data, error } = await lire()
+    expect(error).toBeNull()
+    expect(data.nom).toBe('Big Five Force')
+  })
+
+  it("n'est pas modifiable par un merchandiser ni sans connexion", async () => {
+    await client.auth.signOut()
+    await client.from('parametre_marque').update({ nom: 'Pirate' }).eq('id', 1)
+    await connecter('merchandiser1@bigfiveforce.demo')
+    await client.from('parametre_marque').update({ nom: 'Pirate' }).eq('id', 1)
+    const refus = await client.from('parametre_marque').upsert({ id: 1, nom: 'Pirate' }, { onConflict: 'id' })
+    expect(refus.error).not.toBeNull()
+    expect((await lire()).data.nom).toBe('Big Five Force')
+  })
+
+  it("s'enregistre pour un administrateur, et la base refuse une couleur invalide", async () => {
+    await connecter('admin@bigfiveforce.demo')
+    const ok = await client.from('parametre_marque').upsert(
+      { id: 1, nom: 'Client Force', sous_titre: null, logo_url: null, couleur_principale: '#0F766E', couleur_secondaire: '#134E4A' }, { onConflict: 'id' })
+    expect(ok.error).toBeNull()
+    expect((await lire()).data).toEqual({ nom: 'Client Force', couleur_principale: '#0F766E' })
+    const ko = await client.from('parametre_marque').update({ couleur_principale: 'vert' }).eq('id', 1)
+    expect(ko.error).not.toBeNull()
+    await client.from('parametre_marque').update({ nom: 'Big Five Force', couleur_principale: '#603080', couleur_secondaire: '#403080' }).eq('id', 1)
+  })
+})

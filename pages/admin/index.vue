@@ -79,7 +79,7 @@
             </span>
           </div>
 
-          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-50 text-fc-red dark:bg-purple-950/30">
+          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-fc-red-50 text-fc-red dark:bg-fc-red-900/30">
             <UIcon name="i-heroicons-trophy" class="h-5 w-5" />
           </div>
         </div>

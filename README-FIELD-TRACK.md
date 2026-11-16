@@ -31,6 +31,24 @@ Pour changer encore de marque : remplacer `resources/logo-bigfive.jpg`,
 `resources/logo.svg` et `resources/glyphe.svg`, puis `node scripts/generate-brand-assets.mjs`.
 La couleur se règle dans `tailwind.config.ts` et `assets/css/main.css`.
 
+## Personnalisation aux couleurs d'un client
+
+Un administrateur règle la marque depuis **Paramètres → Personnalisation**
+(`/admin/marque`), sans toucher au code :
+
+- **Nom** et **sous-titre** de l'application.
+- **Logo** : PNG, JPEG, WebP ou SVG, réduit à 256 pixels avant l'enregistrement.
+- **Couleurs** principale et secondaire. Un bouton reprend celles trouvées dans le logo.
+- **Aperçu** en direct ; rien ne change pour les autres utilisateurs avant l'enregistrement.
+
+Le réglage s'applique à l'écran de connexion, au tableau de bord et à
+l'application mobile. Il est enregistré dans la table `parametre_marque`
+(migration `supabase/nouveau/20261116100000_friesland_parametre_marque.sql`) :
+lecture ouverte à tous, écriture réservée aux administrateurs.
+
+Ce qui ne change pas par ce réglage : le nom et l'icône de l'application
+installée sur un téléphone, fixés à la construction, et les pages légales.
+
 ## Deux façons de lancer Big Five Force
 
 | | Mode démo | Mode Supabase |
@@ -144,7 +162,7 @@ sans effet, la fonction est recréée juste après.
 - Vérifié sur un PostgreSQL 16 local : le schéma se construit de zéro, toutes les
   tables et fonctions appelées par l'application existent, la démo se charge et se
   rejoue sans doublon, les scores de conformité sont calculés.
-- Vérifié : `pnpm vitest run` (160 tests, dont 13 sur le mode démo) et `pnpm build`.
+- Vérifié : `pnpm vitest run` (173 tests, dont 16 sur le mode démo) et `pnpm build`.
 - Vérifié en mode démo, dans un navigateur : connexion, les 41 écrans admin et les
   écrans mobiles (merchandiser et commercial) s'ouvrent sans erreur ; la version
   native (`CAPACITOR_BUILD=1`) se génère.

@@ -52,7 +52,7 @@
           <div class="flex-1 min-w-0">
             <h3 class="font-bold text-gray-900 dark:text-gray-100 text-sm truncate">
               {{ contact.nom }}
-              <span v-if="estDeMonEquipe(contact.id)" class="ml-1 rounded-full bg-purple-50 px-1.5 py-0.5 text-[10px] font-semibold text-fc-red dark:bg-purple-950/40 dark:text-purple-200">mon équipe</span>
+              <span v-if="estDeMonEquipe(contact.id)" class="ml-1 rounded-full bg-fc-red-50 px-1.5 py-0.5 text-[10px] font-semibold text-fc-red dark:bg-fc-red-900/40 dark:text-fc-red-200">mon équipe</span>
             </h3>
             <p class="text-xs text-gray-400">{{ contact.role }} {{ contact.zone ? `— ${contact.zone}` : '' }}</p>
             <p v-if="contact.telephone" class="mt-0.5 text-xs tabular-nums text-gray-500 dark:text-gray-400">{{ contact.telephone }}</p>
@@ -62,7 +62,7 @@
             <a
               v-if="contact.telephone"
               :href="`tel:${contact.telephone}`"
-              class="touch-target inline-flex items-center justify-center rounded-xl text-fc-red hover:bg-purple-50 dark:hover:bg-purple-950/30"
+              class="touch-target inline-flex items-center justify-center rounded-xl text-fc-red hover:bg-fc-red-50 dark:hover:bg-fc-red-900/30"
               :aria-label="`Appeler ${contact.nom}`"
             >
               <UIcon name="i-heroicons-phone" class="w-5 h-5" />

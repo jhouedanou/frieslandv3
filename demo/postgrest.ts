@@ -18,8 +18,8 @@ export interface Schema {
 
 export interface ErreurPg { message: string; code?: string; details?: string | null; hint?: string | null }
 
-/** Exécute une requête SQL et renvoie les lignes. Fourni par demo/db.ts. */
-export type Executeur = (sql: string) => Promise<any[]>
+/** Exécute une requête SQL et renvoie les lignes. `ecriture` : la requête modifie des données. */
+export type Executeur = (sql: string, ecriture?: boolean) => Promise<any[]>
 
 // ---------------------------------------------------------------------------
 // Littéraux et identifiants
@@ -408,10 +408,10 @@ export class Requete implements PromiseLike<any> {
       if (this.e.select) {
         const proj = this.projection(table, 'm_', analyserSelect(this.e.select), [])
         const r = await this.executer(
-          `with m_ as (${ecriture} returning ${t}.*) select coalesce(jsonb_agg(to_jsonb(q_)), '[]'::jsonb) as d from (select ${proj} from m_) q_`)
+          `with m_ as (${ecriture} returning ${t}.*) select coalesce(jsonb_agg(to_jsonb(q_)), '[]'::jsonb) as d from (select ${proj} from m_) q_`, true)
         lignes = r[0]?.d ?? []
       }
-      else await this.executer(ecriture)
+      else await this.executer(ecriture, true)
       this.apresEcriture?.(table)
     }
 

@@ -50,7 +50,13 @@ export async function ouvrirBase(seed: string, stockage: 'idb' | 'memoire' = 'id
       insert into public.demo_meta default values;
     `)
   }
-  if (stockage === 'idb') void nettoyerAnciennesBases(nom)
+  if (stockage === 'idb') {
+    void nettoyerAnciennesBases(nom)
+    // Copie sûre sur le disque de l'appareil, attendue jusqu'au bout. La copie
+    // automatique de PGlite est différée (relaxedDurability) : une saisie suivie
+    // d'un rechargement de page pouvait être perdue. Appelée après chaque écriture.
+    ;(db as any).copierSurDisque = () => db.runExclusive(() => (db as any).fs.syncToFs(false))
+  }
   return db
 }
 

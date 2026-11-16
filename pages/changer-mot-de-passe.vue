@@ -75,13 +75,14 @@
       </div>
 
       <p class="text-center text-xs text-gray-400 dark:text-gray-500 mt-6">
-        Big Five Force © {{ new Date().getFullYear() }}
+        {{ marque.nom }} © {{ new Date().getFullYear() }}
       </p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+const { marque } = useMarque()
 import { homePathForRole } from '~/utils/roles'
 import { erreurMotDePasse, reglesMotDePasse } from '~/utils/motDePasse'
 
