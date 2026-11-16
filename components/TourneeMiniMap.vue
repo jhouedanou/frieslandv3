@@ -52,12 +52,12 @@ async function loadTrail() {
 
   const latlngs = points.map((p: any) => [p.lat, p.lng])
   if (latlngs.length > 1) {
-    trailLayer.addLayer(L.polyline(latlngs, { color: '#1D4ED8', weight: 4, opacity: 0.85 }))
+    trailLayer.addLayer(L.polyline(latlngs, { color: '#603080', weight: 4, opacity: 0.85 }))
   }
 
   const last = points[points.length - 1]
   trailLayer.addLayer(L.circleMarker([last.lat, last.lng], {
-    radius: 6, fillColor: '#1D4ED8', color: '#fff', weight: 2, fillOpacity: 1,
+    radius: 6, fillColor: '#603080', color: '#fff', weight: 2, fillOpacity: 1,
   }))
 
   const bounds = trailLayer.getBounds?.()

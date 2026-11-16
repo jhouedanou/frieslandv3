@@ -1,5 +1,5 @@
 -- ============================================================================
--- Field Track — prélude à jouer juste APRÈS supabase/_archive/001_initial_schema.sql
+-- Big Five Force — prélude à jouer juste APRÈS supabase/_archive/001_initial_schema.sql
 -- sur une base neuve. Il pose ce que la base d'origine a reçu hors migrations
 -- (colonnes ajoutées à la main, tables héritées), sans quoi les migrations
 -- de supabase/nouveau échouent. Rejouable sans effet.

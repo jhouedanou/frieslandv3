@@ -1,19 +1,21 @@
-# Field Track — version marque blanche
+# Big Five Force — version marque blanche
 
 Cette branche (`claude/field-track-white-label-q2fvlf`) porte la même application,
-avec les mêmes fonctions, sous le nom **Field Track** et avec des données fictives.
+avec les mêmes fonctions, sous le nom **Big Five Force** et avec des données fictives.
+Les fichiers et scripts internes gardent leur nom de travail `field-track`.
 La branche `main` reste la version du client d'origine.
 
 ## Ce qui change par rapport à `main`
 
-| Sujet | Avant | Field Track |
+| Sujet | Avant | Big Five Force |
 |---|---|---|
-| Nom affiché (web, PWA, Android) | nom du client | Field Track |
-| Identifiant Android | `com.bdco.bonnetrouge` | `com.fieldtrack.app` |
-| Couleur principale | rouge `#C8102E` | bleu `#1D4ED8` |
-| Logo, icônes, écran de démarrage | logo du client | repère bleu (`resources/logo.svg`) |
+| Nom affiché (web, PWA, Android) | nom du client | Big Five Force |
+| Identifiant Android | `com.bdco.bonnetrouge` | `com.bigfive.force` |
+| Couleur principale | rouge `#C8102E` | violet `#603080` et indigo `#403080`, ceux du logo Big Five |
+| Logo dans l'application | logo du client | logo Big Five (`resources/logo-bigfive.jpg`) |
+| Icônes et écran de démarrage | logo du client | repère blanc sur fond violet (`resources/logo.svg`) |
 | Libellés produits | `BR`, `BRB`, `Pearl`, `Yogoo` | `FT`, `FTB`, `Opale`, `Yaourt` |
-| Mot de passe provisoire | `BR-xxxx-xxxx` | `FT-xxxx-xxxx` |
+| Mot de passe provisoire | `BR-xxxx-xxxx` | `BF-xxxx-xxxx` |
 | « Perfect Store » | concept du client | « conformité » (PDV conformes, niveau de conformité) |
 | « Field coaching » | concept du client | « accompagnement terrain » |
 | Catégories de produits | `EVAP`, `IMP`, `SCM`, `UHT`… | `Gamme A` à `Gamme F` |
@@ -25,11 +27,11 @@ Seul l'affichage change. Les clés techniques (`br_160g`, `evap`, `maison_br`,
 restent : les calculs et les données enregistrées en dépendent. Les niveaux
 s'affichent `Flagship`, `VIP`, `Core`, `Basic`.
 
-Pour changer encore de marque : remplacer `resources/logo.svg` et
-`resources/glyphe.svg`, puis `node scripts/generate-brand-assets.mjs`.
+Pour changer encore de marque : remplacer `resources/logo-bigfive.jpg`,
+`resources/logo.svg` et `resources/glyphe.svg`, puis `node scripts/generate-brand-assets.mjs`.
 La couleur se règle dans `tailwind.config.ts` et `assets/css/main.css`.
 
-## Deux façons de lancer Field Track
+## Deux façons de lancer Big Five Force
 
 | | Mode démo | Mode Supabase |
 |---|---|---|
@@ -51,7 +53,7 @@ pnpm android:apk:demo      # APK de démonstration
 ```
 
 - **Connexion** : l'écran de connexion liste les 9 comptes fictifs, un clic suffit.
-  Mot de passe commun : `fieldtrack`.
+  Mot de passe commun : `bigfive`.
 - **Données** : les 15 PDV et 15 visites sont chargés au premier lancement, puis
   les saisies restent sur l'appareil. Les dates des visites sont recalées sur le
   jour du premier lancement.
@@ -90,28 +92,28 @@ rejouer `scripts/field-track-setup.sh` sur une base de travail, puis
 
 - **15 points de vente** fictifs, répartis sur 5 territoires génériques (Est, Centre, Sud, Lagune, Ouest). Sur la carte, ils sont placés à Abidjan.
 - **15 visites**, une par point de vente : 3 Flagship, 3 VIP, 4 Core, 5 non conformes.
-- **9 comptes**, tous en `@fieldtrack.demo` :
+- **9 comptes**, tous en `@bigfiveforce.demo` :
 
 | Rôle | E-mail | Territoires | Encadre |
 |---|---|---|---|
-| admin | `admin@fieldtrack.demo` | tous | — |
-| commercial | `commercial1@fieldtrack.demo` | Territoires Est et Centre | merchandisers 1 et 2 |
-| commercial | `commercial2@fieldtrack.demo` | Territoires Sud et Lagune | merchandisers 3 et 4 |
-| commercial | `commercial3@fieldtrack.demo` | Territoire Ouest | merchandiser 5 |
-| merchandiser | `merchandiser1@fieldtrack.demo` | Territoire Est | |
-| merchandiser | `merchandiser2@fieldtrack.demo` | Territoire Centre | |
-| merchandiser | `merchandiser3@fieldtrack.demo` | Territoire Sud | |
-| merchandiser | `merchandiser4@fieldtrack.demo` | Territoire Lagune | |
-| merchandiser | `merchandiser5@fieldtrack.demo` | Territoire Ouest | |
+| admin | `admin@bigfiveforce.demo` | tous | — |
+| commercial | `commercial1@bigfiveforce.demo` | Territoires Est et Centre | merchandisers 1 et 2 |
+| commercial | `commercial2@bigfiveforce.demo` | Territoires Sud et Lagune | merchandisers 3 et 4 |
+| commercial | `commercial3@bigfiveforce.demo` | Territoire Ouest | merchandiser 5 |
+| merchandiser | `merchandiser1@bigfiveforce.demo` | Territoire Est | |
+| merchandiser | `merchandiser2@bigfiveforce.demo` | Territoire Centre | |
+| merchandiser | `merchandiser3@bigfiveforce.demo` | Territoire Sud | |
+| merchandiser | `merchandiser4@bigfiveforce.demo` | Territoire Lagune | |
+| merchandiser | `merchandiser5@bigfiveforce.demo` | Territoire Ouest | |
 
 Le mot de passe commun est celui que vous mettez dans `FIELD_TRACK_DEMO_PASSWORD`.
 Distributeurs et marques concurrentes sont rebaptisés (`Distributeur 07`, `Concurrent A`).
 
 ## Mode Supabase : installer la base (projet neuf)
 
-Field Track a besoin de **sa propre base**. Ne jamais utiliser celle d'un client :
+Big Five Force a besoin de **sa propre base**. Ne jamais utiliser celle d'un client :
 l'étape `demo` vide les points de vente et les visites. Le script s'arrête s'il
-trouve un compte hors `@fieldtrack.demo`.
+trouve un compte hors `@bigfiveforce.demo`.
 
 1. Créer (ou réactiver) un projet Supabase dédié.
 2. Remplir `.env` avec les valeurs de **ce** projet :
@@ -149,12 +151,12 @@ sans effet, la fonction est recréée juste après.
 - **Non vérifié** en mode démo : l'APK sur un vrai téléphone, et la saisie
   complète d'une visite à la main (l'enregistrement est couvert par les tests).
 - **Non vérifié** : l'installation sur un vrai projet Supabase et la création des
-  comptes par `scripts/field-track-create-accounts.mjs` (aucune base Field Track
+  comptes par `scripts/field-track-create-accounts.mjs` (aucune base Big Five Force
   n'était accessible).
 
 ## Android
 
 - L'identifiant a changé : c'est une **nouvelle application** pour Google Play.
 - Notifications : il faut un `android/app/google-services.json` Firebase pour
-  `com.fieldtrack.app` (l'ancien fichier ne convient plus).
-- Signature : prévoir un keystore propre à Field Track (`android/keystore.properties`).
+  `com.bigfive.force` (l'ancien fichier ne convient plus).
+- Signature : prévoir un keystore propre à Big Five Force (`android/keystore.properties`).

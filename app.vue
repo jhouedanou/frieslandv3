@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 useHead({
-  title: 'Field Track',
+  title: 'Big Five Force',
   htmlAttrs: { lang: 'fr' },
 })
 </script>

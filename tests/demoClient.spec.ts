@@ -20,7 +20,7 @@ const connecter = async (email: string) => {
 
 describe('mode démo — connexion', () => {
   it('refuse un mauvais mot de passe', async () => {
-    const { error } = await client.auth.signInWithPassword({ email: 'admin@fieldtrack.demo', password: 'faux' })
+    const { error } = await client.auth.signInWithPassword({ email: 'admin@bigfiveforce.demo', password: 'faux' })
     expect(error?.message).toBe('Invalid login credentials')
   })
 
@@ -33,7 +33,7 @@ describe('mode démo — connexion', () => {
 
 describe('mode démo — lectures', () => {
   it("l'admin voit les 15 PDV et les 15 visites", async () => {
-    await connecter('admin@fieldtrack.demo')
+    await connecter('admin@bigfiveforce.demo')
     const pdv = await client.from('pdv').select('pdv_id', { count: 'exact', head: true }).eq('is_active', true)
     expect(pdv.error).toBeNull()
     expect(pdv.count).toBe(15)
@@ -49,7 +49,7 @@ describe('mode démo — lectures', () => {
   })
 
   it('un merchandiser ne voit que son territoire', async () => {
-    await connecter('merchandiser1@fieldtrack.demo')
+    await connecter('merchandiser1@bigfiveforce.demo')
     const { data, error } = await client.from('pdv').select('pdv_id, zone')
     expect(error).toBeNull()
     expect(data.length).toBe(3)
@@ -57,7 +57,7 @@ describe('mode démo — lectures', () => {
   })
 
   it('gère or(), ilike, in, not, single et maybeSingle', async () => {
-    await connecter('admin@fieldtrack.demo')
+    await connecter('admin@bigfiveforce.demo')
     const ou = await client.from('pdv').select('pdv_id').or('nom_pdv.ilike.%baobab%,pdv_id.ilike.%FT-002%')
     expect(ou.data.map((p: any) => p.pdv_id).sort()).toEqual(['FT-001', 'FT-002'])
     const dans = await client.from('pdv').select('pdv_id').in('zone', ['Territoire Sud', 'Territoire Centre']).not('geolocation_lat', 'is', null)
@@ -72,7 +72,7 @@ describe('mode démo — lectures', () => {
   })
 
   it('lit les vues du tableau de bord', async () => {
-    await connecter('admin@fieldtrack.demo')
+    await connecter('admin@bigfiveforce.demo')
     for (const vue of ['v_stats_visites', 'v_visites_par_jour', 'v_perfect_store_global', 'v_perfect_store_liste', 'v_couverture_globale', 'v_distribution_pdv', 'v_performance_commerciaux']) {
       const r = await client.from(vue).select('*')
       expect(r.error, vue).toBeNull()
@@ -82,7 +82,7 @@ describe('mode démo — lectures', () => {
   })
 
   it('appelle une fonction de base (rpc)', async () => {
-    await connecter('admin@fieldtrack.demo')
+    await connecter('admin@bigfiveforce.demo')
     const { error } = await client.rpc('compter_visites_a_recalculer')
     expect(error).toBeNull()
   })
@@ -90,7 +90,7 @@ describe('mode démo — lectures', () => {
 
 describe('mode démo — écritures', () => {
   it('un merchandiser saisit une visite, le score est calculé', async () => {
-    await connecter('merchandiser1@fieldtrack.demo')
+    await connecter('merchandiser1@bigfiveforce.demo')
     const moi = client.sessionCourante()!.user
     const { data, error } = await client.from('visites').insert({
       visite_id: 'TEST-VIS-1', pdv_id: 'FT-001', user_id: moi.id, date_visite: new Date().toISOString(),
@@ -106,7 +106,7 @@ describe('mode démo — écritures', () => {
   })
 
   it('met à jour, puis supprime', async () => {
-    await connecter('admin@fieldtrack.demo')
+    await connecter('admin@bigfiveforce.demo')
     const maj = await client.from('pdv').update({ adressage: 'Nouvelle adresse' }).eq('pdv_id', 'FT-002').select('pdv_id, adressage')
     expect(maj.error).toBeNull()
     expect(maj.data[0].adressage).toBe('Nouvelle adresse')
@@ -117,7 +117,7 @@ describe('mode démo — écritures', () => {
   })
 
   it('upsert sur une clé de conflit', async () => {
-    await connecter('admin@fieldtrack.demo')
+    await connecter('admin@bigfiveforce.demo')
     const r = await client.service.from('territoire_alias').upsert({ alias: 'COCO TEST', territoire_code: 'T-EST' }, { onConflict: 'alias' })
     expect(r.error).toBeNull()
     const r2 = await client.service.from('territoire_alias').upsert({ alias: 'COCO TEST', territoire_code: 'T-CEN' }, { onConflict: 'alias' }).select()
@@ -127,14 +127,14 @@ describe('mode démo — écritures', () => {
 
 describe('mode démo — comptes', () => {
   it("crée un compte, s'y connecte, le supprime", async () => {
-    const cree = await client.service.auth.admin.createUser({ email: 'nouveau@fieldtrack.demo', password: 'motdepasse1', user_metadata: { nom: 'Nouveau', role: 'merchandiser' } })
+    const cree = await client.service.auth.admin.createUser({ email: 'nouveau@bigfiveforce.demo', password: 'motdepasse1', user_metadata: { nom: 'Nouveau', role: 'merchandiser' } })
     expect(cree.error).toBeNull()
     const profil = await client.service.from('profiles').select('role').eq('id', cree.data.user!.id).single()
     expect(profil.data.role).toBe('merchandiser')
-    const ok = await client.auth.signInWithPassword({ email: 'nouveau@fieldtrack.demo', password: 'motdepasse1' })
+    const ok = await client.auth.signInWithPassword({ email: 'nouveau@bigfiveforce.demo', password: 'motdepasse1' })
     expect(ok.error).toBeNull()
     await client.service.auth.admin.deleteUser(cree.data.user!.id)
-    const parti = await client.service.from('profiles').select('id').eq('email', 'nouveau@fieldtrack.demo')
+    const parti = await client.service.from('profiles').select('id').eq('email', 'nouveau@bigfiveforce.demo')
     expect(parti.data).toHaveLength(0)
   })
 })
@@ -142,39 +142,39 @@ describe('mode démo — comptes', () => {
 describe('mode démo — routes d\'administration rejouées dans le navigateur', () => {
   it('refuse un compte non admin', async () => {
     const { appelerApiDemo } = await import('../demo/api')
-    await connecter('merchandiser1@fieldtrack.demo')
+    await connecter('merchandiser1@bigfiveforce.demo')
     await expect(appelerApiDemo(client, '/api/admin/users', { method: 'POST', body: {} })).rejects.toMatchObject({ statusCode: 403 })
   })
 
   it('crée un compte, réinitialise son mot de passe, compose une équipe, supprime', async () => {
     const { appelerApiDemo } = await import('../demo/api')
-    await connecter('admin@fieldtrack.demo')
+    await connecter('admin@bigfiveforce.demo')
     const profil = await appelerApiDemo(client, '/api/admin/users', {
       method: 'POST',
-      body: { email: 'Recrue@FieldTrack.demo', password: 'motdepasse1', nom: 'Recrue Essai', role: 'merchandiser', territoires_assignes: ['Territoire Sud'] },
+      body: { email: 'Recrue@BigFiveForce.demo', password: 'motdepasse1', nom: 'Recrue Essai', role: 'merchandiser', territoires_assignes: ['Territoire Sud'] },
     })
-    expect(profil.email).toBe('recrue@fieldtrack.demo')
+    expect(profil.email).toBe('recrue@bigfiveforce.demo')
     expect(profil.zone_assignee).toBe('Territoire Sud')
     expect(profil.territoires_assignes).toEqual(['Territoire Sud'])
 
     await expect(appelerApiDemo(client, '/api/admin/users', {
-      method: 'POST', body: { email: 'recrue@fieldtrack.demo', password: 'motdepasse1', nom: 'Doublon' },
+      method: 'POST', body: { email: 'recrue@bigfiveforce.demo', password: 'motdepasse1', nom: 'Doublon' },
     })).rejects.toMatchObject({ statusCode: 409 })
 
     const { password } = await appelerApiDemo(client, `/api/admin/users/${profil.id}/password`, { method: 'POST', body: {} })
-    expect(password).toMatch(/^FT-.{4}-.{4}$/)
+    expect(password).toMatch(/^BF-.{4}-.{4}$/)
 
-    const chef = (await client.service.from('profiles').select('id').eq('email', 'commercial3@fieldtrack.demo').single()).data
+    const chef = (await client.service.from('profiles').select('id').eq('email', 'commercial3@bigfiveforce.demo').single()).data
     const equipe = await appelerApiDemo(client, '/api/admin/equipes', { method: 'POST', body: { commercial_id: chef.id, merchandiser_ids: [profil.id] } })
     expect(equipe.assignes).toBe(1)
     // merchandiser5 était dans cette équipe : il en sort, la liste remplace l'ancienne.
-    const m5 = (await client.service.from('profiles').select('commercial_id').eq('email', 'merchandiser5@fieldtrack.demo').single()).data
+    const m5 = (await client.service.from('profiles').select('commercial_id').eq('email', 'merchandiser5@bigfiveforce.demo').single()).data
     expect(m5.commercial_id).toBeNull()
 
-    await client.auth.signInWithPassword({ email: 'recrue@fieldtrack.demo', password })
+    await client.auth.signInWithPassword({ email: 'recrue@bigfiveforce.demo', password })
     expect(client.sessionCourante()?.user.user_metadata.must_change_password).toBe(true)
 
-    await connecter('admin@fieldtrack.demo')
+    await connecter('admin@bigfiveforce.demo')
     await appelerApiDemo(client, `/api/admin/users/${profil.id}`, { method: 'DELETE' })
     const reste = await client.service.from('profiles').select('id').eq('id', profil.id)
     expect(reste.data).toHaveLength(0)

@@ -221,7 +221,7 @@ const pageTitle = computed(() => {
   if (route.path.startsWith('/mobile/pdv/')) return 'Détail PDV'
   if (route.path.startsWith('/mobile/visites/')) return 'Détail Visite'
   if (route.path.startsWith('/mobile/coaching/')) return 'Accompagnement terrain'
-  return 'Field Track'
+  return 'Big Five Force'
 })
 
 // ---------------------------------------------------------------------------

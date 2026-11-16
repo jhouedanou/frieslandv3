@@ -1,10 +1,10 @@
 #!/bin/bash
 # ============================================================================
-# Field Track — fabrique demo/seed.sql, la base embarquée du mode démo.
+# Big Five Force — fabrique demo/seed.sql, la base embarquée du mode démo.
 #
 #   ./scripts/field-track-build-demo-seed.sh "<DATABASE_URL>"
 #
-# DATABASE_URL : une base Field Track déjà installée par
+# DATABASE_URL : une base Big Five Force déjà installée par
 # scripts/field-track-setup.sh (schéma + comptes + démo). Le fichier produit
 # contient le schéma public, les statistiques et les données de démonstration.
 # Il ne contient aucun mot de passe : le mode démo a les siens (demo/comptes.ts).
@@ -16,13 +16,13 @@ PG_DUMP="${PG_DUMP:-pg_dump}"
 PSQL="${PSQL:-psql}"
 SORTIE=demo/seed.sql
 
-autres=$($PSQL "$DB_URL" -qAt -c "select count(*) from public.profiles where email not like '%@fieldtrack.demo'")
-[ "$autres" = "0" ] || { echo "❌ Arrêt : $autres compte(s) hors @fieldtrack.demo, ce n'est pas la base de démonstration."; exit 1; }
+autres=$($PSQL "$DB_URL" -qAt -c "select count(*) from public.profiles where email not like '%@bigfiveforce.demo'")
+[ "$autres" = "0" ] || { echo "❌ Arrêt : $autres compte(s) hors @bigfiveforce.demo, ce n'est pas la base de démonstration."; exit 1; }
 
 nettoyer() { grep -v -E '^(\\|SET |SELECT pg_catalog\.set_config|CREATE SCHEMA public;|--|$)' ; }
 
 {
-  echo "-- Field Track — base embarquée du mode démo. Fichier généré par"
+  echo "-- Big Five Force — base embarquée du mode démo. Fichier généré par"
   echo "-- scripts/field-track-build-demo-seed.sh : ne pas le modifier à la main."
   echo "-- Date de référence des visites : $(date -u +%F)"
   echo "create extension if not exists pgcrypto with schema public;"

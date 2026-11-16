@@ -220,7 +220,7 @@ function stepStateLabel(key: string) {
 
 function getStepClass(idx: number) {
   if (idx === currentStep.value) {
-    return 'border-fc-red text-fc-red bg-blue-50/50'
+    return 'border-fc-red text-fc-red bg-purple-50/50'
   }
   if (isStepCompleted(idx)) {
     return 'border-transparent text-fc-red-300'

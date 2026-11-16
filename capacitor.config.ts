@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli'
 
 const config: CapacitorConfig = {
-  appId: 'com.fieldtrack.app',
-  appName: 'Field Track',
+  appId: 'com.bigfive.force',
+  appName: 'Big Five Force',
   webDir: '.output/public',
   android: {
     allowMixedContent: false,

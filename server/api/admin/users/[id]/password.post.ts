@@ -18,7 +18,7 @@ const ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789'
 
 function motDePasseProvisoire(): string {
   const bloc = (n: number) => Array.from({ length: n }, () => ALPHABET[randomInt(ALPHABET.length)]).join('')
-  return `FT-${bloc(4)}-${bloc(4)}`
+  return `BF-${bloc(4)}-${bloc(4)}`
 }
 
 export default defineEventHandler(async (event) => {

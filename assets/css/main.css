@@ -13,16 +13,16 @@
   --admin-line: #dfe5dc;
   --admin-panel: #ffffff;
   --admin-panel-soft: #f8faf6;
-  --admin-accent: #1D4ED8;
-  --admin-accent-dark: #1E40AF;
+  --admin-accent: #603080;
+  --admin-accent-dark: #4D2668;
   --admin-green: #2f7d52;
   --admin-amber: #b36b16;
-  --fc-blue: #1D4ED8;
-  --fc-blue-dark: #1E40AF;
-  --fc-blue-light: #EFF6FF;
-  --fc-red: #1D4ED8;
-  --fc-red-dark: #1E40AF;
-  --fc-red-light: #EFF6FF;
+  --fc-blue: #603080;
+  --fc-blue-dark: #4D2668;
+  --fc-blue-light: #F4EEF8;
+  --fc-red: #603080;
+  --fc-red-dark: #4D2668;
+  --fc-red-light: #F4EEF8;
   --fc-green: #10B981;
   --fc-green-light: #ECFDF5;
   --fc-orange: #F59E0B;
@@ -43,7 +43,7 @@
 
   body {
     background:
-      radial-gradient(circle at top left, rgb(29 78 216 / 8%), transparent 34rem),
+      radial-gradient(circle at top left, rgb(96 48 128 / 8%), transparent 34rem),
       linear-gradient(180deg, #f8faf6 0%, var(--admin-bg) 100%);
     color: var(--admin-ink);
     touch-action: manipulation;
@@ -65,7 +65,7 @@
   }
 
   :focus-visible {
-    outline: 3px solid rgb(29 78 216 / 35%);
+    outline: 3px solid rgb(96 48 128 / 35%);
     outline-offset: 2px;
   }
 
@@ -181,7 +181,7 @@
   }
 
   .admin-list-toolbar__chip {
-    @apply inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 transition hover:bg-blue-50 hover:text-fc-red dark:bg-slate-700/60 dark:text-slate-300 dark:hover:bg-blue-950/40 dark:hover:text-red-300;
+    @apply inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 transition hover:bg-purple-50 hover:text-fc-red dark:bg-slate-700/60 dark:text-slate-300 dark:hover:bg-purple-950/40 dark:hover:text-red-300;
   }
 
   .admin-list-toolbar__footer {

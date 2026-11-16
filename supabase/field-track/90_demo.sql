@@ -1,9 +1,9 @@
 -- ============================================================================
--- Field Track — données de démonstration (marque blanche)
+-- Big Five Force — données de démonstration (marque blanche)
 --   15 points de vente fictifs, 15 visites (une par PDV), équipes fictives,
 --   découpage territorial générique (6 territoires).
 --
--- À jouer sur une base Field Track NEUVE uniquement :
+-- À jouer sur une base Big Five Force NEUVE uniquement :
 --   1. schéma (supabase/_archive + 00_prelude.sql + supabase/nouveau) ;
 --   2. comptes (scripts/field-track-create-accounts.mjs) ;
 --   3. ce fichier.
@@ -17,13 +17,13 @@ begin;
 do $$
 declare n int;
 begin
-  select count(*) into n from public.profiles where email like '%@fieldtrack.demo';
+  select count(*) into n from public.profiles where email like '%@bigfiveforce.demo';
   if n < 9 then
-    raise exception 'Comptes Field Track absents (% trouvés, 9 attendus) : lancer d''abord scripts/field-track-create-accounts.mjs', n;
+    raise exception 'Comptes Big Five Force absents (% trouvés, 9 attendus) : lancer d''abord scripts/field-track-create-accounts.mjs', n;
   end if;
-  select count(*) into n from public.profiles where email not like '%@fieldtrack.demo';
+  select count(*) into n from public.profiles where email not like '%@bigfiveforce.demo';
   if n > 0 then
-    raise exception 'Cette base contient % compte(s) hors @fieldtrack.demo : ce n''est pas une base de démonstration, arrêt.', n;
+    raise exception 'Cette base contient % compte(s) hors @bigfiveforce.demo : ce n''est pas une base de démonstration, arrêt.', n;
   end if;
 end $$;
 
@@ -142,14 +142,14 @@ update public.profiles p set
   zone_assignee = v.zone, territoires_assignes = to_jsonb(v.territoires), quartiers_assignes = '[]'::jsonb, region = 'Région Sud',
   commercial_id = (select c.id from public.profiles c where c.email = v.chef)
 from (values
-  ('commercial1@fieldtrack.demo',   'Territoire Est',    array['Territoire Est','Territoire Centre'],      null),
-  ('commercial2@fieldtrack.demo',   'Territoire Sud',     array['Territoire Sud','Territoire Lagune'],   null),
-  ('commercial3@fieldtrack.demo',   'Territoire Ouest',  array['Territoire Ouest'],              null),
-  ('merchandiser1@fieldtrack.demo', 'Territoire Est',    array['Territoire Est'],    'commercial1@fieldtrack.demo'),
-  ('merchandiser2@fieldtrack.demo', 'Territoire Centre',     array['Territoire Centre'],     'commercial1@fieldtrack.demo'),
-  ('merchandiser3@fieldtrack.demo', 'Territoire Sud',     array['Territoire Sud'],     'commercial2@fieldtrack.demo'),
-  ('merchandiser4@fieldtrack.demo', 'Territoire Lagune', array['Territoire Lagune'], 'commercial2@fieldtrack.demo'),
-  ('merchandiser5@fieldtrack.demo', 'Territoire Ouest',  array['Territoire Ouest'],  'commercial3@fieldtrack.demo')
+  ('commercial1@bigfiveforce.demo',   'Territoire Est',    array['Territoire Est','Territoire Centre'],      null),
+  ('commercial2@bigfiveforce.demo',   'Territoire Sud',     array['Territoire Sud','Territoire Lagune'],   null),
+  ('commercial3@bigfiveforce.demo',   'Territoire Ouest',  array['Territoire Ouest'],              null),
+  ('merchandiser1@bigfiveforce.demo', 'Territoire Est',    array['Territoire Est'],    'commercial1@bigfiveforce.demo'),
+  ('merchandiser2@bigfiveforce.demo', 'Territoire Centre',     array['Territoire Centre'],     'commercial1@bigfiveforce.demo'),
+  ('merchandiser3@bigfiveforce.demo', 'Territoire Sud',     array['Territoire Sud'],     'commercial2@bigfiveforce.demo'),
+  ('merchandiser4@bigfiveforce.demo', 'Territoire Lagune', array['Territoire Lagune'], 'commercial2@bigfiveforce.demo'),
+  ('merchandiser5@bigfiveforce.demo', 'Territoire Ouest',  array['Territoire Ouest'],  'commercial3@bigfiveforce.demo')
 ) as v(email, zone, territoires, chef)
 where p.email = v.email;
 
@@ -164,35 +164,35 @@ insert into public.pdv(pdv_id, nom_pdv, canal, categorie_pdv, sous_categorie_pdv
                        gps_source, ajoute_par, is_active)
 values
   ('FT-001','Boutique Le Baobab','General trade','Point de vente détail','Boutique A','Région Sud','Territoire Est','T-EST',
-   'Quartier Est 1',5.3697,-3.959,200,'Rue du Marché, face à la pharmacie','FLAGSHIP','admin','admin@fieldtrack.demo',true),
+   'Quartier Est 1',5.3697,-3.959,200,'Rue du Marché, face à la pharmacie','FLAGSHIP','admin','admin@bigfiveforce.demo',true),
   ('FT-002','Superette Les Flamboyants','General trade','Point de vente détail','Superettes A','Région Sud','Territoire Est','T-EST',
-   'Quartier Est 2',5.3581,-3.9712,200,'Avenue des Jardins, près du rond-point','FLAGSHIP','admin','admin@fieldtrack.demo',true),
+   'Quartier Est 2',5.3581,-3.9712,200,'Avenue des Jardins, près du rond-point','FLAGSHIP','admin','admin@bigfiveforce.demo',true),
   ('FT-003','Supermarché Horizon','Modern trade','Point de vente détail','Supermarket A','Région Sud','Territoire Est','T-EST',
-   'Quartier Est 3',5.3452,-4.0018,200,'Boulevard principal, galerie commerciale','FLAGSHIP','admin','admin@fieldtrack.demo',true),
+   'Quartier Est 3',5.3452,-4.0018,200,'Boulevard principal, galerie commerciale','FLAGSHIP','admin','admin@bigfiveforce.demo',true),
   ('FT-004','Boutique Chez Tantie Rose','General trade','Point de vente détail','Boutique B','Région Sud','Territoire Sud','T-SUD',
-   'Quartier Sud 1',5.3011,-3.9921,200,'Rue du Canal, à côté de la boulangerie','VIP','admin','admin@fieldtrack.demo',true),
+   'Quartier Sud 1',5.3011,-3.9921,200,'Rue du Canal, à côté de la boulangerie','VIP','admin','admin@bigfiveforce.demo',true),
   ('FT-005','Boutique La Confiance','General trade','Point de vente détail','Boutique B','Région Sud','Territoire Sud','T-SUD',
-   'Quartier Sud 2',5.3062,-3.9853,200,'Place du marché, allée centrale','VIP','admin','admin@fieldtrack.demo',true),
+   'Quartier Sud 2',5.3062,-3.9853,200,'Place du marché, allée centrale','VIP','admin','admin@bigfiveforce.demo',true),
   ('FT-006','Boutique Le Bon Coin','General trade','Point de vente détail','Boutique B','Région Sud','Territoire Sud','T-SUD',
-   'Quartier Sud 3',5.2987,-3.9802,200,'Résidence des Fleurs, entrée principale','VIP','admin','admin@fieldtrack.demo',true),
+   'Quartier Sud 3',5.2987,-3.9802,200,'Résidence des Fleurs, entrée principale','VIP','admin','admin@bigfiveforce.demo',true),
   ('FT-007','Boutique Le Palmier','General trade','Point de vente détail','Boutique C','Région Sud','Territoire Centre','T-CEN',
-   'Quartier Centre 1',5.3231,-4.0203,200,'Avenue du Commerce, immeuble Les Arcades','CORE','admin','admin@fieldtrack.demo',true),
+   'Quartier Centre 1',5.3231,-4.0203,200,'Avenue du Commerce, immeuble Les Arcades','CORE','admin','admin@bigfiveforce.demo',true),
   ('FT-008','Boutique Étoile du Matin','General trade','Point de vente détail','Boutique C','Région Sud','Territoire Centre','T-CEN',
-   'Quartier Centre 2',5.3274,-4.0171,200,'Cité administrative, bloc B','CORE','admin','admin@fieldtrack.demo',true),
+   'Quartier Centre 2',5.3274,-4.0171,200,'Cité administrative, bloc B','CORE','admin','admin@bigfiveforce.demo',true),
   ('FT-009','Boutique Aux Trois Frères','General trade','Point de vente détail','Boutique C','Région Sud','Territoire Centre','T-CEN',
-   'Quartier Centre 3',5.3302,-4.0236,200,'Marché central, rangée 2','CORE','admin','admin@fieldtrack.demo',true),
+   'Quartier Centre 3',5.3302,-4.0236,200,'Marché central, rangée 2','CORE','admin','admin@bigfiveforce.demo',true),
   ('FT-010','Boutique La Lagune','General trade','Point de vente détail','Boutique C','Région Sud','Territoire Lagune','T-LAG',
-   'Quartier Lagune 1',5.2952,-4.0021,200,'Rue des Pêcheurs, près du quai','CORE','admin','admin@fieldtrack.demo',true),
+   'Quartier Lagune 1',5.2952,-4.0021,200,'Rue des Pêcheurs, près du quai','CORE','admin','admin@bigfiveforce.demo',true),
   ('FT-011','Kiosque du Carrefour','General trade','Point de vente détail','Kiosk A','Région Sud','Territoire Lagune','T-LAG',
-   'Quartier Lagune 2',5.3003,-4.0082,200,'Carrefour de la gare','BASIC','admin','admin@fieldtrack.demo',true),
+   'Quartier Lagune 2',5.3003,-4.0082,200,'Carrefour de la gare','BASIC','admin','admin@bigfiveforce.demo',true),
   ('FT-012','Kiosque Le Rendez-vous','General trade','Point de vente détail','Kiosk A','Région Sud','Territoire Lagune','T-LAG',
-   'Quartier Lagune 3',5.3051,-4.0043,200,'Rue de l''École, face à l''école primaire','BASIC','admin','admin@fieldtrack.demo',true),
+   'Quartier Lagune 3',5.3051,-4.0043,200,'Rue de l''École, face à l''école primaire','BASIC','admin','admin@bigfiveforce.demo',true),
   ('FT-013','Boutique Petit Marché','General trade','Point de vente détail','Boutique C','Région Sud','Territoire Ouest','T-OUE',
-   'Quartier Ouest 1',5.3412,-4.0703,200,'Rue du Terminus','CORE','admin','admin@fieldtrack.demo',true),
+   'Quartier Ouest 1',5.3412,-4.0703,200,'Rue du Terminus','CORE','admin','admin@bigfiveforce.demo',true),
   ('FT-014','Supermarché Bel Air','Modern trade','Point de vente détail','Supermarket C','Région Sud','Territoire Ouest','T-OUE',
-   'Quartier Ouest 2',5.3361,-4.0781,200,'Boulevard de l''Ouest','CORE','admin','admin@fieldtrack.demo',true),
+   'Quartier Ouest 2',5.3361,-4.0781,200,'Boulevard de l''Ouest','CORE','admin','admin@bigfiveforce.demo',true),
   ('FT-015','Boutique du Rond-Point','General trade','Point de vente détail','Boutique B','Région Sud','Territoire Ouest','T-OUE',
-   'Quartier Ouest 3',5.3304,-4.0852,200,'Derrière la station-service','VIP','admin','admin@fieldtrack.demo',true);
+   'Quartier Ouest 3',5.3304,-4.0852,200,'Derrière la station-service','VIP','admin','admin@bigfiveforce.demo',true);
 
 -- Distributeur : celui du territoire (le premier, par nom).
 update public.pdv p set distributor_name = (
@@ -221,7 +221,7 @@ select 'FT-VIS-001','FT-001', u.id, date_trunc('day', now()) - interval '1 days'
   jsonb_build_object('produits', jsonb_build_object('evap',jsonb_build_object('quantites',jsonb_build_object('br_gold',999,'br_160g',999,'brb_160g',999,'br_400g',999,'brb_400g',999,'pearl_400g',999)),'imp',jsonb_build_object('quantites',jsonb_build_object('br_20g',999,'brd_15g',999,'br_375g',999,'br_900g',999,'br_2_5kg',999,'brd_350g',999,'br_400g',999)),'scm',jsonb_build_object('quantites',jsonb_build_object('br_1kg',999,'pearl_1kg',999))),
     'visibilite', jsonb_build_object('promotion_applicable',true,'standards',jsonb_build_object('affiche',true,'fleche',true,'guirlande',true,'sign_board',true,'panneau_privilege',true,'full_branding',true,'reglette',true,'maison_br',true,'hanger',true,'wobler',true,'presentoir',true,'tg',true,'plaque_br',true,'merchandising',true,'standard',true,'hotesses',true,'degustation',true))),
   'synced'
-from public.profiles u where u.email = 'merchandiser1@fieldtrack.demo';
+from public.profiles u where u.email = 'merchandiser1@bigfiveforce.demo';
 
 insert into public.visites(visite_id, pdv_id, user_id, date_visite, commercial, email, geolocation_lat, geolocation_lng,
                            geofence_validated, precision_gps, data, sync_status)
@@ -230,7 +230,7 @@ select 'FT-VIS-002','FT-002', u.id, date_trunc('day', now()) - interval '2 days'
   jsonb_build_object('produits', jsonb_build_object('evap',jsonb_build_object('quantites',jsonb_build_object('br_gold',999,'br_160g',999,'brb_160g',999,'br_400g',999,'brb_400g',999,'pearl_400g',999)),'imp',jsonb_build_object('quantites',jsonb_build_object('br_20g',999,'brd_15g',999,'br_375g',999,'br_900g',999,'br_2_5kg',999,'brd_350g',999,'br_400g',999)),'scm',jsonb_build_object('quantites',jsonb_build_object('br_1kg',999,'pearl_1kg',999))),
     'visibilite', jsonb_build_object('promotion_applicable',true,'standards',jsonb_build_object('affiche',true,'fleche',true,'sign_board',true,'panneau_privilege',true,'reglette',true,'espace_br',true,'wobler',true,'presentoir',true,'tg',true,'plaque_br',true,'merchandising',true,'standard',true,'hotesses',true,'degustation',true))),
   'synced'
-from public.profiles u where u.email = 'merchandiser1@fieldtrack.demo';
+from public.profiles u where u.email = 'merchandiser1@bigfiveforce.demo';
 
 insert into public.visites(visite_id, pdv_id, user_id, date_visite, commercial, email, geolocation_lat, geolocation_lng,
                            geofence_validated, precision_gps, data, sync_status)
@@ -239,7 +239,7 @@ select 'FT-VIS-003','FT-003', u.id, date_trunc('day', now()) - interval '3 days'
   jsonb_build_object('produits', jsonb_build_object('evap',jsonb_build_object('quantites',jsonb_build_object('br_gold',999,'br_160g',999,'brb_160g',999,'br_400g',999,'brb_400g',999,'pearl_400g',999),'facings',jsonb_build_object('br_gold',999,'br_160g',999,'brb_160g',999,'br_400g',999,'brb_400g',999,'pearl_400g',999)),'imp',jsonb_build_object('quantites',jsonb_build_object('br_20g',999,'brd_15g',999,'br_375g',999,'br_900g',999,'br_2_5kg',999,'brd_350g',999,'br_400g',999),'facings',jsonb_build_object('br_20g',999,'brd_15g',999,'br_375g',999,'br_900g',999,'br_2_5kg',999,'brd_350g',999,'br_400g',999)),'scm',jsonb_build_object('quantites',jsonb_build_object('br_1kg',999,'pearl_1kg',999),'facings',jsonb_build_object('br_1kg',999,'pearl_1kg',999))),
     'visibilite', jsonb_build_object('promotion_applicable',true,'standards',jsonb_build_object('niche',true,'wobler',true,'top_shelf',true,'bacs',true,'reglette',true,'tg',true,'plot',true,'hotesses',true))),
   'synced'
-from public.profiles u where u.email = 'merchandiser1@fieldtrack.demo';
+from public.profiles u where u.email = 'merchandiser1@bigfiveforce.demo';
 
 insert into public.visites(visite_id, pdv_id, user_id, date_visite, commercial, email, geolocation_lat, geolocation_lng,
                            geofence_validated, precision_gps, data, sync_status)
@@ -248,7 +248,7 @@ select 'FT-VIS-004','FT-004', u.id, date_trunc('day', now()) - interval '2 days'
   jsonb_build_object('produits', jsonb_build_object('evap',jsonb_build_object('quantites',jsonb_build_object('br_gold',999,'br_160g',999,'brb_160g',999,'br_400g',999,'brb_400g',999,'pearl_400g',999)),'imp',jsonb_build_object('quantites',jsonb_build_object('br_20g',999,'brd_15g',999,'br_375g',999,'br_900g',999,'br_2_5kg',999,'brd_350g',999,'br_400g',999)),'scm',jsonb_build_object('quantites',jsonb_build_object('br_1kg',999,'pearl_1kg',999))),
     'visibilite', jsonb_build_object('promotion_applicable',true,'standards',jsonb_build_object('affiche',true,'fleche',true,'guirlande',true,'sign_board',true,'panneau_privilege',true,'full_branding',false,'reglette',true,'maison_br',true,'hanger',true,'wobler',true,'presentoir',true,'tg',true,'plaque_br',false,'merchandising',true,'standard',true,'hotesses',true,'degustation',true))),
   'synced'
-from public.profiles u where u.email = 'merchandiser3@fieldtrack.demo';
+from public.profiles u where u.email = 'merchandiser3@bigfiveforce.demo';
 
 insert into public.visites(visite_id, pdv_id, user_id, date_visite, commercial, email, geolocation_lat, geolocation_lng,
                            geofence_validated, precision_gps, data, sync_status)
@@ -257,7 +257,7 @@ select 'FT-VIS-005','FT-005', u.id, date_trunc('day', now()) - interval '4 days'
   jsonb_build_object('produits', jsonb_build_object('evap',jsonb_build_object('quantites',jsonb_build_object('br_gold',999,'br_160g',999,'brb_160g',999,'br_400g',999,'brb_400g',999,'pearl_400g',999)),'imp',jsonb_build_object('quantites',jsonb_build_object('br_20g',999,'brd_15g',999,'br_375g',999,'br_900g',999,'br_2_5kg',999,'brd_350g',999,'br_400g',999)),'scm',jsonb_build_object('quantites',jsonb_build_object('br_1kg',999,'pearl_1kg',999))),
     'visibilite', jsonb_build_object('promotion_applicable',true,'standards',jsonb_build_object('affiche',true,'fleche',true,'guirlande',true,'sign_board',true,'panneau_privilege',true,'full_branding',false,'reglette',true,'maison_br',true,'hanger',true,'wobler',true,'presentoir',true,'tg',true,'plaque_br',false,'merchandising',true,'standard',true,'hotesses',true,'degustation',true))),
   'synced'
-from public.profiles u where u.email = 'merchandiser3@fieldtrack.demo';
+from public.profiles u where u.email = 'merchandiser3@bigfiveforce.demo';
 
 insert into public.visites(visite_id, pdv_id, user_id, date_visite, commercial, email, geolocation_lat, geolocation_lng,
                            geofence_validated, precision_gps, data, sync_status)
@@ -266,7 +266,7 @@ select 'FT-VIS-006','FT-006', u.id, date_trunc('day', now()) - interval '5 days'
   jsonb_build_object('produits', jsonb_build_object('evap',jsonb_build_object('quantites',jsonb_build_object('br_gold',999,'br_160g',999,'brb_160g',999,'br_400g',999,'brb_400g',999,'pearl_400g',999)),'imp',jsonb_build_object('quantites',jsonb_build_object('br_20g',999,'brd_15g',999,'br_375g',999,'br_900g',999,'br_2_5kg',999,'brd_350g',999,'br_400g',999)),'scm',jsonb_build_object('quantites',jsonb_build_object('br_1kg',999,'pearl_1kg',999))),
     'visibilite', jsonb_build_object('promotion_applicable',true,'standards',jsonb_build_object('affiche',true,'fleche',true,'guirlande',true,'sign_board',true,'panneau_privilege',true,'full_branding',false,'reglette',true,'maison_br',true,'hanger',true,'wobler',true,'presentoir',true,'tg',true,'plaque_br',false,'merchandising',true,'standard',true,'hotesses',true,'degustation',true))),
   'synced'
-from public.profiles u where u.email = 'merchandiser3@fieldtrack.demo';
+from public.profiles u where u.email = 'merchandiser3@bigfiveforce.demo';
 
 insert into public.visites(visite_id, pdv_id, user_id, date_visite, commercial, email, geolocation_lat, geolocation_lng,
                            geofence_validated, precision_gps, data, sync_status)
@@ -275,7 +275,7 @@ select 'FT-VIS-007','FT-007', u.id, date_trunc('day', now()) - interval '3 days'
   jsonb_build_object('produits', jsonb_build_object('evap',jsonb_build_object('quantites',jsonb_build_object('br_gold',999,'br_160g',999,'brb_160g',999,'br_400g',999,'brb_400g',999,'pearl_400g',999)),'imp',jsonb_build_object('quantites',jsonb_build_object('br_20g',999,'brd_15g',999,'br_375g',999,'br_900g',999,'br_2_5kg',999,'brd_350g',999,'br_400g',999)),'scm',jsonb_build_object('quantites',jsonb_build_object('br_1kg',999,'pearl_1kg',999))),
     'visibilite', jsonb_build_object('promotion_applicable',false,'standards',jsonb_build_object('affiche',true,'fleche',true,'guirlande',true,'sign_board',true,'panneau_privilege',false,'full_branding',false,'reglette',true,'maison_br',true,'hanger',true,'wobler',true,'presentoir',false,'tg',false,'plaque_br',false,'merchandising',true,'standard',true,'hotesses',false,'degustation',false))),
   'synced'
-from public.profiles u where u.email = 'merchandiser2@fieldtrack.demo';
+from public.profiles u where u.email = 'merchandiser2@bigfiveforce.demo';
 
 insert into public.visites(visite_id, pdv_id, user_id, date_visite, commercial, email, geolocation_lat, geolocation_lng,
                            geofence_validated, precision_gps, data, sync_status)
@@ -284,7 +284,7 @@ select 'FT-VIS-008','FT-008', u.id, date_trunc('day', now()) - interval '6 days'
   jsonb_build_object('produits', jsonb_build_object('evap',jsonb_build_object('quantites',jsonb_build_object('br_gold',999,'br_160g',999,'brb_160g',999,'br_400g',999,'brb_400g',999,'pearl_400g',999)),'imp',jsonb_build_object('quantites',jsonb_build_object('br_20g',999,'brd_15g',999,'br_375g',999,'br_900g',999,'br_2_5kg',999,'brd_350g',999,'br_400g',999)),'scm',jsonb_build_object('quantites',jsonb_build_object('br_1kg',999,'pearl_1kg',999))),
     'visibilite', jsonb_build_object('promotion_applicable',false,'standards',jsonb_build_object('affiche',true,'fleche',true,'guirlande',true,'sign_board',true,'panneau_privilege',false,'full_branding',false,'reglette',true,'maison_br',true,'hanger',true,'wobler',true,'presentoir',false,'tg',false,'plaque_br',false,'merchandising',true,'standard',true,'hotesses',false,'degustation',false))),
   'synced'
-from public.profiles u where u.email = 'merchandiser2@fieldtrack.demo';
+from public.profiles u where u.email = 'merchandiser2@bigfiveforce.demo';
 
 insert into public.visites(visite_id, pdv_id, user_id, date_visite, commercial, email, geolocation_lat, geolocation_lng,
                            geofence_validated, precision_gps, data, sync_status)
@@ -293,7 +293,7 @@ select 'FT-VIS-009','FT-009', u.id, date_trunc('day', now()) - interval '7 days'
   jsonb_build_object('produits', jsonb_build_object('evap',jsonb_build_object('quantites',jsonb_build_object('br_gold',999,'br_160g',999,'brb_160g',999,'br_400g',999,'brb_400g',999,'pearl_400g',999)),'imp',jsonb_build_object('quantites',jsonb_build_object('br_20g',999,'brd_15g',999,'br_375g',999,'br_900g',999,'br_2_5kg',999,'brd_350g',999,'br_400g',999)),'scm',jsonb_build_object('quantites',jsonb_build_object('br_1kg',999,'pearl_1kg',999))),
     'visibilite', jsonb_build_object('promotion_applicable',false,'standards',jsonb_build_object('affiche',true,'fleche',true,'guirlande',true,'sign_board',true,'panneau_privilege',false,'full_branding',false,'reglette',true,'maison_br',true,'hanger',true,'wobler',true,'presentoir',false,'tg',false,'plaque_br',false,'merchandising',true,'standard',true,'hotesses',false,'degustation',false))),
   'synced'
-from public.profiles u where u.email = 'merchandiser2@fieldtrack.demo';
+from public.profiles u where u.email = 'merchandiser2@bigfiveforce.demo';
 
 insert into public.visites(visite_id, pdv_id, user_id, date_visite, commercial, email, geolocation_lat, geolocation_lng,
                            geofence_validated, precision_gps, data, sync_status)
@@ -302,7 +302,7 @@ select 'FT-VIS-010','FT-010', u.id, date_trunc('day', now()) - interval '4 days'
   jsonb_build_object('produits', jsonb_build_object('evap',jsonb_build_object('quantites',jsonb_build_object('br_gold',999,'br_160g',999,'brb_160g',999,'br_400g',999,'brb_400g',999,'pearl_400g',999)),'imp',jsonb_build_object('quantites',jsonb_build_object('br_20g',999,'brd_15g',999,'br_375g',999,'br_900g',999,'br_2_5kg',999,'brd_350g',999,'br_400g',999)),'scm',jsonb_build_object('quantites',jsonb_build_object('br_1kg',999,'pearl_1kg',999))),
     'visibilite', jsonb_build_object('promotion_applicable',false,'standards',jsonb_build_object('affiche',true,'fleche',true,'guirlande',true,'sign_board',true,'panneau_privilege',false,'full_branding',false,'reglette',true,'maison_br',true,'hanger',true,'wobler',true,'presentoir',false,'tg',false,'plaque_br',false,'merchandising',true,'standard',true,'hotesses',false,'degustation',false))),
   'synced'
-from public.profiles u where u.email = 'merchandiser4@fieldtrack.demo';
+from public.profiles u where u.email = 'merchandiser4@bigfiveforce.demo';
 
 insert into public.visites(visite_id, pdv_id, user_id, date_visite, commercial, email, geolocation_lat, geolocation_lng,
                            geofence_validated, precision_gps, data, sync_status)
@@ -311,7 +311,7 @@ select 'FT-VIS-011','FT-011', u.id, date_trunc('day', now()) - interval '8 days'
   jsonb_build_object('produits', jsonb_build_object('evap',jsonb_build_object('quantites',jsonb_build_object('pearl_400g',999)),'imp',jsonb_build_object('quantites',jsonb_build_object()),'scm',jsonb_build_object('quantites',jsonb_build_object('pearl_1kg',999))),
     'visibilite', jsonb_build_object('promotion_applicable',false,'standards',jsonb_build_object('affiche',false,'thermos',false,'verre',false,'carafe',false,'maison_br',false,'chasuble',false,'full_branding',false,'promotion',false))),
   'synced'
-from public.profiles u where u.email = 'merchandiser4@fieldtrack.demo';
+from public.profiles u where u.email = 'merchandiser4@bigfiveforce.demo';
 
 insert into public.visites(visite_id, pdv_id, user_id, date_visite, commercial, email, geolocation_lat, geolocation_lng,
                            geofence_validated, precision_gps, data, sync_status)
@@ -320,7 +320,7 @@ select 'FT-VIS-012','FT-012', u.id, date_trunc('day', now()) - interval '9 days'
   jsonb_build_object('produits', jsonb_build_object('evap',jsonb_build_object('quantites',jsonb_build_object('pearl_400g',999)),'imp',jsonb_build_object('quantites',jsonb_build_object()),'scm',jsonb_build_object('quantites',jsonb_build_object('pearl_1kg',999))),
     'visibilite', jsonb_build_object('promotion_applicable',false,'standards',jsonb_build_object('affiche',false,'thermos',false,'verre',false,'carafe',false,'maison_br',false,'chasuble',false,'full_branding',false,'promotion',false))),
   'synced'
-from public.profiles u where u.email = 'merchandiser4@fieldtrack.demo';
+from public.profiles u where u.email = 'merchandiser4@bigfiveforce.demo';
 
 insert into public.visites(visite_id, pdv_id, user_id, date_visite, commercial, email, geolocation_lat, geolocation_lng,
                            geofence_validated, precision_gps, data, sync_status)
@@ -329,7 +329,7 @@ select 'FT-VIS-013','FT-013', u.id, date_trunc('day', now()) - interval '6 days'
   jsonb_build_object('produits', jsonb_build_object('evap',jsonb_build_object('quantites',jsonb_build_object()),'imp',jsonb_build_object('quantites',jsonb_build_object()),'scm',jsonb_build_object('quantites',jsonb_build_object())),
     'visibilite', jsonb_build_object('promotion_applicable',false,'standards',jsonb_build_object('affiche',false,'fleche',false,'guirlande',false,'sign_board',false,'panneau_privilege',false,'full_branding',false,'reglette',false,'maison_br',false,'hanger',false,'wobler',false,'presentoir',false,'tg',false,'plaque_br',false,'merchandising',false,'standard',false,'hotesses',false,'degustation',false))),
   'synced'
-from public.profiles u where u.email = 'merchandiser5@fieldtrack.demo';
+from public.profiles u where u.email = 'merchandiser5@bigfiveforce.demo';
 
 insert into public.visites(visite_id, pdv_id, user_id, date_visite, commercial, email, geolocation_lat, geolocation_lng,
                            geofence_validated, precision_gps, data, sync_status)
@@ -338,7 +338,7 @@ select 'FT-VIS-014','FT-014', u.id, date_trunc('day', now()) - interval '10 days
   jsonb_build_object('produits', jsonb_build_object('evap',jsonb_build_object('quantites',jsonb_build_object()),'imp',jsonb_build_object('quantites',jsonb_build_object()),'scm',jsonb_build_object('quantites',jsonb_build_object())),
     'visibilite', jsonb_build_object('promotion_applicable',false,'standards',jsonb_build_object('affiche',false,'fleche',false,'sign_board',false,'panneau_privilege',false,'reglette',false,'espace_br',false,'wobler',false,'presentoir',false,'tg',false,'plaque_br',false,'merchandising',false,'standard',false,'hotesses',false,'degustation',false))),
   'synced'
-from public.profiles u where u.email = 'merchandiser5@fieldtrack.demo';
+from public.profiles u where u.email = 'merchandiser5@bigfiveforce.demo';
 
 insert into public.visites(visite_id, pdv_id, user_id, date_visite, commercial, email, geolocation_lat, geolocation_lng,
                            geofence_validated, precision_gps, data, sync_status)
@@ -347,7 +347,7 @@ select 'FT-VIS-015','FT-015', u.id, date_trunc('day', now()) - interval '12 days
   jsonb_build_object('produits', jsonb_build_object('evap',jsonb_build_object('quantites',jsonb_build_object('br_160g',2,'br_400g',2)),'imp',jsonb_build_object('quantites',jsonb_build_object('br_20g',2)),'scm',jsonb_build_object('quantites',jsonb_build_object())),
     'visibilite', jsonb_build_object('promotion_applicable',false,'standards',jsonb_build_object('affiche',true,'fleche',false,'guirlande',false,'sign_board',false,'panneau_privilege',false,'full_branding',false,'reglette',true,'maison_br',false,'hanger',false,'wobler',false,'presentoir',false,'tg',false,'plaque_br',false,'merchandising',false,'standard',false,'hotesses',false,'degustation',false))),
   'synced'
-from public.profiles u where u.email = 'merchandiser5@fieldtrack.demo';
+from public.profiles u where u.email = 'merchandiser5@bigfiveforce.demo';
 
 -- Le déclencheur a déjà calculé les scores à l'insertion ; on garantit l'état final.
 do $$ begin perform public.calculer_perfect_store(id, 'taux_vente') from public.visites; end $$;

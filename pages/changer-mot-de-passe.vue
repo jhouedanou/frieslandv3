@@ -75,7 +75,7 @@
       </div>
 
       <p class="text-center text-xs text-gray-400 dark:text-gray-500 mt-6">
-        Field Track © {{ new Date().getFullYear() }}
+        Big Five Force © {{ new Date().getFullYear() }}
       </p>
     </div>
   </div>

@@ -19,7 +19,7 @@ function motDePasseProvisoire(): string {
   const alea = new Uint32Array(8)
   crypto.getRandomValues(alea)
   const c = [...alea].map(n => ALPHABET[n % ALPHABET.length])
-  return `FT-${c.slice(0, 4).join('')}-${c.slice(4).join('')}`
+  return `BF-${c.slice(0, 4).join('')}-${c.slice(4).join('')}`
 }
 
 async function exigerAdmin(client: ClientDemo) {

@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
  * Régénère tous les visuels de marque (logo web, icônes PWA, icônes et écrans
- * de démarrage Android) à partir de resources/logo.svg et resources/glyphe.svg.
+ * de démarrage Android) à partir de resources/logo.svg, resources/glyphe.svg
+ * et resources/logo-bigfive.jpg.
  * Pour changer de marque : remplacer ces deux SVG et la couleur FOND, puis
  *   node scripts/generate-brand-assets.mjs
  * Les tailles Android sont relues sur les fichiers existants, jamais devinées.
@@ -10,7 +11,7 @@ import { readdirSync, readFileSync, renameSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 import sharp from 'sharp'
 
-const FOND = '#1D4ED8'
+const FOND = '#603080'
 const logo = readFileSync('resources/logo.svg')
 const glyphe = readFileSync('resources/glyphe.svg')
 
@@ -20,7 +21,10 @@ async function carre(fichier, taille) {
   await sharp(await rendre(logo, taille)).toFile(fichier)
 }
 
-await carre('assets/logo.png', 224)
+// Logo affiché dans l'application : le logo Big Five fourni (resources/logo-bigfive.jpg).
+// Les icônes d'application gardent le repère sur fond violet : l'image fournie
+// (200 px) est trop petite pour une icône nette.
+await sharp('resources/logo-bigfive.jpg').resize(224, 224, { fit: 'contain', background: '#FFFFFF' }).png().toFile('assets/logo.png')
 await carre('public/favicon.png', 224)
 await carre('resources/icon.png', 1024)
 for (const t of [72, 96, 128, 144, 152, 192, 384, 512]) await carre(`public/icons/icon-${t}x${t}.png`, t)

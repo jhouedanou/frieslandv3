@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================================
-# Field Track — installe la base de démonstration sur un projet Supabase NEUF.
+# Big Five Force — installe la base de démonstration sur un projet Supabase NEUF.
 #
 #   ./scripts/field-track-setup.sh schema  "<DATABASE_URL>"   # tables, fonctions, règles d'accès
 #   ./scripts/field-track-setup.sh comptes                    # 9 comptes fictifs (lit .env)
@@ -9,7 +9,7 @@
 #
 # DATABASE_URL : Supabase > Project Settings > Database > Connection string (URI).
 # ⚠️ Jamais sur la base d'un client : « demo » vide les PDV et les visites.
-#    Le script s'arrête s'il trouve un compte hors @fieldtrack.demo.
+#    Le script s'arrête s'il trouve un compte hors @bigfiveforce.demo.
 # ============================================================================
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -28,10 +28,10 @@ besoin_db() {
   if [ "$existe" = "f" ]; then return 0; fi
   n="?"
   if [ "$existe" = "t" ]; then
-    n=$($PSQL "$DB_URL" -qAt -c "select count(*) from public.profiles where email not like '%@fieldtrack.demo'" 2>/dev/null || echo "?")
+    n=$($PSQL "$DB_URL" -qAt -c "select count(*) from public.profiles where email not like '%@bigfiveforce.demo'" 2>/dev/null || echo "?")
   fi
   if [ "$n" != "0" ]; then
-    echo "❌ Arrêt : connexion impossible ou base non vierge ($n compte(s) hors @fieldtrack.demo)."
+    echo "❌ Arrêt : connexion impossible ou base non vierge ($n compte(s) hors @bigfiveforce.demo)."
     exit 1
   fi
 }

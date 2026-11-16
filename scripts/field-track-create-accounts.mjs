@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 /**
- * Field Track — comptes fictifs de la base de démonstration.
- *   1 admin, 3 commerciaux, 5 merchandisers, tous en @fieldtrack.demo.
+ * Big Five Force — comptes fictifs de la base de démonstration.
+ *   1 admin, 3 commerciaux, 5 merchandisers, tous en @bigfiveforce.demo.
  * Rejouable : un compte existant est mis à jour, jamais dupliqué.
  * Les équipes et les territoires sont posés ensuite par
  * supabase/field-track/90_demo.sql.
  *
- * .env attendu (celui de la base Field Track, jamais celui d'un client) :
+ * .env attendu (celui de la base Big Five Force, jamais celui d'un client) :
  *   SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY,
  *   FIELD_TRACK_DEMO_PASSWORD (12 caractères au moins, jamais affiché).
  *
@@ -29,15 +29,15 @@ if (PASSWORD.length < 12) {
 }
 
 const COMPTES = [
-  { email: 'admin@fieldtrack.demo', nom: 'Admin Field Track', role: 'admin', telephone: '+225 01 00 00 00 01' },
-  { email: 'commercial1@fieldtrack.demo', nom: 'Awa Démo', role: 'commercial', telephone: '+225 01 00 00 00 11' },
-  { email: 'commercial2@fieldtrack.demo', nom: 'Bakary Démo', role: 'commercial', telephone: '+225 01 00 00 00 12' },
-  { email: 'commercial3@fieldtrack.demo', nom: 'Clarisse Démo', role: 'commercial', telephone: '+225 01 00 00 00 13' },
-  { email: 'merchandiser1@fieldtrack.demo', nom: 'Daouda Essai', role: 'merchandiser', telephone: '+225 01 00 00 00 21' },
-  { email: 'merchandiser2@fieldtrack.demo', nom: 'Estelle Essai', role: 'merchandiser', telephone: '+225 01 00 00 00 22' },
-  { email: 'merchandiser3@fieldtrack.demo', nom: 'Fabrice Essai', role: 'merchandiser', telephone: '+225 01 00 00 00 23' },
-  { email: 'merchandiser4@fieldtrack.demo', nom: 'Grâce Essai', role: 'merchandiser', telephone: '+225 01 00 00 00 24' },
-  { email: 'merchandiser5@fieldtrack.demo', nom: 'Hervé Essai', role: 'merchandiser', telephone: '+225 01 00 00 00 25' },
+  { email: 'admin@bigfiveforce.demo', nom: 'Admin Big Five', role: 'admin', telephone: '+225 01 00 00 00 01' },
+  { email: 'commercial1@bigfiveforce.demo', nom: 'Awa Démo', role: 'commercial', telephone: '+225 01 00 00 00 11' },
+  { email: 'commercial2@bigfiveforce.demo', nom: 'Bakary Démo', role: 'commercial', telephone: '+225 01 00 00 00 12' },
+  { email: 'commercial3@bigfiveforce.demo', nom: 'Clarisse Démo', role: 'commercial', telephone: '+225 01 00 00 00 13' },
+  { email: 'merchandiser1@bigfiveforce.demo', nom: 'Daouda Essai', role: 'merchandiser', telephone: '+225 01 00 00 00 21' },
+  { email: 'merchandiser2@bigfiveforce.demo', nom: 'Estelle Essai', role: 'merchandiser', telephone: '+225 01 00 00 00 22' },
+  { email: 'merchandiser3@bigfiveforce.demo', nom: 'Fabrice Essai', role: 'merchandiser', telephone: '+225 01 00 00 00 23' },
+  { email: 'merchandiser4@bigfiveforce.demo', nom: 'Grâce Essai', role: 'merchandiser', telephone: '+225 01 00 00 00 24' },
+  { email: 'merchandiser5@bigfiveforce.demo', nom: 'Hervé Essai', role: 'merchandiser', telephone: '+225 01 00 00 00 25' },
 ]
 
 const admin = createClient(URL, SERVICE, { auth: { persistSession: false, autoRefreshToken: false } })
@@ -45,9 +45,9 @@ const admin = createClient(URL, SERVICE, { auth: { persistSession: false, autoRe
 // Garde-fou : une base qui contient déjà d'autres comptes n'est pas une base de démonstration.
 const { data: liste, error: le } = await admin.auth.admin.listUsers({ perPage: 1000 })
 if (le) { console.error('❌ lecture des comptes :', le.message); process.exit(1) }
-const etrangers = liste.users.filter(u => !u.email?.toLowerCase().endsWith('@fieldtrack.demo'))
+const etrangers = liste.users.filter(u => !u.email?.toLowerCase().endsWith('@bigfiveforce.demo'))
 if (etrangers.length) {
-  console.error(`❌ ${etrangers.length} compte(s) hors @fieldtrack.demo dans cette base : ce n'est pas une base de démonstration, arrêt.`)
+  console.error(`❌ ${etrangers.length} compte(s) hors @bigfiveforce.demo dans cette base : ce n'est pas une base de démonstration, arrêt.`)
   process.exit(1)
 }
 

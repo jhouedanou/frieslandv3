@@ -4,7 +4,7 @@
       <div>
         <h2 class="text-lg font-bold text-gray-900 dark:text-gray-100">Activer le suivi de tournée</h2>
         <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-          Field Track collecte votre position GPS pendant la tournée, <strong>y compris lorsque
+          Big Five Force collecte votre position GPS pendant la tournée, <strong>y compris lorsque
           l'application est fermée ou l'écran éteint</strong>, pour reconstituer votre trajet et vos
           visites dans le tableau de bord de votre organisation. La collecte ne dure que du bouton
           « Démarrer » au bouton « Terminer la tournée ». Pour cela, l'application a besoin des
@@ -84,18 +84,18 @@
           <ul class="space-y-2 px-1 pb-2 text-xs text-gray-600 dark:text-gray-300">
             <li>
               <strong>Tecno / Infinix / itel (HiOS, XOS)</strong> : ouvrez <em>Phone Master</em> →
-              gestion auto / nettoyage automatique → retirez Field Track de la liste, puis
+              gestion auto / nettoyage automatique → retirez Big Five Force de la liste, puis
               Paramètres → Batterie → autorisez le démarrage en arrière-plan.
             </li>
             <li>
-              <strong>Xiaomi / Redmi (MIUI)</strong> : Paramètres → Applications → Field Track →
+              <strong>Xiaomi / Redmi (MIUI)</strong> : Paramètres → Applications → Big Five Force →
               activez <em>Démarrage automatique</em> et réglez Économiseur de batterie sur
               <em>« Aucune restriction »</em>. Dans les applications récentes, verrouillez
-              Field Track (icône cadenas).
+              Big Five Force (icône cadenas).
             </li>
             <li>
               <strong>Samsung</strong> : Paramètres → Entretien de l'appareil → Batterie →
-              ajoutez Field Track aux <em>applications jamais mises en veille</em>.
+              ajoutez Big Five Force aux <em>applications jamais mises en veille</em>.
             </li>
           </ul>
         </template>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Field Track</string>
-    <string name="title_activity_main">Field Track</string>
-    <string name="package_name">com.fieldtrack.app</string>
-    <string name="custom_url_scheme">com.fieldtrack.app</string>
+    <string name="app_name">Big Five Force</string>
+    <string name="title_activity_main">Big Five Force</string>
+    <string name="package_name">com.bigfive.force</string>
+    <string name="custom_url_scheme">com.bigfive.force</string>
 </resources>

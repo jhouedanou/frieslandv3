@@ -117,7 +117,7 @@ export function useRoutingExcel() {
       .sort((a, b) => a[0].localeCompare(b[0], 'fr') || a[1].localeCompare(b[1], 'fr'))
 
     const wb = new ExcelJS.Workbook()
-    wb.creator = 'Field Track'
+    wb.creator = 'Big Five Force'
 
     // ---- Mode d'emploi (1re feuille : c'est elle qui s'ouvre) ----
     const guide = wb.addWorksheet('Mode d\'emploi', { properties: { tabColor: { argb: 'FFE30613' } } })

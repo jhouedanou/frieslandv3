@@ -6,7 +6,7 @@ const devtoolsEnabled = process.env.NUXT_DEVTOOLS === 'true'
 // Build natif Capacitor : SPA statique, sans service worker PWA
 // (un SW dans la WebView provoque des caches fantômes après mise à jour d'APK).
 const isCapacitor = process.env.CAPACITOR_BUILD === '1'
-// Mode démo Field Track : aucune base Supabase. Les données vivent dans une
+// Mode démo Big Five Force : aucune base Supabase. Les données vivent dans une
 // base embarquée dans le navigateur (dossier demo/). Voir README-FIELD-TRACK.md.
 const isDemo = process.env.FIELD_TRACK_DEMO === '1'
 const stubServeurDemo = fileURLToPath(new URL('./demo/server-stub.ts', import.meta.url))
@@ -78,10 +78,10 @@ export default defineNuxtConfig({
   pwa: {
     registerType: 'autoUpdate',
     manifest: {
-      name: 'Field Track',
-      short_name: 'Field Track',
-      description: 'Application de collecte terrain Field Track',
-      theme_color: '#1D4ED8',
+      name: 'Big Five Force',
+      short_name: 'BF Force',
+      description: 'Application de collecte terrain Big Five Force',
+      theme_color: '#603080',
       background_color: '#ffffff',
       display: 'standalone',
       orientation: 'portrait',
@@ -131,10 +131,10 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Field Track',
+      title: 'Big Five Force',
       meta: [
-        { name: 'description', content: 'Application de collecte terrain Field Track' },
-        { name: 'theme-color', content: '#1D4ED8' },
+        { name: 'description', content: 'Application de collecte terrain Big Five Force' },
+        { name: 'theme-color', content: '#603080' },
         { name: 'mobile-web-app-capable', content: 'yes' },
         { name: 'apple-mobile-web-app-capable', content: 'yes' },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },

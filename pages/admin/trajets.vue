@@ -168,8 +168,8 @@
           class="pointer-events-none absolute bottom-3 left-3 z-[500] rounded-lg border border-gray-200 bg-white/90 px-2.5 py-2 text-[11px] shadow backdrop-blur dark:border-gray-600 dark:bg-gray-800/90"
         >
           <div class="flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-full" style="background:#0E9F6E" />Départ</div>
-          <div class="mt-1 flex items-center gap-1.5"><span class="h-0.5 w-3.5" style="background:#1D4ED8" />Trajet GPS (lissé)</div>
-          <div class="mt-1 flex items-center gap-1.5"><span class="h-3 w-3 rounded-full border-2 border-white" style="background:#1D4ED8;box-shadow:0 0 0 2px #1D4ED8" />Arrêt (≥ 5 min)</div>
+          <div class="mt-1 flex items-center gap-1.5"><span class="h-0.5 w-3.5" style="background:#603080" />Trajet GPS (lissé)</div>
+          <div class="mt-1 flex items-center gap-1.5"><span class="h-3 w-3 rounded-full border-2 border-white" style="background:#603080;box-shadow:0 0 0 2px #603080" />Arrêt (≥ 5 min)</div>
           <div class="mt-1 flex items-center gap-1.5"><span class="h-2.5 w-2.5" style="background:#003DA5;transform:rotate(45deg)" />Visite PDV</div>
           <div class="mt-1 flex items-center gap-1.5"><span class="h-2.5 w-2.5" style="background:#D97706;transform:rotate(45deg)" />Visite hors géofence</div>
         </div>
@@ -329,7 +329,7 @@ let map: any = null
 let trailGroup: any = null
 let searchGroup: any = null
 
-const PALETTE = ['#1D4ED8', '#E11D48', '#0E9F6E', '#7C3AED', '#D97706', '#DB2777', '#0891B2', '#4D7C0F']
+const PALETTE = ['#603080', '#E11D48', '#0E9F6E', '#7C3AED', '#D97706', '#DB2777', '#0891B2', '#4D7C0F']
 const LIVE_WINDOW_MS = 15 * 60_000
 const STALE_MS = 30 * 60_000
 
@@ -750,13 +750,13 @@ function locateAtTime() {
 
   // Marqueur position + cercle de rayon.
   const posMarker = L.circleMarker([nearest.lat, nearest.lng], {
-    radius: 9, fillColor: '#1D4ED8', color: '#fff', weight: 3, fillOpacity: 1,
+    radius: 9, fillColor: '#603080', color: '#fff', weight: 3, fillOpacity: 1,
   }).bindPopup(
     `<b>${nearest.profiles?.nom || 'Commercial'}</b><br>Position à ${formatTime(nearest.captured_at)}<br>${nearest.lat.toFixed(5)}, ${nearest.lng.toFixed(5)}`,
   )
   searchGroup.addLayer(posMarker)
   searchGroup.addLayer(L.circle([nearest.lat, nearest.lng], {
-    radius: searchRadius.value, color: '#1D4ED8', weight: 1, fillOpacity: 0.06,
+    radius: searchRadius.value, color: '#603080', weight: 1, fillOpacity: 0.06,
   }))
 
   // PDV dans le rayon.
