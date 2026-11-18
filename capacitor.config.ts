@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli'
 
 const config: CapacitorConfig = {
-  appId: 'com.bdco.bonnetrouge',
-  appName: 'Friesland Bonnet Rouge',
+  appId: 'com.bigfive.force',
+  appName: 'Big Five Force',
   webDir: '.output/public',
   android: {
     allowMixedContent: false,

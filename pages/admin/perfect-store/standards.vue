@@ -2,9 +2,9 @@
   <div class="space-y-6">
     <div class="flex flex-wrap items-start justify-between gap-3">
       <div>
-        <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Standards Perfect Store</h1>
+        <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Standards de conformité</h1>
         <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-          Disponibilité, assortiment, visibilité et promotion issus du fichier BIG FIVE KPI.
+          Disponibilité, assortiment, visibilité et promotion issus du référentiel.
         </p>
         <p class="mt-1 text-xs text-gray-400">
           {{ canEdit ? 'Votre rôle permet de modifier les paramètres.' : 'Consultation seule : rôle admin ou superviseur requis pour modifier.' }}
@@ -66,7 +66,7 @@
             </thead>
             <tbody class="divide-y divide-gray-100 dark:divide-gray-700">
               <tr v-for="niveau in niveaux" :key="niveau.code">
-                <td class="px-4 py-3 text-sm font-bold text-gray-900 dark:text-gray-100">{{ niveau.code }}</td>
+                <td class="px-4 py-3 text-sm font-bold text-gray-900 dark:text-gray-100">{{ libelleNiveau(niveau.code) }}</td>
                 <td class="px-4 py-3 text-center text-sm">
                   <UInput v-if="canEdit" v-model.number="niveau.dispo_rayon_min" type="number" min="0" max="100" size="sm" class="mx-auto w-24" />
                   <span v-else>{{ pct(niveau.dispo_rayon_min) }}</span>
@@ -136,7 +136,7 @@
         <div class="border-b border-gray-100 px-5 py-3 dark:border-gray-700">
           <h2 class="font-bold text-gray-900 dark:text-gray-100">Taux cibles de disponibilité par variante (taux revu)</h2>
           <p class="mt-1 text-xs text-gray-400">
-            Poids de chaque variante dans la disponibilité pondérée, par canal (ligne TAUX REVU du fichier BIG FIVE).
+            Poids de chaque variante dans la disponibilité pondérée, par canal (taux cibles du référentiel).
             La somme par famille et par canal doit faire 100 %.
           </p>
         </div>
@@ -154,7 +154,7 @@
             <tbody v-for="famille in tauxCiblesParFamille" :key="famille.code" class="divide-y divide-gray-100 dark:divide-gray-700">
               <tr v-for="(row, idx) in famille.rows" :key="row.reference_produit_id" class="border-t border-gray-100 dark:border-gray-700">
                 <td class="px-4 py-2.5 text-sm font-medium text-gray-900 dark:text-gray-100">
-                  <span v-if="idx === 0">{{ famille.code }} <span class="text-xs font-normal text-gray-400">({{ famille.nom }})</span></span>
+                  <span v-if="idx === 0">{{ famille.nom || famille.code }}</span>
                 </td>
                 <td class="px-4 py-2.5 text-sm">{{ row.variante }}</td>
                 <td class="px-4 py-2.5 text-center text-sm tabular-nums">
@@ -170,7 +170,7 @@
                 </td>
               </tr>
               <tr class="bg-gray-50/60 dark:bg-gray-700/30">
-                <td class="px-4 py-2 text-xs font-medium uppercase text-gray-400" colspan="2">Total {{ famille.code }}</td>
+                <td class="px-4 py-2 text-xs font-medium uppercase text-gray-400" colspan="2">Total {{ famille.nom || famille.code }}</td>
                 <td class="px-4 py-2 text-center">
                   <UBadge size="xs" variant="soft" :color="sumOk(famille.sumGT) ? 'green' : 'red'">{{ famille.sumGT.toFixed(1) }} %</UBadge>
                 </td>
@@ -189,7 +189,7 @@
           <h2 class="font-bold text-gray-900 dark:text-gray-100">Matrice des standards de visibilité</h2>
           <p class="mt-1 text-xs text-gray-400">
             Une coche = l'élément est exigé pour atteindre ce niveau. Ces exigences alimentent directement le score
-            visibilité/promotion de chaque visite (fonction de calcul Perfect Store).
+            visibilité/promotion de chaque visite (fonction de calcul de conformité).
           </p>
         </div>
         <div class="border-b border-gray-100 px-5 py-3 dark:border-gray-700">

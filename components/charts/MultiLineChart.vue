@@ -46,7 +46,7 @@ const props = withDefaults(defineProps<{
   emptyLabel: 'Aucune donnée sur la période',
 })
 
-const PALETTE = ['#C8102E', '#2563EB', '#059669', '#D97706', '#7C3AED', '#DB2777', '#0891B2']
+const PALETTE = [couleurMarque(), '#E11D48', '#059669', '#D97706', '#7C3AED', '#DB2777', '#0891B2']
 
 const heightClass = computed(() => ({ sm: 'h-56', md: 'h-72', lg: 'h-96' }[props.height]))
 

@@ -45,7 +45,7 @@ describe('complétude du relevé', () => {
     const c = completudeReleve({ produits: {}, visibilite: { standards: {} } })
     expect(c.pct).toBe(0)
     expect(c.vide).toBe(true)
-    expect(c.manquantes).toContain('EVAP')
+    expect(c.manquantes).toContain('Gamme A')
     expect(c.manquantes).toContain('Visibilité')
   })
 
@@ -77,7 +77,7 @@ describe('complétude du relevé', () => {
     // 2 sections remplies sur 7 attendues (6 familles + visibilité)
     const c = completudeReleve(data)
     expect(c.pct).toBe(29)
-    expect(c.manquantes).toEqual(['IMP', 'SCM', 'UHT', 'Yaourt', 'Céréales'])
+    expect(c.manquantes).toEqual(['Gamme B', 'Gamme C', 'Gamme D', 'Gamme E', 'Gamme F'])
   })
 
   // Yaourt et céréales ont été désactivés dans l'admin au lot 6 : ne pas les

@@ -9,15 +9,15 @@
     <!-- Logo -->
     <div class="h-20 flex items-center justify-center border-b border-slate-200/80 px-4 dark:border-gray-700">
       <div v-if="!collapsed" class="flex items-center gap-3">
-        <div class="flex h-11 w-11 items-center justify-center rounded-xl border border-red-100 bg-white shadow-[0_12px_28px_-24px_rgba(200,16,46,0.9)]">
-          <img src="~/assets/logo.png" alt="Friesland" class="h-8 w-8 rounded-lg object-contain" />
+        <div class="flex h-11 w-11 items-center justify-center rounded-xl border border-fc-red-100 bg-white shadow-[0_12px_28px_-24px_rgb(var(--marque-500)/0.9)]">
+          <img :src="logo" :alt="marque.nom" class="h-8 w-8 rounded-lg object-contain" />
         </div>
         <div>
-          <h2 class="text-sm font-bold leading-none text-slate-950 dark:text-white">Friesland</h2>
-          <p class="mt-1 text-[10px] font-semibold uppercase tracking-normal text-fc-red">Bonnet Rouge</p>
+          <h2 class="max-w-[150px] truncate text-sm font-bold leading-none text-slate-950 dark:text-white">{{ marque.nom }}</h2>
+          <p class="mt-1 text-[10px] font-semibold uppercase tracking-normal text-fc-red" :class="'max-w-[150px] truncate'">{{ marque.sous_titre }}</p>
         </div>
       </div>
-      <img v-else src="~/assets/logo.png" alt="FC" class="w-8 h-8 rounded-lg object-contain" />
+      <img v-else :src="logo" :alt="marque.nom" class="w-8 h-8 rounded-lg object-contain" />
     </div>
 
     <!-- Navigation -->
@@ -43,7 +43,7 @@
           :to="item.to"
           class="group relative mb-1 flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-all duration-200"
           :class="isActive(item.to, item.activePaths)
-            ? 'bg-white text-fc-red font-semibold shadow-[0_12px_30px_-26px_rgba(200,16,46,0.9)] ring-1 ring-red-100 dark:bg-red-950/30 dark:ring-red-900/40'
+            ? 'bg-white text-fc-red font-semibold shadow-[0_12px_30px_-26px_rgb(var(--marque-500)/0.9)] ring-1 ring-fc-red-100 dark:bg-fc-red-900/30 dark:ring-fc-red-900/40'
             : 'text-slate-600 hover:bg-white/80 hover:text-slate-950 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white'"
           @click="$emit('navigate')"
         >
@@ -88,6 +88,7 @@
 </template>
 
 <script setup lang="ts">
+const { marque, logo } = useMarque()
 import {
   LayoutDashboard,
   MapPin,
@@ -131,7 +132,7 @@ const navSections: Array<{ key: string; title: string; items: AdminNavItem[] }> 
     key: 'principal',
     title: 'Principal',
     items: [
-      { label: 'Perfect Store', to: '/admin', icon: Trophy },
+      { label: 'Conformité', to: '/admin', icon: Trophy },
       { label: 'Activité', to: '/admin/activite', icon: LayoutDashboard },
       { label: 'Routing & Planning', to: '/admin/routing', icon: Route, privilegie: true },
       { label: 'Carte', to: '/admin/map', icon: Map },
@@ -150,7 +151,7 @@ const navSections: Array<{ key: string; title: string; items: AdminNavItem[] }> 
     title: 'Visites',
     items: [
       { label: 'Visites', to: '/admin/visites', icon: ClipboardList },
-      { label: 'Field coaching', to: '/admin/visites/coaching', icon: GraduationCap },
+      { label: 'Accompagnement terrain', to: '/admin/visites/coaching', icon: GraduationCap },
     ],
   },
   {
@@ -196,6 +197,7 @@ const navSections: Array<{ key: string; title: string; items: AdminNavItem[] }> 
           '/admin/users',
           '/admin/permissions',
           '/admin/import-export',
+          '/admin/marque',
         ],
       },
     ],

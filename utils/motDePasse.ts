@@ -21,7 +21,7 @@ const CLASSES: ((mdp: string) => boolean)[] = [
 ]
 
 // Mots trop devinables pour un compte privilégié, même noyés dans un mot plus long.
-const MOTS_INTERDITS = ['test1234', 'password', 'motdepasse', 'azerty', 'qwerty', '123456', 'admin', 'friesland', 'bonnetrouge']
+const MOTS_INTERDITS = ['test1234', 'password', 'motdepasse', 'azerty', 'qwerty', '123456', 'admin', 'bigfive', 'big-five', 'bigfiveforce']
 
 export function reglesMotDePasse(role?: string | null, email?: string | null): RegleMotDePasse[] {
   if (!isPrivilegedRole(role)) {

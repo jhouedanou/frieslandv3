@@ -188,9 +188,10 @@ const pageTitle = computed(() => {
     '/admin/pdv': 'Points de Vente',
     '/admin/users': 'Utilisateurs',
     '/admin/permissions': 'Permissions & accès',
+    '/admin/marque': 'Personnalisation',
     '/admin/referentiels': 'Référentiels',
-    '/admin/perfect-store': 'Perfect Store',
-    '/admin/perfect-store/standards': 'Standards Perfect Store',
+    '/admin/perfect-store': 'Conformité',
+    '/admin/perfect-store/standards': 'Standards de conformité',
     '/admin/produits/inventaire': 'Inventaire SKU',
     '/admin/produits/seuils': 'Seuils de stock',
     '/admin/produits': 'Produits',
@@ -201,7 +202,7 @@ const pageTitle = computed(() => {
   if (titles[route.path]) return titles[route.path]
 
   const prefixes: Array<[string, string]> = [
-    ['/admin/perfect-store', 'Perfect Store'],
+    ['/admin/perfect-store', 'Conformité'],
     ['/admin/visites', 'Visites'],
     ['/admin/pdv', 'Points de vente'],
     ['/admin/distributeurs', 'Distributeurs'],
@@ -211,6 +212,7 @@ const pageTitle = computed(() => {
     ['/admin/actions', 'Actions'],
     ['/admin/users', 'Utilisateurs'],
     ['/admin/permissions', 'Permissions & accès'],
+    ['/admin/marque', 'Personnalisation'],
     ['/admin/referentiels', 'Référentiels'],
   ]
   return prefixes.find(([prefix]) => route.path.startsWith(prefix))?.[1] || 'Dashboard'

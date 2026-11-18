@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Big Five Force — vidéo de présentation</title>
+<!--
+  Vidéo de présentation en motion design. Cette page EST la vidéo : toutes les
+  animations sont en CSS, calées sur une seule ligne de temps (en secondes).
+  docs/video/rendre.mjs la capture image par image, puis ffmpeg assemble le MP4
+  et y pose la voix off (docs/video/voix/).
+
+  Pour modifier : chaque élément animé porte --d (seconde d'apparition) et,
+  s'il doit disparaître avant la fin de sa scène, --o (seconde de sortie).
+  Chaque scène porte --s (début) et --e (fin).
+-->
+<style>
+  @font-face { font-family: 'Nunito Sans'; src: url('nunito-sans.woff2') format('woff2'); font-weight: 200 1000; }
+  :root {
+    --violet: #603080; --indigo: #403080; --clair: #CDB3E1; --fond: #0B0812; --carte: #1A1228;
+    --vert: #10B981; --ambre: #F59E0B; --sarcelle: #0F766E;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--fond); }
+  body { font-family: 'Nunito Sans', system-ui, sans-serif; color: #fff; -webkit-font-smoothing: antialiased; }
+
+  /* --- Fond : deux halos qui dérivent lentement --------------------------- */
+  .halo { position: absolute; border-radius: 50%; filter: blur(120px); opacity: .55; }
+  .halo.a { width: 900px; height: 900px; left: -260px; top: -320px; background: var(--violet); animation: derive-a 67.5s linear both; }
+  .halo.b { width: 760px; height: 760px; right: -220px; bottom: -300px; background: var(--indigo); animation: derive-b 67.5s linear both; }
+  .halo.c { width: 900px; height: 900px; right: -200px; top: -260px; background: var(--sarcelle); opacity: 0;
+            animation: teinte 1.2s ease 57s both, teinte-fin .8s ease 61.3s forwards; }
+  @keyframes derive-a { to { transform: translate(260px, 180px) scale(1.15); } }
+  @keyframes derive-b { to { transform: translate(-300px, -160px) scale(1.2); } }
+  @keyframes teinte { from { opacity: 0; } to { opacity: .6; } }
+  @keyframes teinte-fin { to { opacity: 0; } }
+
+  /* --- Mécanique : scènes et éléments ------------------------------------- */
+  .scene { position: absolute; inset: 0; opacity: 0;
+           animation: fondu .5s ease var(--s) both, sortie-scene .5s ease var(--e) forwards; }
+  @keyframes fondu { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes sortie-scene { to { opacity: 0; transform: scale(1.03); } }
+
+  .el { opacity: 0; animation: monte .8s cubic-bezier(.16, 1, .3, 1) var(--d) both, sort .45s ease-in var(--o, 9999s) forwards; }
+  .el.droite { animation-name: de-droite, sort; }
+  .el.gauche { animation-name: de-gauche, sort; }
+  .el.pop { animation-name: pop, sort; animation-timing-function: cubic-bezier(.34, 1.56, .64, 1), ease-in; }
+  .el.simple { animation-name: fondu, sort; }
+  @keyframes monte { from { opacity: 0; transform: translateY(46px); } to { opacity: 1; transform: none; } }
+  @keyframes de-droite { from { opacity: 0; transform: translateX(140px); } to { opacity: 1; transform: none; } }
+  @keyframes de-gauche { from { opacity: 0; transform: translateX(-140px); } to { opacity: 1; transform: none; } }
+  @keyframes pop { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
+  @keyframes sort { to { opacity: 0; transform: translateY(-24px); } }
+
+  /* --- Typographie -------------------------------------------------------- */
+  .puce { display: inline-block; padding: 10px 22px; border-radius: 999px; background: rgba(255,255,255,.1);
+          border: 1px solid rgba(255,255,255,.18); font-size: 26px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--clair); }
+  h1 { font-size: 132px; font-weight: 900; letter-spacing: -.03em; line-height: 1; }
+  h2 { font-size: 68px; font-weight: 800; letter-spacing: -.02em; line-height: 1.1; }
+  .grand { font-size: 104px; font-weight: 900; letter-spacing: -.03em; line-height: 1.05; }
+  .sous { font-size: 46px; font-weight: 600; color: var(--clair); }
+  .legende { font-size: 34px; font-weight: 700; text-align: center; }
+  .entete { position: absolute; left: 110px; top: 84px; right: 110px; }
+  .entete h2 { margin-top: 22px; }
+
+  /* --- Appareils ---------------------------------------------------------- */
+  .tel { background: #14101F; border-radius: 52px; padding: 12px; box-shadow: 0 40px 90px rgba(0,0,0,.55), 0 0 0 2px rgba(255,255,255,.08); }
+  .tel img { display: block; width: 100%; border-radius: 40px; }
+  .ecran { background: #14101F; border-radius: 20px; padding: 38px 10px 10px; position: relative;
+           box-shadow: 0 40px 90px rgba(0,0,0,.55), 0 0 0 2px rgba(255,255,255,.08); }
+  .ecran::before { content: ''; position: absolute; left: 20px; top: 14px; width: 12px; height: 12px; border-radius: 50%;
+                   background: #F87171; box-shadow: 22px 0 0 #FBBF24, 44px 0 0 #34D399; }
+  .ecran .vue { overflow: hidden; border-radius: 10px; aspect-ratio: 1440 / 900; position: relative; background: #fff; }
+  .ecran img { display: block; width: 100%; position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+
+  .logo { width: 200px; height: 200px; border-radius: 44px; background: #fff; display: grid; place-items: center;
+          box-shadow: 0 30px 80px rgba(96,48,128,.6); }
+  .logo img { width: 164px; height: 164px; }
+
+  .carte { background: var(--carte); border: 1px solid rgba(255,255,255,.1); border-radius: 30px; padding: 34px 38px; }
+  .pastille { width: 78px; height: 78px; border-radius: 50%; background: var(--violet); display: grid; place-items: center;
+              font-size: 36px; font-weight: 900; flex: none; }
+  .centre { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+
+
+  /* --- Lecteurs : écrans qui changent d'état sous un curseur ------------------ */
+  .pile { position: absolute; inset: 0; transform-origin: 0 0; }
+  .pile img { position: absolute; left: 0; top: 0; width: 100%; opacity: 0; }
+  .tel .pile-tel { position: relative; aspect-ratio: 390 / 844; border-radius: 40px; overflow: hidden; background: #fff; }
+  .tel .pile-tel img { position: absolute; left: 0; top: 0; width: 100%; border-radius: 0; opacity: 0; }
+  .curseur { position: absolute; left: 0; top: 0; width: 40px; height: 40px; margin: -4px 0 0 -8px; opacity: 0; z-index: 5; will-change: transform; }
+  .curseur.doigt { width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%;
+                   background: rgba(96,48,128,.35); border: 3px solid rgba(255,255,255,.95); box-shadow: 0 4px 18px rgba(0,0,0,.35); }
+  .onde { position: absolute; left: 0; top: 0; width: 120px; height: 120px; margin: -60px 0 0 -60px; border-radius: 50%;
+          border: 5px solid var(--violet); background: rgba(96,48,128,.22); opacity: 0; z-index: 4; }
+  .avantage { display: flex; align-items: center; gap: 26px; }
+  .avantage .coche { width: 64px; height: 64px; border-radius: 50%; background: var(--vert); display: grid; place-items: center; flex: none; }
+  .avantage p { font-size: 40px; font-weight: 800; line-height: 1.15; }
+  .avantage small { display: block; font-size: 27px; font-weight: 600; color: var(--clair); margin-top: 4px; }
+  .anneau { position: absolute; left: 50%; top: 47%; width: 120px; height: 120px; margin: -60px 0 0 -60px; border-radius: 50%;
+            border: 5px solid var(--vert); opacity: 0; animation: anneau 1.4s ease-out var(--d) 3 both; }
+  @keyframes anneau { from { opacity: .9; transform: scale(.3); } to { opacity: 0; transform: scale(2.4); } }
+
+  /* --- Scène 5 : zoom sur la carte de conformité -------------------------- */
+  #zoom5 { animation: zoom5 2s cubic-bezier(.65, 0, .35, 1) 31.4s both; }
+  @keyframes zoom5 { from { transform: none; } to { transform: scale(1.62) translate(-17.5%, -41%); } }
+  .barre { height: 14px; border-radius: 7px; background: rgba(255,255,255,.12); overflow: hidden; }
+  .barre i { display: block; height: 100%; border-radius: 7px; background: var(--vert); transform-origin: 0 50%; animation: remplit 1.4s cubic-bezier(.16,1,.3,1) var(--d) both; }
+  @keyframes remplit { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+  /* --- Scène 8 : l'écran de connexion change de marque --------------------- */
+</style>
+</head>
+<body>
+  <div class="halo a"></div><div class="halo b"></div><div class="halo c"></div>
+
+  <!-- 1. Ouverture ------------------------------------------------------- 0 → 5,3 s -->
+  <section class="scene" style="--s:0s; --e:4.8s">
+    <div class="centre">
+      <div class="logo el pop" style="--d:.3s"><img src="logo.png" alt=""></div>
+      <h1 class="el" style="--d:.9s; margin-top:54px">Big Five Force</h1>
+      <p class="sous el" style="--d:1.9s; margin-top:26px">La force de vente, maîtrisée</p>
+    </div>
+  </section>
+
+  <!-- 2. Le terrain saisit, le siège pilote --------------------------- 5,3 → 10,4 s -->
+  <section class="scene" style="--s:5.3s; --e:9.9s">
+    <div style="position:absolute; left:110px; top:300px; width:760px">
+      <p class="grand el" style="--d:5.8s">Le terrain<br>saisit.</p>
+      <p class="grand el" style="--d:7.8s; margin-top:34px; color:var(--clair)">Le siège<br>pilote.</p>
+    </div>
+    <div class="ecran el droite" style="--d:6s; position:absolute; left:900px; top:150px; width:980px">
+      <div class="vue"><img src="captures/d-dashboard.jpg" alt=""></div>
+    </div>
+    <div class="tel el" style="--d:6.6s; position:absolute; left:800px; top:330px; width:300px"><img src="captures/ph-accueil.jpg" alt=""></div>
+  </section>
+
+  <!-- 3. Terrain : une visite en quelques gestes ---------------------- 10,4 → 20,4 s -->
+  <section class="scene" style="--s:10.4s; --e:19.9s">
+    <div class="tel lecteur el gauche" data-lecteur="visite" style="--d:10.6s; position:absolute; left:200px; top:70px; width:434px"><div class="pile-tel"><img src="captures/ph-accueil.jpg" alt=""><img src="captures/ph-visite-1.jpg" alt=""><img src="captures/ph-visite-2.jpg" alt=""><img src="captures/ph-visite-3.jpg" alt=""><img src="captures/ph-visite-4.jpg" alt=""><div class="onde"></div><div class="curseur doigt"></div></div></div>
+    <div style="position:absolute; left:800px; top:170px; width:1000px">
+      <span class="puce el" style="--d:10.7s">Sur le terrain</span>
+      <h2 class="el" style="--d:11s; margin-top:22px">Une visite saisie<br>en quelques gestes</h2>
+      <div class="avantage el droite" style="--d:14.6s; margin-top:60px"><span class="coche"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Le point de vente le plus proche est proposé<small>Pas de recherche dans une liste</small></p></div>
+      <div class="avantage el droite" style="--d:16.5s; margin-top:30px"><span class="coche"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Un parcours guidé, étape par étape<small>Rien n’est oublié avant l’enregistrement</small></p></div>
+      <div class="avantage el droite" style="--d:17.9s; margin-top:30px"><span class="coche"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Les quantités se remplissent en un clic<small>Le relevé d’un rayon en quelques secondes</small></p></div>
+    </div>
+  </section>
+
+  <!-- 4. Terrain : la présence vérifiée ------------------------------- 20,4 → 28,2 s -->
+  <section class="scene" style="--s:20.4s; --e:27.7s">
+    <div style="position:absolute; left:110px; top:170px; width:900px">
+      <span class="puce el" style="--d:20.6s">Sur le terrain</span>
+      <h2 class="el" style="--d:20.9s; margin-top:22px">Chaque visite est<br>vérifiée par GPS</h2>
+      <div class="avantage el droite" style="--d:23.2s; margin-top:60px"><span class="coche"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>La visite est validée sur place<small>Dans un rayon de 200 mètres autour du magasin</small></p></div>
+      <div class="avantage el droite" style="--d:25s; margin-top:30px"><span class="coche"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Un relevé auquel vous pouvez vous fier<small>Vous savez qu’il a été fait dans le point de vente</small></p></div>
+    </div>
+    <div class="tel lecteur el droite" data-lecteur="fiche" style="--d:20.7s; position:absolute; left:1090px; top:110px; width:360px"><div class="pile-tel"><img src="captures/ph-pdv.jpg" alt=""><img src="captures/ph-fiche.jpg" alt=""><div class="onde"></div><div class="curseur doigt"></div></div></div>
+    <div class="tel el droite" style="--d:22.9s; position:absolute; left:1500px; top:190px; width:330px">
+      <div style="position:relative"><img src="captures/m-carte.jpg" alt=""><span class="anneau" style="--d:23.6s"></span></div>
+    </div>
+  </section>
+
+  <!-- 5. Siège : la conformité en un coup d'œil ----------------------- 28,2 → 36,4 s -->
+  <section class="scene" style="--s:28.2s; --e:35.9s">
+    <div class="entete">
+      <span class="puce el" style="--d:28.4s">Au siège</span>
+      <h2 class="el" style="--d:28.7s">La conformité, en un coup d’œil</h2>
+    </div>
+    <div class="ecran lecteur el gauche" data-lecteur="tableau" style="--d:28.5s; position:absolute; left:110px; top:330px; width:1080px"><div class="vue"><div class="pile" id="zoom5"><img src="captures/d-login.jpg" alt=""><img src="captures/d-dashboard.jpg" alt=""><div class="onde"></div><svg class="curseur" viewBox="0 0 24 24"><path d="M5 2.5v17l4.6-4.3 3 6.3 2.7-1.3-3-6.2H19z" fill="#fff" stroke="#14101F" stroke-width="1.6" stroke-linejoin="round"/></svg></div></div></div>
+    <div style="position:absolute; left:1270px; top:360px; width:540px">
+      <div class="carte el droite" style="--d:32.4s">
+        <p style="font-size:120px; font-weight:900; line-height:1"><span data-compte="10" data-t0="32.6" data-duree="1.4">0</span><span style="font-size:64px; color:var(--clair)"> / 15</span></p>
+        <p style="font-size:32px; font-weight:700; margin-top:14px">points de vente conformes</p>
+        <div class="barre" style="margin-top:24px"><i style="--d:32.7s; width:66.7%"></i></div>
+      </div>
+      <div class="el" style="--d:33.9s; display:flex; gap:14px; margin-top:26px">
+        <span class="puce" style="background:#7C3AED; border-color:transparent; color:#fff; text-transform:none; letter-spacing:0">3 Flagship</span>
+        <span class="puce" style="background:var(--vert); border-color:transparent; color:#fff; text-transform:none; letter-spacing:0">3 VIP</span>
+        <span class="puce" style="background:#2563EB; border-color:transparent; color:#fff; text-transform:none; letter-spacing:0">4 Core</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Siège : du détail à la vue d'ensemble ------------------------ 36,4 → 45,4 s -->
+  <section class="scene" style="--s:36.4s; --e:44.9s">
+    <div class="entete">
+      <span class="puce el" style="--d:36.6s">Au siège</span>
+      <h2 class="el" style="--d:36.9s">Du détail d’une visite à la vue d’ensemble</h2>
+    </div>
+    <div class="ecran lecteur el gauche" data-lecteur="suivi" style="--d:36.7s; position:absolute; left:110px; top:330px; width:1080px"><div class="vue"><div class="pile"><img src="captures/d-visites.jpg" alt=""><img src="captures/d-visite-detail.jpg" alt=""><img src="captures/d-zones-0.jpg" alt=""><img src="captures/d-zones.jpg" alt=""><div class="onde"></div><svg class="curseur" viewBox="0 0 24 24"><path d="M5 2.5v17l4.6-4.3 3 6.3 2.7-1.3-3-6.2H19z" fill="#fff" stroke="#14101F" stroke-width="1.6" stroke-linejoin="round"/></svg></div></div></div>
+    <div style="position:absolute; left:1250px; top:400px; width:580px">
+      <div class="avantage el droite" style="--d:38.5s; margin-top:0px"><span class="coche"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Le détail en un clic<small>Niveau, score et relevé de chaque visite</small></p></div>
+      <div class="avantage el droite" style="--d:41s; margin-top:44px"><span class="coche"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>La synthèse par zone<small>Visites, retards et conformité par territoire</small></p></div>
+      <div class="avantage el droite" style="--d:42.6s; margin-top:44px"><span class="coche"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Vous savez où agir<small>Les territoires en retard ressortent</small></p></div>
+    </div>
+  </section>
+
+  <!-- 7. Les rôles --------------------------------------------------- 45,4 → 52,6 s -->
+  <section class="scene" style="--s:45.4s; --e:52.1s">
+    <div class="entete" style="text-align:center">
+      <h2 class="el" style="--d:45.8s">Chaque rôle voit son périmètre</h2>
+    </div>
+    <div style="position:absolute; left:110px; right:110px; top:330px; display:flex; gap:40px">
+      <div class="carte el" style="--d:47.9s; flex:1; text-align:center; padding:50px 36px">
+        <span class="pastille" style="margin:0 auto; width:110px; height:110px; font-size:50px">A</span>
+        <p style="font-size:44px; font-weight:800; margin-top:28px">Administrateur</p>
+        <p style="font-size:34px; color:var(--clair); margin-top:8px">Voit tout</p>
+        <p style="font-size:110px; font-weight:900; margin-top:26px; line-height:1"><span data-compte="15" data-t0="48.1" data-duree="1">0</span></p>
+        <p style="font-size:28px; color:var(--clair)">points de vente</p>
+      </div>
+      <div class="carte el" style="--d:49s; flex:1; text-align:center; padding:50px 36px">
+        <span class="pastille" style="margin:0 auto; width:110px; height:110px; font-size:50px; background:var(--ambre)">C</span>
+        <p style="font-size:44px; font-weight:800; margin-top:28px">Commercial</p>
+        <p style="font-size:34px; color:var(--clair); margin-top:8px">Ses territoires</p>
+        <p style="font-size:110px; font-weight:900; margin-top:26px; line-height:1"><span data-compte="6" data-t0="49.2" data-duree=".8">0</span></p>
+        <p style="font-size:28px; color:var(--clair)">points de vente</p>
+      </div>
+      <div class="carte el" style="--d:50.1s; flex:1; text-align:center; padding:50px 36px">
+        <span class="pastille" style="margin:0 auto; width:110px; height:110px; font-size:50px; background:var(--vert)">M</span>
+        <p style="font-size:44px; font-weight:800; margin-top:28px">Merchandiser</p>
+        <p style="font-size:34px; color:var(--clair); margin-top:8px">Son territoire</p>
+        <p style="font-size:110px; font-weight:900; margin-top:26px; line-height:1"><span data-compte="3" data-t0="50.3" data-duree=".6">0</span></p>
+        <p style="font-size:28px; color:var(--clair)">points de vente</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. La personnalisation ---------------------------------------- 52,6 → 61,6 s -->
+  <section class="scene" style="--s:52.6s; --e:61.1s">
+    <div class="entete">
+      <span class="puce el" style="--d:52.8s">Personnalisation</span>
+      <h2 class="el" style="--d:53.1s">À vos couleurs, en trois clics</h2>
+    </div>
+    <div class="ecran lecteur el gauche" data-lecteur="marque" style="--d:52.9s; position:absolute; left:110px; top:330px; width:1080px"><div class="vue"><div class="pile"><img src="captures/d-marque-0.jpg" alt=""><img src="captures/d-marque-1.jpg" alt=""><img src="captures/d-marque-2.jpg" alt=""><img src="captures/d-marque-3.jpg" alt=""><img src="captures/d-login-client.jpg" alt=""><div class="onde"></div><svg class="curseur" viewBox="0 0 24 24"><path d="M5 2.5v17l4.6-4.3 3 6.3 2.7-1.3-3-6.2H19z" fill="#fff" stroke="#14101F" stroke-width="1.6" stroke-linejoin="round"/></svg></div></div></div>
+    <div style="position:absolute; left:1250px; top:420px; width:580px">
+      <div class="avantage el droite" style="--d:56.7s; margin-top:0px"><span class="coche"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Votre nom<small>Sur la connexion, le menu et le mobile</small></p></div>
+      <div class="avantage el droite" style="--d:57.5s; margin-top:44px"><span class="coche"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Votre logo<small>Chargé en un clic</small></p></div>
+      <div class="avantage el droite" style="--d:58.3s; margin-top:44px"><span class="coche"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><p>Vos couleurs<small>Reprises automatiquement du logo</small></p></div>
+    </div>
+  </section>
+
+  <!-- 9. Fin ---------------------------------------------------------- 61,6 → 67,5 s -->
+  <section class="scene" style="--s:61.6s; --e:9999s">
+    <div class="centre">
+      <div class="logo el pop" style="--d:61.9s; width:160px; height:160px; border-radius:36px"><img src="logo.png" alt="" style="width:130px; height:130px"></div>
+      <h1 class="el" style="--d:62.3s; margin-top:44px; font-size:116px">Big Five Force</h1>
+      <p class="el pop" style="--d:63.7s; margin-top:44px; padding:22px 54px; border-radius:999px; background:#fff; color:var(--violet); font-size:44px; font-weight:800">Demandez votre démonstration</p>
+    </div>
+  </section>
+
+<script>
+  // Compteurs et lecteurs : les seules animations hors CSS. rendre.mjs appelle window.aller(t).
+  const compteurs = [...document.querySelectorAll('[data-compte]')]
+  window.DUREE = 67.5
+
+  // Chaque lecteur : point de départ du curseur, puis une suite d'étapes.
+  // Une étape = l'image suivante à la seconde t ; avec x et y (de 0 à 1), le
+  // curseur va d'abord cliquer à cet endroit. Les positions viennent de vraies
+  // captures de l'application.
+  const LECTEURS = {
+    visite: { depart: [.5, .8], etapes: [{ t: 12.2, x: .7471, y: .1318 }, { t: 14.3, x: .8243, y: .3904 }, { t: 16.2, x: .6223, y: .9597 }, { t: 17.6, x: .3889, y: .1967 }] },
+    fiche: { depart: [.55, .8], etapes: [{ t: 22, x: .4282, y: .2808 }] },
+    tableau: { depart: [.9, .95], etapes: [{ t: 29.9, x: .6781, y: .6172 }] },
+    suivi: { depart: [.9, .95], etapes: [{ t: 38, x: .466, y: .6789 }, { t: 40.6 }, { t: 41.8, x: .3115, y: .3344 }] },
+    marque: { depart: [.9, .95], etapes: [{ t: 54.2, x: .3903, y: .4372 }, { t: 55.6, x: .2636, y: .766 }, { t: 57, x: .3975, y: .8794 }, { t: 59.2 }] },
+  }
+  const doux = p => (p < .5 ? 4 * p * p * p : 1 - ((-2 * p + 2) ** 3) / 2)
+  const borne = p => Math.min(1, Math.max(0, p))
+
+  function avancerLecteur(el, cfg, t) {
+    const images = el.querySelectorAll('.pile img, .pile-tel img')
+    const curseur = el.querySelector('.curseur')
+    const onde = el.querySelector('.onde')
+    const cadre = (el.querySelector('.pile') || el.querySelector('.pile-tel'))
+    const L = cadre.offsetWidth, H = cadre.offsetHeight
+    // Images : la suivante apparaît juste après son étape.
+    images.forEach((img, i) => { img.style.opacity = i === 0 ? 1 : borne((t - cfg.etapes[i - 1].t - .08) / .28) })
+    // Curseur : il part vers chaque cible 0,8 s avant le clic et y arrive juste avant.
+    const clics = cfg.etapes.filter(e => e.x !== undefined)
+    let [x, y] = cfg.depart
+    for (let i = 0; i < clics.length; i++) {
+      const c = clics[i]
+      const debut = Math.max(i ? clics[i - 1].t + .3 : -1, c.t - .9)
+      const p = doux(borne((t - debut) / (c.t - .12 - debut)))
+      x += (c.x - x) * p; y += (c.y - y) * p
+    }
+    const premier = clics[0].t, dernier = clics[clics.length - 1].t
+    const appui = clics.some(c => t >= c.t - .06 && t < c.t + .14) ? .82 : 1
+    curseur.style.opacity = borne((t - (premier - 1.1)) / .3) * (1 - borne((t - dernier - .5) / .4))
+    curseur.style.transform = `translate(${x * L}px, ${y * H}px) scale(${appui})`
+    // Onde de clic.
+    const c = clics.find(k => t >= k.t && t < k.t + .55)
+    if (c) {
+      const p = (t - c.t) / .55
+      onde.style.opacity = .9 * (1 - p)
+      onde.style.transform = `translate(${c.x * L}px, ${c.y * H}px) scale(${.25 + p * .9})`
+    }
+    else onde.style.opacity = 0
+  }
+
+  window.aller = (t) => {
+    for (const a of document.getAnimations()) { a.pause(); a.currentTime = t * 1000 }
+    for (const c of compteurs) {
+      const p = borne((t - Number(c.dataset.t0)) / Number(c.dataset.duree))
+      c.textContent = Math.round(Number(c.dataset.compte) * (1 - (1 - p) ** 3))
+    }
+    for (const el of document.querySelectorAll('.lecteur')) avancerLecteur(el, LECTEURS[el.dataset.lecteur], t)
+  }
+  // Ouverte seule dans un navigateur, la page se lit d'elle-même.
+  if (!new URLSearchParams(location.search).has('rendu')) {
+    const t0 = performance.now()
+    const boucle = () => { window.aller(((performance.now() - t0) / 1000) % window.DUREE); requestAnimationFrame(boucle) }
+    requestAnimationFrame(boucle)
+  }
+</script>
+</body>
+</html>

@@ -106,8 +106,8 @@
               <span class="text-lg font-bold text-fc-red">E</span>
             </div>
             <div>
-              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">EVAP — Évaporé</h3>
-              <p class="text-xs text-gray-400">Disponibilité et prix des produits évaporés</p>
+              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">Gamme A</h3>
+              <p class="text-xs text-gray-400">Disponibilité et prix Gamme A</p>
             </div>
           </div>
 
@@ -143,8 +143,8 @@
               <span class="text-lg font-bold text-orange-600">I</span>
             </div>
             <div>
-              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">IMP — Importé</h3>
-              <p class="text-xs text-gray-400">Disponibilité et prix des produits importés</p>
+              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">Gamme B</h3>
+              <p class="text-xs text-gray-400">Disponibilité et prix Gamme B</p>
             </div>
           </div>
 
@@ -180,8 +180,8 @@
               <span class="text-lg font-bold text-emerald-600">S</span>
             </div>
             <div>
-              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">SCM — Sweetened Condensed</h3>
-              <p class="text-xs text-gray-400">Disponibilité et prix SCM</p>
+              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">Gamme C</h3>
+              <p class="text-xs text-gray-400">Disponibilité et prix Gamme C</p>
             </div>
           </div>
 
@@ -217,8 +217,8 @@
               <span class="text-lg font-bold text-sky-600">U</span>
             </div>
             <div>
-              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">UHT</h3>
-              <p class="text-xs text-gray-400">Disponibilité et prix UHT</p>
+              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">Gamme D</h3>
+              <p class="text-xs text-gray-400">Disponibilité et prix Gamme D</p>
             </div>
           </div>
 
@@ -251,8 +251,8 @@
               <span class="text-lg font-bold text-pink-600">Y</span>
             </div>
             <div>
-              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">YAOURT</h3>
-              <p class="text-xs text-gray-400">Disponibilité et prix yaourts</p>
+              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">Gamme E</h3>
+              <p class="text-xs text-gray-400">Disponibilité et prix Gamme E</p>
             </div>
           </div>
 
@@ -285,7 +285,7 @@
               <span class="text-lg font-bold text-cyan-600">C</span>
             </div>
             <div>
-              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">CÉRÉALES</h3>
+              <h3 class="text-base font-bold text-gray-900 dark:text-gray-100">Gamme F</h3>
               <p class="text-xs text-gray-400">Quantités et prix céréales</p>
             </div>
           </div>
@@ -355,7 +355,7 @@
                   <ToggleStatus v-model="form.concurrence[fam.key].autre" />
                 </div>
                 <div v-if="form.concurrence[fam.key].autre === 'Présent'" class="space-y-1">
-                  <label class="text-sm font-medium text-gray-600">Nom du concurrent {{ fam.key.toUpperCase() }} *</label>
+                  <label class="text-sm font-medium text-gray-600">Nom du concurrent {{ getCategoryDef(fam.key)?.label || fam.key.toUpperCase() }} *</label>
                   <UInput v-model="form.concurrence[fam.key].nom_concurrent" placeholder="Nom du concurrent" size="lg" />
                 </div>
               </template>
@@ -388,7 +388,7 @@
               class="rounded-2xl bg-white p-4 shadow-sm dark:bg-gray-800"
             >
               <div class="mb-4 flex items-center gap-3">
-                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-red-50 text-fc-red dark:bg-red-950/30">
+                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-fc-red-50 text-fc-red dark:bg-fc-red-900/30">
                   <UIcon :name="section.icon" class="h-5 w-5" />
                 </div>
                 <div>
@@ -438,7 +438,7 @@
             <p class="text-sm font-semibold text-amber-900 dark:text-amber-100">Aucun standard paramétré pour ce type de PDV</p>
             <p class="mt-1 text-xs text-amber-700 dark:text-amber-300">
               Le type « {{ typePdvLabel(selectedPDV?.sous_categorie_pdv) || 'non renseigné' }} » n’est lié à aucune matrice de visibilité.
-              La visite sera enregistrée, mais aucun niveau Perfect Store ne sera attribué avant son paramétrage dans Dashboard → Perfect Store → Standards.
+              La visite sera enregistrée, mais aucun niveau de conformité ne sera attribué avant son paramétrage dans Dashboard → Conformité → Standards.
             </p>
           </div>
 
@@ -495,7 +495,7 @@
           <div class="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm space-y-4">
             <button
               type="button"
-              class="flex min-h-[150px] w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 py-8 transition-colors hover:border-fc-red hover:bg-red-50 active:bg-red-100 dark:border-gray-600 dark:hover:bg-red-950/20"
+              class="flex min-h-[150px] w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 py-8 transition-colors hover:border-fc-red hover:bg-fc-red-50 active:bg-fc-red-100 dark:border-gray-600 dark:hover:bg-fc-red-900/20"
               aria-label="Prendre une photo ou importer depuis la galerie"
               @click="triggerCamera"
             >
@@ -701,12 +701,12 @@ const saveProgress = ref(0)
 // parcours, y compris hors ligne grâce au repli du composable.
 const ALL_WIZARD_STEPS = [
   { key: 'general', label: 'Général', phase: 'Général' },
-  { key: 'evap', label: 'EVAP', phase: 'Produits' },
-  { key: 'imp', label: 'IMP', phase: 'Produits' },
-  { key: 'scm', label: 'SCM', phase: 'Produits' },
-  { key: 'uht', label: 'UHT', phase: 'Produits' },
-  { key: 'yaourt', label: 'Yaourt', phase: 'Produits' },
-  { key: 'cereales', label: 'Céréales', phase: 'Produits' },
+  { key: 'evap', label: 'Gamme A', phase: 'Produits' },
+  { key: 'imp', label: 'Gamme B', phase: 'Produits' },
+  { key: 'scm', label: 'Gamme C', phase: 'Produits' },
+  { key: 'uht', label: 'Gamme D', phase: 'Produits' },
+  { key: 'yaourt', label: 'Gamme E', phase: 'Produits' },
+  { key: 'cereales', label: 'Gamme F', phase: 'Produits' },
   { key: 'concurrence', label: 'Concurrence', phase: 'Visibilité & concurrence' },
   { key: 'visibilite', label: 'Visibilité', phase: 'Visibilité & concurrence' },
   { key: 'actions', label: 'Actions', phase: 'Actions & photos' },
@@ -716,7 +716,7 @@ const { filtrer: filtrerCategoriesReleve, charger: chargerCategoriesReleve } = u
 
 // Les étapes produit sont OBLIGATOIRES. Constat en base le 7 sept. 2026 : 17
 // visites sur 6 098 depuis avril portaient une quantité, parce que ces étapes
-// se traversaient sans rien saisir — et le score Perfect Store, la
+// se traversaient sans rien saisir — et le score de conformité, la
 // disponibilité et l'analyse des gaps se calculent uniquement à partir d'elles.
 // Une quantité à 0 vaut réponse (« rupture ») : il suffit d'avoir touché un SKU.
 const wizardSteps = computed<WizardStep[]>(() =>
@@ -960,42 +960,42 @@ const userEmail = computed(() => user.value?.email || '')
 
 // Product definitions
 const evapProducts: { key: ProductKey<VisiteProduits['evap']>; label: string }[] = [
-  { key: 'br_gold', label: 'BR Gold' },
-  { key: 'br_160g', label: 'BR 150g' },
-  { key: 'brb_160g', label: 'BRB 150g' },
-  { key: 'br_400g', label: 'BR 380g' },
-  { key: 'brb_400g', label: 'BRB 380g' },
-  { key: 'pearl_400g', label: 'Pearl 380g' },
+  { key: 'br_gold', label: 'FT Gold' },
+  { key: 'br_160g', label: 'FT 150g' },
+  { key: 'brb_160g', label: 'FTB 150g' },
+  { key: 'br_400g', label: 'FT 380g' },
+  { key: 'brb_400g', label: 'FTB 380g' },
+  { key: 'pearl_400g', label: 'Opale 380g' },
 ]
 
 const impProducts: { key: ProductKey<VisiteProduits['imp']>; label: string }[] = [
-  { key: 'br_400g', label: 'BR tin 2500g' },
-  { key: 'br_20g', label: 'BR 15g' },
-  { key: 'brb_25g', label: 'BRB 16g' },
-  { key: 'br_375g', label: 'BR 360g' },
-  { key: 'br_900g', label: 'BR 400g Tin' },
-  { key: 'brb_400g', label: 'BRB 360g' },
-  { key: 'br_2_5kg', label: 'BR 900g Tin' },
+  { key: 'br_400g', label: 'FT tin 2500g' },
+  { key: 'br_20g', label: 'FT 15g' },
+  { key: 'brb_25g', label: 'FTB 16g' },
+  { key: 'br_375g', label: 'FT 360g' },
+  { key: 'br_900g', label: 'FT 400g Tin' },
+  { key: 'brb_400g', label: 'FTB 360g' },
+  { key: 'br_2_5kg', label: 'FT 900g Tin' },
   { key: 'brd_15g', label: 'BRD 15g' },
-  { key: 'brd_350g', label: 'BR Délice Pouch 350g' },
+  { key: 'brd_350g', label: 'FT Délice Pouch 350g' },
 ]
 
 const scmProducts: { key: ProductKey<VisiteProduits['scm']>; label: string }[] = [
-  { key: 'pearl_1kg', label: 'Pearl 1Kg' },
-  { key: 'br_1kg', label: 'BR 1Kg' },
+  { key: 'pearl_1kg', label: 'Opale 1Kg' },
+  { key: 'br_1kg', label: 'FT 1Kg' },
 ]
 
 const uhtProducts: { key: ProductKey<VisiteProduits['uht']>; label: string }[] = [
-  { key: 'demi_ecreme', label: 'BR 516ml' },
+  { key: 'demi_ecreme', label: 'FT 516ml' },
   { key: 'elopack_500ml', label: 'Elopack 500 ml' },
   { key: 'brique_1l', label: 'Brique 1L' },
 ]
 
 const yaourtProducts: { key: ProductKey<VisiteProduits['yaourt']>; label: string }[] = [
-  { key: 'br_yogoo_fraise_mini_90ml', label: 'BR Yogoo fraise mini 90 ml' },
-  { key: 'br_yogoo_fraise_maxi_318ml', label: 'BR Yogoo fraise maxi 318 ml' },
-  { key: 'br_yogoo_nature_mini_90ml', label: 'BR Yogoo nature mini 90 ml' },
-  { key: 'br_yogoo_nature_maxi_318ml', label: 'BR Yogoo nature maxi 318 ml' },
+  { key: 'br_yogoo_fraise_mini_90ml', label: 'FT Fraise mini 90 ml' },
+  { key: 'br_yogoo_fraise_maxi_318ml', label: 'FT Fraise maxi 318 ml' },
+  { key: 'br_yogoo_nature_mini_90ml', label: 'FT Nature mini 90 ml' },
+  { key: 'br_yogoo_nature_maxi_318ml', label: 'FT Nature maxi 318 ml' },
 ]
 
 const cerealesProducts = getSkus('cereales').map(s => ({ key: s.key, label: s.label }))
@@ -1061,7 +1061,7 @@ const visibilitySections = computed(() => [
 
 const ALL_PRODUCT_CATEGORY_KEYS: (keyof VisiteProduits)[] = ['evap', 'imp', 'scm', 'uht', 'yaourt', 'cereales']
 const productCategoryKeys = computed(() => filtrerCategoriesReleve(ALL_PRODUCT_CATEGORY_KEYS, k => k))
-const productCategoryLabels: Record<string, string> = { evap: 'EVAP', imp: 'IMP', scm: 'SCM', uht: 'UHT', yaourt: 'Yaourt', cereales: 'Céréales' }
+const productCategoryLabels: Record<string, string> = { evap: 'Gamme A', imp: 'Gamme B', scm: 'Gamme C', uht: 'Gamme D', yaourt: 'Gamme E', cereales: 'Gamme F' }
 // L'étape courante est une catégorie produit ? (l'ordre des étapes dépend des catégories actives)
 const quickCategory = computed<keyof VisiteProduits | null>(() => {
   const key = wizardSteps.value[currentTab.value]?.key as keyof VisiteProduits | undefined

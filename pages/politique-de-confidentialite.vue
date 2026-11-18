@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-gray-50 px-6 py-12 dark:bg-gray-900">
     <main class="mx-auto max-w-2xl">
-      <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Politique de confidentialité — Bonnet Rouge</h1>
+      <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Politique de confidentialité — Big Five Force</h1>
       <p class="mt-1 text-sm text-gray-400">Dernière mise à jour : 7 septembre 2026</p>
 
       <div class="mt-8 space-y-6 text-[15px] leading-relaxed text-gray-700 dark:text-gray-300">
@@ -9,8 +9,8 @@
           <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-gray-100">Identification de l'application et de l'éditeur</h2>
           <p>
             La présente politique de confidentialité s'applique à l'application mobile
-            <strong>Friesland Bonnet Rouge</strong> (nom court « Bonnet Rouge »), publiée sur Google Play
-            sous l'identifiant de package <code class="text-[13px]">com.bdco.bonnetrouge</code>, ainsi qu'à
+            <strong>Big Five Force</strong>, publiée sur Google Play
+            sous l'identifiant de package <code class="text-[13px]">com.bigfive.force</code>, ainsi qu'à
             sa version web.
           </p>
           <p class="mt-2">
@@ -31,7 +31,7 @@
         </section>
 
         <p>
-          L'application <strong>Bonnet Rouge</strong> (« l'Application ») est un outil professionnel de collecte
+          L'application <strong>Big Five Force</strong> (« l'Application ») est un outil professionnel de collecte
           de données terrain destiné aux équipes commerciales et merchandising intervenant sur le réseau de
           points de vente en Côte d'Ivoire. Elle est réservée à un usage interne : l'accès nécessite un compte
           créé par l'administrateur.
@@ -152,5 +152,5 @@
 // L'alias garde l'ancienne URL vivante : la modale de divulgation de l'AAB 1.0.4
 // déjà signé pointe dessus, et un lien mort casserait le parcours Play.
 definePageMeta({ layout: false, alias: ['/privacy-policy'] })
-useHead({ title: 'Politique de confidentialité — Bonnet Rouge' })
+useHead({ title: 'Politique de confidentialité — Big Five Force' })
 </script>

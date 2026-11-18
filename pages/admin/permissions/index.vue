@@ -6,7 +6,7 @@
       <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
         Autorise chaque rôle à accéder à une section du dashboard. L'admin a toujours accès à tout.
         Les sections « Stats » couvrent la consultation ; « Paramètres » regroupe le paramétrage
-        (standards Perfect Store, seuils stock, référentiels, utilisateurs, permissions, import/export).
+        (standards de conformité, seuils stock, référentiels, utilisateurs, permissions, import/export).
       </p>
     </div>
 

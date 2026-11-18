@@ -5,7 +5,7 @@
       :steps="steps"
       :step-states="stepStates"
       :saving="saving"
-      submit-label="Enregistrer le field coaching"
+      submit-label="Enregistrer l'accompagnement"
       @submit="handleSave"
       @cancel="handleCancel"
     >
@@ -125,9 +125,9 @@
       :visible="showSaveOverlay"
       :status="saveStatus"
       :progress="saveProgress"
-      saving-title="Enregistrement du field coaching"
+      saving-title="Enregistrement de l'accompagnement"
       saving-message="Synchronisation des données..."
-      success-title="Field coaching enregistré"
+      success-title="Accompagnement enregistré"
       success-message="Le questionnaire a été sauvegardé."
       @update:visible="showSaveOverlay = $event"
       @closed="router.push('/mobile/coaching')"
@@ -137,7 +137,7 @@
 </template>
 
 <script setup lang="ts">
-// Field coaching (lot 4) : même enveloppe que la saisie de visite (wizard,
+// Accompagnement terrain (lot 4) : même enveloppe que la saisie de visite (wizard,
 // brouillon local, file hors ligne, overlay), 13 questions Kobo.
 import type { WizardStep } from '~/components/FormWizard.vue'
 import { ROUTE_JOURS, TYPES_PDV_KOBO, erreursIdentification, evaluationComplete, motifRequis, questionsDuBloc, reponsesVides } from '~/utils/fieldCoaching'
@@ -157,8 +157,8 @@ const steps: WizardStep[] = [
   { key: 'identification', label: 'Superviseur & vendeur', phase: 'Identification' },
   { key: 'pdv', label: 'PDV & propriétaire', phase: 'Identification' },
   { key: 'distribution', label: 'Distribution', phase: 'Évaluation' },
-  { key: 'visibilite', label: 'Perfect Visibility', phase: 'Évaluation' },
-  { key: 'promotion', label: 'Effective Promotion', phase: 'Évaluation' },
+  { key: 'visibilite', label: 'Visibilité', phase: 'Évaluation' },
+  { key: 'promotion', label: 'Promotion', phase: 'Évaluation' },
 ]
 const currentTab = ref(0)
 

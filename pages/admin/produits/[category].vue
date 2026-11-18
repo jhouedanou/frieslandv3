@@ -214,7 +214,7 @@ const { estActive, charger: chargerCategoriesReleve } = useCategoriesReleve()
 watchEffect(() => {
   if (!estActive(cat.value)) navigateTo('/admin/produits/recap', { replace: true })
 })
-const title = computed(() => cat.value.toUpperCase())
+const title = computed(() => getCategoryDef(cat.value)?.label || cat.value.toUpperCase())
 
 // Tab management
 const tabs = [
@@ -226,41 +226,41 @@ const activeTab = ref((route.query.tab as string) || 'dispo')
 
 const productDefs: Record<string, { key: string; name: string }[]> = {
   evap: [
-    { key: 'br_gold', name: 'BR Gold' },
-    { key: 'br_160g', name: 'BR 150g' },
-    { key: 'brb_160g', name: 'BRB 150g' },
-    { key: 'br_400g', name: 'BR 380g' },
-    { key: 'brb_400g', name: 'BRB 380g' },
-    { key: 'pearl_400g', name: 'Pearl 380g' },
+    { key: 'br_gold', name: 'FT Gold' },
+    { key: 'br_160g', name: 'FT 150g' },
+    { key: 'brb_160g', name: 'FTB 150g' },
+    { key: 'br_400g', name: 'FT 380g' },
+    { key: 'brb_400g', name: 'FTB 380g' },
+    { key: 'pearl_400g', name: 'Opale 380g' },
   ],
   imp: [
-    { key: 'br_400g', name: 'BR 2' },
-    { key: 'br_20g', name: 'BR 15g' },
-    { key: 'brb_25g', name: 'BRB 16g' },
-    { key: 'br_375g', name: 'BR 360g' },
-    { key: 'br_900g', name: 'BR 400g Tin' },
-    { key: 'brb_400g', name: 'BRB 360g' },
-    { key: 'br_2_5kg', name: 'BR 900g Tin' },
+    { key: 'br_400g', name: 'FT 2' },
+    { key: 'br_20g', name: 'FT 15g' },
+    { key: 'brb_25g', name: 'FTB 16g' },
+    { key: 'br_375g', name: 'FT 360g' },
+    { key: 'br_900g', name: 'FT 400g Tin' },
+    { key: 'brb_400g', name: 'FTB 360g' },
+    { key: 'br_2_5kg', name: 'FT 900g Tin' },
     { key: 'brd_15g', name: 'BRD 15g' },
   ],
   scm: [
-    { key: 'pearl_1kg', name: 'Pearl 1Kg' },
-    { key: 'br_1kg', name: 'BR 1Kg' },
+    { key: 'pearl_1kg', name: 'Opale 1Kg' },
+    { key: 'br_1kg', name: 'FT 1Kg' },
   ],
   uht: [
-    { key: 'demi_ecreme', name: 'BR 516ml' },
+    { key: 'demi_ecreme', name: 'FT 516ml' },
     { key: 'elopack_500ml', name: 'Elopack 500ml' },
     { key: 'brique_1l', name: 'Brique 1L' },
   ],
   yaourt: [
-    { key: 'br_yogoo_fraise_mini_90ml', name: 'Yogoo Fraise Mini 90ml' },
-    { key: 'br_yogoo_fraise_maxi_318ml', name: 'Yogoo Fraise Maxi 318ml' },
-    { key: 'br_yogoo_nature_mini_90ml', name: 'Yogoo Nature Mini 90ml' },
-    { key: 'br_yogoo_nature_maxi_318ml', name: 'Yogoo Nature Maxi 318ml' },
+    { key: 'br_yogoo_fraise_mini_90ml', name: 'FT Fraise Mini 90ml' },
+    { key: 'br_yogoo_fraise_maxi_318ml', name: 'FT Fraise Maxi 318ml' },
+    { key: 'br_yogoo_nature_mini_90ml', name: 'FT Nature Mini 90ml' },
+    { key: 'br_yogoo_nature_maxi_318ml', name: 'FT Nature Maxi 318ml' },
   ],
   cereales: [
-    { key: 'brcv', name: 'Céréales BRCV' },
-    { key: 'brcc', name: 'Céréales BRCC' },
+    { key: 'brcv', name: 'FTCV' },
+    { key: 'brcc', name: 'FTCC' },
   ],
 }
 

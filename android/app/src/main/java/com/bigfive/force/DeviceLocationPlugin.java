@@ -1,4 +1,4 @@
-package com.bdco.bonnetrouge;
+package com.bigfive.force;
 
 import android.content.pm.PackageManager;
 

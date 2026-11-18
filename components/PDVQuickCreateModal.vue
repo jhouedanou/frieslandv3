@@ -251,9 +251,9 @@ const distributorOptions = computed(() => {
 
 // Cascade Catégorie (level3 / groupe) → Sous-catégorie (level4 / type de PDV),
 // lues depuis posTypes (référentiel type_pdv) → uniquement des valeurs valides.
-// Le level4 pilote le scoring Perfect Store.
+// Le level4 pilote le scoring de conformité.
 // Options {label: nom_fr, value: nom EN} : l'affichage est en français mais la
-// valeur stockée reste le nom EN du référentiel (matching Perfect Store).
+// valeur stockée reste le nom EN du référentiel (matching de conformité).
 const categorieOptions = computed(() => {
   const byNom = new Map(posTypes.value.filter(p => p.level3_group).map(p => [p.level3_group, p.level3_fr]))
   return [...byNom.entries()]
@@ -261,7 +261,7 @@ const categorieOptions = computed(() => {
     .sort((a, b) => a.label.localeCompare(b.label, 'fr'))
 })
 // Le canal se déduit de la catégorie (categorie_pdv.canal), comme dans le
-// calcul Perfect Store — il n'est plus saisi pour éviter toute divergence.
+// calcul de conformité — il n'est plus saisi pour éviter toute divergence.
 const derivedCanal = computed(() => {
   const pos = posTypes.value.find(p => p.level3_group === form.categorie_pdv)
   return canalLabelFromCode((pos as any)?.canal)

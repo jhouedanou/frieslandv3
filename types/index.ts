@@ -1,5 +1,5 @@
 // ============================================================
-// Types TypeScript - Friesland Bonnet Rouge
+// Types TypeScript - Big Five Force
 // ============================================================
 
 // ---- Enums & Constantes ----
@@ -57,7 +57,7 @@ export interface PDV {
   canal_routing?: string
   sales_rep_routing?: string
   mdm?: string
-  // Référentiels (migration 020) + Perfect Store (013_016)
+  // Référentiels (migration 020) + Conformité (013_016)
   territory_code?: string
   area_code?: string
   distributor_name?: string
@@ -329,7 +329,7 @@ export interface VisiteConcurrence {
 export interface VisiteVisibilite {
   /** Relevé générique piloté par element_visibilite.code (source BIG FIVE KPI). */
   standards: Record<string, boolean>
-  /** La promotion ne compte dans le Perfect Store que lorsqu'elle est active au PDV. */
+  /** La promotion ne compte dans le Conformité que lorsqu'elle est active au PDV. */
   promotion_applicable: boolean
   exterieure: {
     presence_visibilite: boolean
@@ -534,7 +534,7 @@ export interface DashboardStats {
   performance_commerciaux: CommercialPerformance[]
   visites_par_jour: { date: string; count: number }[]
   distribution_pdv: { type: string; count: number }[]
-  // Perfect Store
+  // Conformité
   perfect_store_pct?: number | null
   perfect_store_par_type?: { type_pdv: string; perfect_store_pct: number | null }[]
 }
@@ -547,7 +547,7 @@ export interface CommercialPerformance {
   taux_completion: number
 }
 
-// ---- Perfect Store ----
+// ---- Conformité ----
 // Niveaux du plus exigeant au moins exigeant. Conservés tels quels (référentiel).
 export type NiveauPerfectStore =
   | 'FLAGSHIP STORE'

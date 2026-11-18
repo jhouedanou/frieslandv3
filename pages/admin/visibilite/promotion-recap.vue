@@ -1,10 +1,10 @@
 <template>
   <div class="space-y-6">
     <header class="space-y-1">
-      <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-fc-red">Perfect Store · Visibilité</p>
+      <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-fc-red">Conformité · Visibilité</p>
       <h1 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Promotion — récapitulatif</h1>
       <p class="max-w-2xl text-sm text-slate-500 dark:text-slate-400">
-        Éléments de promotion mesurés (pilier <code class="rounded bg-slate-100 px-1 py-0.5 text-[11px] dark:bg-slate-700">promotion</code> du référentiel Perfect Store).
+        Éléments de promotion mesurés (pilier <code class="rounded bg-slate-100 px-1 py-0.5 text-[11px] dark:bg-slate-700">promotion</code> du référentiel de conformité).
       </p>
     </header>
 
