@@ -1,0 +1,602 @@
+﻿section;segment_ou_canal;grade_ou_niveau;categorie_ou_pilier;reference_ou_element;critere;valeur;precision
+1. Niveaux Perfect Store;;FLAGSHIP STORE;;;disponibilite_rayon_min_%;95;rang 4
+1. Niveaux Perfect Store;;FLAGSHIP STORE;;;visibilite_min_%;100;rang 4
+1. Niveaux Perfect Store;;FLAGSHIP STORE;;;promotion_min_%;100;si promotion applicable
+1. Niveaux Perfect Store;;VIP PERFECT STORE;;;disponibilite_rayon_min_%;85;rang 3
+1. Niveaux Perfect Store;;VIP PERFECT STORE;;;visibilite_min_%;100;rang 3
+1. Niveaux Perfect Store;;VIP PERFECT STORE;;;promotion_min_%;100;si promotion applicable
+1. Niveaux Perfect Store;;CORE PERFECT STORE;;;disponibilite_rayon_min_%;75;rang 2
+1. Niveaux Perfect Store;;CORE PERFECT STORE;;;visibilite_min_%;100;rang 2
+1. Niveaux Perfect Store;;CORE PERFECT STORE;;;promotion_min_%;100;si promotion applicable
+1. Niveaux Perfect Store;;BASIC PERFECT STORE;;;disponibilite_rayon_min_%;60;rang 1
+1. Niveaux Perfect Store;;BASIC PERFECT STORE;;;visibilite_min_%;100;rang 1
+1. Niveaux Perfect Store;;BASIC PERFECT STORE;;;promotion_min_%;100;si promotion applicable
+2. Disponibilité - quantité minimale;Boutique;A;EVAP;BR 150g;quantite_min;48;
+2. Disponibilité - quantité minimale;Boutique;B;EVAP;BR 150g;quantite_min;36;
+2. Disponibilité - quantité minimale;Boutique;C;EVAP;BR 150g;quantite_min;18;
+2. Disponibilité - quantité minimale;Minimarket;A;EVAP;BR 150g;quantite_min;48;
+2. Disponibilité - quantité minimale;Minimarket;B;EVAP;BR 150g;quantite_min;24;
+2. Disponibilité - quantité minimale;SupermarcheMT;A;EVAP;BR 150g;quantite_min;144;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;B;EVAP;BR 150g;quantite_min;96;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;C;EVAP;BR 150g;quantite_min;48;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;Boutique;A;EVAP;BR 380g;quantite_min;24;
+2. Disponibilité - quantité minimale;Boutique;B;EVAP;BR 380g;quantite_min;18;
+2. Disponibilité - quantité minimale;Boutique;C;EVAP;BR 380g;quantite_min;10;
+2. Disponibilité - quantité minimale;Minimarket;A;EVAP;BR 380g;quantite_min;24;
+2. Disponibilité - quantité minimale;Minimarket;B;EVAP;BR 380g;quantite_min;18;
+2. Disponibilité - quantité minimale;Porridge;A;EVAP;BR 380g;quantite_min;2;
+2. Disponibilité - quantité minimale;SupermarcheMT;A;EVAP;BR 380g;quantite_min;48;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;B;EVAP;BR 380g;quantite_min;24;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;C;EVAP;BR 380g;quantite_min;24;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;Boutique;A;EVAP;BR Gold 160g;quantite_min;24;
+2. Disponibilité - quantité minimale;Boutique;B;EVAP;BR Gold 160g;quantite_min;24;
+2. Disponibilité - quantité minimale;Boutique;C;EVAP;BR Gold 160g;quantite_min;12;
+2. Disponibilité - quantité minimale;Minimarket;A;EVAP;BR Gold 160g;quantite_min;24;
+2. Disponibilité - quantité minimale;Minimarket;B;EVAP;BR Gold 160g;quantite_min;12;
+2. Disponibilité - quantité minimale;SupermarcheMT;A;EVAP;BR Gold 160g;quantite_min;96;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;B;EVAP;BR Gold 160g;quantite_min;48;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;C;EVAP;BR Gold 160g;quantite_min;24;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;Boutique;A;EVAP;BRB 150g;quantite_min;24;
+2. Disponibilité - quantité minimale;Boutique;B;EVAP;BRB 150g;quantite_min;18;
+2. Disponibilité - quantité minimale;Boutique;C;EVAP;BRB 150g;quantite_min;12;
+2. Disponibilité - quantité minimale;Minimarket;A;EVAP;BRB 150g;quantite_min;24;
+2. Disponibilité - quantité minimale;Minimarket;B;EVAP;BRB 150g;quantite_min;18;
+2. Disponibilité - quantité minimale;SupermarcheMT;A;EVAP;BRB 150g;quantite_min;96;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;B;EVAP;BRB 150g;quantite_min;48;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;C;EVAP;BRB 150g;quantite_min;24;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;Boutique;A;EVAP;BRB 380g;quantite_min;12;
+2. Disponibilité - quantité minimale;Boutique;B;EVAP;BRB 380g;quantite_min;12;
+2. Disponibilité - quantité minimale;Boutique;C;EVAP;BRB 380g;quantite_min;6;
+2. Disponibilité - quantité minimale;Minimarket;A;EVAP;BRB 380g;quantite_min;12;
+2. Disponibilité - quantité minimale;Minimarket;B;EVAP;BRB 380g;quantite_min;12;
+2. Disponibilité - quantité minimale;Aboki;A;EVAP;Pearl 380g;quantite_min;2;
+2. Disponibilité - quantité minimale;Aboki;B;EVAP;Pearl 380g;quantite_min;1;
+2. Disponibilité - quantité minimale;Boutique;A;EVAP;Pearl 380g;quantite_min;24;
+2. Disponibilité - quantité minimale;Boutique;B;EVAP;Pearl 380g;quantite_min;18;
+2. Disponibilité - quantité minimale;Boutique;C;EVAP;Pearl 380g;quantite_min;10;
+2. Disponibilité - quantité minimale;Kiosque;A;EVAP;Pearl 380g;quantite_min;3;
+2. Disponibilité - quantité minimale;Kiosque;B;EVAP;Pearl 380g;quantite_min;3;
+2. Disponibilité - quantité minimale;Minimarket;A;EVAP;Pearl 380g;quantite_min;24;
+2. Disponibilité - quantité minimale;Minimarket;B;EVAP;Pearl 380g;quantite_min;18;
+2. Disponibilité - quantité minimale;SupermarcheMT;A;EVAP;Pearl 380g;quantite_min;48;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;B;EVAP;Pearl 380g;quantite_min;48;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;C;EVAP;Pearl 380g;quantite_min;24;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;Boutique;A;IMP;BR 15g;quantite_min;12;
+2. Disponibilité - quantité minimale;Boutique;B;IMP;BR 15g;quantite_min;12;
+2. Disponibilité - quantité minimale;Boutique;C;IMP;BR 15g;quantite_min;3;
+2. Disponibilité - quantité minimale;Minimarket;A;IMP;BR 15g;quantite_min;12;
+2. Disponibilité - quantité minimale;Minimarket;B;IMP;BR 15g;quantite_min;12;
+2. Disponibilité - quantité minimale;SupermarcheMT;A;IMP;BR 15g;quantite_min;24;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;B;IMP;BR 15g;quantite_min;12;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;C;IMP;BR 15g;quantite_min;12;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;Boutique;A;IMP;BR Délice 15g;quantite_min;12;
+2. Disponibilité - quantité minimale;Boutique;B;IMP;BR Délice 15g;quantite_min;12;
+2. Disponibilité - quantité minimale;Boutique;C;IMP;BR Délice 15g;quantite_min;3;
+2. Disponibilité - quantité minimale;Minimarket;A;IMP;BR Délice 15g;quantite_min;12;
+2. Disponibilité - quantité minimale;Minimarket;B;IMP;BR Délice 15g;quantite_min;12;
+2. Disponibilité - quantité minimale;Porridge;A;IMP;BR Délice 15g;quantite_min;1;
+2. Disponibilité - quantité minimale;Pushcart;A;IMP;BR Délice 15g;quantite_min;2;
+2. Disponibilité - quantité minimale;Pushcart;B;IMP;BR Délice 15g;quantite_min;2;
+2. Disponibilité - quantité minimale;SupermarcheMT;A;IMP;BR Délice 15g;quantite_min;24;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;B;IMP;BR Délice 15g;quantite_min;12;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;C;IMP;BR Délice 15g;quantite_min;12;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;TableTop;A;IMP;BR Délice 15g;quantite_min;1;
+2. Disponibilité - quantité minimale;Boutique;A;IMP;BR Delice Pouch 350g;quantite_min;6;
+2. Disponibilité - quantité minimale;Boutique;B;IMP;BR Delice Pouch 350g;quantite_min;3;
+2. Disponibilité - quantité minimale;Boutique;C;IMP;BR Delice Pouch 350g;quantite_min;3;
+2. Disponibilité - quantité minimale;Minimarket;A;IMP;BR Delice Pouch 350g;quantite_min;6;
+2. Disponibilité - quantité minimale;Minimarket;B;IMP;BR Delice Pouch 350g;quantite_min;3;
+2. Disponibilité - quantité minimale;SupermarcheMT;A;IMP;BR Delice Pouch 350g;quantite_min;30;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;B;IMP;BR Delice Pouch 350g;quantite_min;12;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;C;IMP;BR Delice Pouch 350g;quantite_min;6;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;Boutique;A;IMP;BR Pouch 360g;quantite_min;6;
+2. Disponibilité - quantité minimale;Boutique;B;IMP;BR Pouch 360g;quantite_min;3;
+2. Disponibilité - quantité minimale;Boutique;C;IMP;BR Pouch 360g;quantite_min;3;
+2. Disponibilité - quantité minimale;Minimarket;A;IMP;BR Pouch 360g;quantite_min;6;
+2. Disponibilité - quantité minimale;Minimarket;B;IMP;BR Pouch 360g;quantite_min;3;
+2. Disponibilité - quantité minimale;SupermarcheMT;A;IMP;BR Pouch 360g;quantite_min;30;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;B;IMP;BR Pouch 360g;quantite_min;12;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;C;IMP;BR Pouch 360g;quantite_min;6;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;Boutique;A;IMP;BR tin 2500g;quantite_min;3;
+2. Disponibilité - quantité minimale;Minimarket;A;IMP;BR tin 2500g;quantite_min;3;
+2. Disponibilité - quantité minimale;Minimarket;B;IMP;BR tin 2500g;quantite_min;3;
+2. Disponibilité - quantité minimale;SupermarcheMT;A;IMP;BR tin 2500g;quantite_min;6;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;B;IMP;BR tin 2500g;quantite_min;4;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;C;IMP;BR tin 2500g;quantite_min;2;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;Boutique;A;IMP;BR tin 400g;quantite_min;12;
+2. Disponibilité - quantité minimale;Boutique;B;IMP;BR tin 400g;quantite_min;6;
+2. Disponibilité - quantité minimale;Boutique;C;IMP;BR tin 400g;quantite_min;3;
+2. Disponibilité - quantité minimale;Minimarket;A;IMP;BR tin 400g;quantite_min;12;
+2. Disponibilité - quantité minimale;Minimarket;B;IMP;BR tin 400g;quantite_min;6;
+2. Disponibilité - quantité minimale;SupermarcheMT;A;IMP;BR tin 400g;quantite_min;24;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;B;IMP;BR tin 400g;quantite_min;12;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;C;IMP;BR tin 400g;quantite_min;12;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;Boutique;A;IMP;BR tin 900g;quantite_min;6;
+2. Disponibilité - quantité minimale;Boutique;B;IMP;BR tin 900g;quantite_min;3;
+2. Disponibilité - quantité minimale;Minimarket;A;IMP;BR tin 900g;quantite_min;6;
+2. Disponibilité - quantité minimale;Minimarket;B;IMP;BR tin 900g;quantite_min;3;
+2. Disponibilité - quantité minimale;SupermarcheMT;A;IMP;BR tin 900g;quantite_min;12;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;B;IMP;BR tin 900g;quantite_min;6;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;C;IMP;BR tin 900g;quantite_min;6;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;Boutique;A;SCM;BR 1kg;quantite_min;3;
+2. Disponibilité - quantité minimale;Minimarket;A;SCM;BR 1kg;quantite_min;6;
+2. Disponibilité - quantité minimale;Minimarket;B;SCM;BR 1kg;quantite_min;3;
+2. Disponibilité - quantité minimale;SupermarcheMT;A;SCM;BR 1kg;quantite_min;24;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;B;SCM;BR 1kg;quantite_min;24;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;C;SCM;BR 1kg;quantite_min;24;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;Aboki;A;SCM;Pearl 1kg;quantite_min;3;
+2. Disponibilité - quantité minimale;Aboki;B;SCM;Pearl 1kg;quantite_min;2;
+2. Disponibilité - quantité minimale;Boutique;A;SCM;Pearl 1kg;quantite_min;12;
+2. Disponibilité - quantité minimale;Boutique;B;SCM;Pearl 1kg;quantite_min;6;
+2. Disponibilité - quantité minimale;Boutique;C;SCM;Pearl 1kg;quantite_min;3;
+2. Disponibilité - quantité minimale;Kiosque;A;SCM;Pearl 1kg;quantite_min;3;
+2. Disponibilité - quantité minimale;Kiosque;B;SCM;Pearl 1kg;quantite_min;2;
+2. Disponibilité - quantité minimale;Minimarket;A;SCM;Pearl 1kg;quantite_min;12;
+2. Disponibilité - quantité minimale;Minimarket;B;SCM;Pearl 1kg;quantite_min;6;
+2. Disponibilité - quantité minimale;SupermarcheMT;A;SCM;Pearl 1kg;quantite_min;24;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;B;SCM;Pearl 1kg;quantite_min;24;MT : remplacé par la section 3 si une ligne existe
+2. Disponibilité - quantité minimale;SupermarcheMT;C;SCM;Pearl 1kg;quantite_min;24;MT : remplacé par la section 3 si une ligne existe
+3. Disponibilité MT - quantité et facings;Hypermarche;;EVAP;BR 150g;quantite_min;144;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;EVAP;BR 150g;facings_min;13;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;EVAP;BR 150g;quantite_min;96;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;EVAP;BR 150g;facings_min;8;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;EVAP;BR 150g;quantite_min;48;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;EVAP;BR 150g;facings_min;6;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;EVAP;BR 380g;quantite_min;48;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;EVAP;BR 380g;facings_min;11;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;EVAP;BR 380g;quantite_min;24;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;EVAP;BR 380g;facings_min;7;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;EVAP;BR 380g;quantite_min;24;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;EVAP;BR 380g;facings_min;5;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;EVAP;BR Gold 160g;quantite_min;96;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;EVAP;BR Gold 160g;facings_min;13;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;EVAP;BR Gold 160g;quantite_min;48;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;EVAP;BR Gold 160g;facings_min;8;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;EVAP;BR Gold 160g;quantite_min;24;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;EVAP;BR Gold 160g;facings_min;6;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;EVAP;BRB 150g;quantite_min;96;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;EVAP;BRB 150g;facings_min;13;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;EVAP;BRB 150g;quantite_min;48;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;EVAP;BRB 150g;facings_min;8;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;EVAP;BRB 150g;quantite_min;24;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;EVAP;BRB 150g;facings_min;6;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;EVAP;Pearl 380g;quantite_min;48;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;EVAP;Pearl 380g;facings_min;11;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;EVAP;Pearl 380g;quantite_min;48;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;EVAP;Pearl 380g;facings_min;7;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;EVAP;Pearl 380g;quantite_min;24;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;EVAP;Pearl 380g;facings_min;5;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;IMP;BR 15g;quantite_min;24;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;IMP;BR 15g;facings_min;2;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;IMP;BR 15g;quantite_min;12;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;IMP;BR 15g;facings_min;2;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;IMP;BR 15g;quantite_min;12;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;IMP;BR 15g;facings_min;2;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;IMP;BR Délice 15g;quantite_min;24;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;IMP;BR Délice 15g;facings_min;2;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;IMP;BR Délice 15g;quantite_min;12;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;IMP;BR Délice 15g;facings_min;2;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;IMP;BR Délice 15g;quantite_min;12;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;IMP;BR Délice 15g;facings_min;2;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;IMP;BR Delice Pouch 350g;quantite_min;30;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;IMP;BR Delice Pouch 350g;facings_min;5;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;IMP;BR Delice Pouch 350g;quantite_min;12;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;IMP;BR Delice Pouch 350g;facings_min;2;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;IMP;BR Delice Pouch 350g;quantite_min;6;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;IMP;BR Delice Pouch 350g;facings_min;3;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;IMP;BR Pouch 360g;quantite_min;30;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;IMP;BR Pouch 360g;facings_min;5;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;IMP;BR Pouch 360g;quantite_min;12;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;IMP;BR Pouch 360g;facings_min;2;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;IMP;BR Pouch 360g;quantite_min;6;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;IMP;BR Pouch 360g;facings_min;3;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;IMP;BR tin 2500g;quantite_min;6;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;IMP;BR tin 2500g;facings_min;3;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;IMP;BR tin 2500g;quantite_min;4;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;IMP;BR tin 2500g;facings_min;2;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;IMP;BR tin 2500g;quantite_min;2;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;IMP;BR tin 2500g;facings_min;2;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;IMP;BR tin 400g;quantite_min;24;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;IMP;BR tin 400g;facings_min;7;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;IMP;BR tin 400g;quantite_min;12;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;IMP;BR tin 400g;facings_min;4;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;IMP;BR tin 400g;quantite_min;12;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;IMP;BR tin 400g;facings_min;5;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;IMP;BR tin 900g;quantite_min;12;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;IMP;BR tin 900g;facings_min;5;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;IMP;BR tin 900g;quantite_min;6;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;IMP;BR tin 900g;facings_min;3;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;IMP;BR tin 900g;quantite_min;6;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;IMP;BR tin 900g;facings_min;3;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;SCM;BR 1kg;quantite_min;24;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;SCM;BR 1kg;facings_min;6;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;SCM;BR 1kg;quantite_min;24;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;SCM;BR 1kg;facings_min;4;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;SCM;BR 1kg;quantite_min;24;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;SCM;BR 1kg;facings_min;5;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;SCM;Pearl 1kg;quantite_min;24;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;Hypermarche;;SCM;Pearl 1kg;facings_min;6;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;SCM;Pearl 1kg;quantite_min;24;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;MoyenSuper;;SCM;Pearl 1kg;facings_min;4;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;SCM;Pearl 1kg;quantite_min;24;les deux conditions sont exigées
+3. Disponibilité MT - quantité et facings;PetitSuper;;SCM;Pearl 1kg;facings_min;5;les deux conditions sont exigées
+4. Poids des références;GT;;EVAP;BR 150g;poids_%_taux_vente;74,9443;rôle : phare
+4. Poids des références;GT;;EVAP;BR 150g;poids_%_taux_revu;65,0;rôle : phare
+4. Poids des références;MT;;EVAP;BR 150g;poids_%_taux_vente;48,8953;rôle : phare
+4. Poids des références;MT;;EVAP;BR 150g;poids_%_taux_revu;55,0;rôle : phare
+4. Poids des références;GT;;EVAP;BR 380g;poids_%_taux_vente;4,8276;rôle : soutien
+4. Poids des références;GT;;EVAP;BR 380g;poids_%_taux_revu;5,0;rôle : soutien
+4. Poids des références;MT;;EVAP;BR 380g;poids_%_taux_vente;13,8184;rôle : soutien
+4. Poids des références;MT;;EVAP;BR 380g;poids_%_taux_revu;8,0;rôle : soutien
+4. Poids des références;GT;;EVAP;BR Gold 160g;poids_%_taux_vente;0,9469;rôle : soutien
+4. Poids des références;GT;;EVAP;BR Gold 160g;poids_%_taux_revu;10,0;rôle : soutien
+4. Poids des références;MT;;EVAP;BR Gold 160g;poids_%_taux_vente;13,8855;rôle : soutien
+4. Poids des références;MT;;EVAP;BR Gold 160g;poids_%_taux_revu;15,0;rôle : soutien
+4. Poids des références;GT;;EVAP;BRB 150g;poids_%_taux_vente;8,4215;rôle : croissance
+4. Poids des références;GT;;EVAP;BRB 150g;poids_%_taux_revu;7,0;rôle : croissance
+4. Poids des références;MT;;EVAP;BRB 150g;poids_%_taux_vente;13,5132;rôle : croissance
+4. Poids des références;MT;;EVAP;BRB 150g;poids_%_taux_revu;12,0;rôle : croissance
+4. Poids des références;GT;;EVAP;BRB 380g;poids_%_taux_vente;0,5408;rôle : a_retirer
+4. Poids des références;GT;;EVAP;BRB 380g;poids_%_taux_revu;3,0;rôle : a_retirer
+4. Poids des références;MT;;EVAP;BRB 380g;poids_%_taux_vente;6,2622;rôle : a_retirer
+4. Poids des références;MT;;EVAP;BRB 380g;poids_%_taux_revu;5,0;rôle : a_retirer
+4. Poids des références;GT;;EVAP;Pearl 380g;poids_%_taux_vente;10,3189;rôle : soutien
+4. Poids des références;GT;;EVAP;Pearl 380g;poids_%_taux_revu;10,0;rôle : soutien
+4. Poids des références;MT;;EVAP;Pearl 380g;poids_%_taux_vente;3,6255;rôle : soutien
+4. Poids des références;MT;;EVAP;Pearl 380g;poids_%_taux_revu;5,0;rôle : soutien
+4. Poids des références;GT;;IMP;BR 15g;poids_%_taux_vente;85,4932;rôle : phare
+4. Poids des références;GT;;IMP;BR 15g;poids_%_taux_revu;76,0;rôle : phare
+4. Poids des références;MT;;IMP;BR 15g;poids_%_taux_vente;57,5363;rôle : phare
+4. Poids des références;MT;;IMP;BR 15g;poids_%_taux_revu;25,0;rôle : phare
+4. Poids des références;GT;;IMP;BR Délice 15g;poids_%_taux_vente;7,8053;rôle : nouveaute
+4. Poids des références;GT;;IMP;BR Délice 15g;poids_%_taux_revu;5,0;rôle : nouveaute
+4. Poids des références;MT;;IMP;BR Délice 15g;poids_%_taux_vente;7,8602;rôle : nouveaute
+4. Poids des références;MT;;IMP;BR Délice 15g;poids_%_taux_revu;15,0;rôle : nouveaute
+4. Poids des références;GT;;IMP;BR Delice Pouch 350g;poids_%_taux_vente;0,882;rôle : nouveaute
+4. Poids des références;GT;;IMP;BR Delice Pouch 350g;poids_%_taux_revu;3,0;rôle : nouveaute
+4. Poids des références;MT;;IMP;BR Delice Pouch 350g;poids_%_taux_vente;6,3667;rôle : nouveaute
+4. Poids des références;MT;;IMP;BR Delice Pouch 350g;poids_%_taux_revu;10,0;rôle : nouveaute
+4. Poids des références;GT;;IMP;BR Pouch 360g;poids_%_taux_vente;5,4244;rôle : croissance
+4. Poids des références;GT;;IMP;BR Pouch 360g;poids_%_taux_revu;7,0;rôle : croissance
+4. Poids des références;MT;;IMP;BR Pouch 360g;poids_%_taux_vente;24,0079;rôle : croissance
+4. Poids des références;MT;;IMP;BR Pouch 360g;poids_%_taux_revu;16,0;rôle : croissance
+4. Poids des références;GT;;IMP;BR tin 2500g;poids_%_taux_vente;0,0626;rôle : soutien
+4. Poids des références;GT;;IMP;BR tin 2500g;poids_%_taux_revu;2,0;rôle : soutien
+4. Poids des références;MT;;IMP;BR tin 2500g;poids_%_taux_vente;0,5445;rôle : soutien
+4. Poids des références;MT;;IMP;BR tin 2500g;poids_%_taux_revu;7,0;rôle : soutien
+4. Poids des références;GT;;IMP;BR tin 400g;poids_%_taux_vente;0,2414;rôle : croissance
+4. Poids des références;GT;;IMP;BR tin 400g;poids_%_taux_revu;5,0;rôle : croissance
+4. Poids des références;MT;;IMP;BR tin 400g;poids_%_taux_vente;2,3089;rôle : croissance
+4. Poids des références;MT;;IMP;BR tin 400g;poids_%_taux_revu;15,0;rôle : croissance
+4. Poids des références;GT;;IMP;BR tin 900g;poids_%_taux_vente;0,0911;rôle : soutien
+4. Poids des références;GT;;IMP;BR tin 900g;poids_%_taux_revu;2,0;rôle : soutien
+4. Poids des références;MT;;IMP;BR tin 900g;poids_%_taux_vente;1,3755;rôle : soutien
+4. Poids des références;MT;;IMP;BR tin 900g;poids_%_taux_revu;12,0;rôle : soutien
+4. Poids des références;GT;;SCM;BR 1kg;poids_%_taux_vente;5,38;rôle : soutien
+4. Poids des références;GT;;SCM;BR 1kg;poids_%_taux_revu;5,38;rôle : soutien
+4. Poids des références;MT;;SCM;BR 1kg;poids_%_taux_vente;44,3852;rôle : soutien
+4. Poids des références;MT;;SCM;BR 1kg;poids_%_taux_revu;70,0;rôle : soutien
+4. Poids des références;GT;;SCM;Pearl 1kg;poids_%_taux_vente;94,62;rôle : croissance
+4. Poids des références;GT;;SCM;Pearl 1kg;poids_%_taux_revu;94,62;rôle : croissance
+4. Poids des références;MT;;SCM;Pearl 1kg;poids_%_taux_vente;46,7704;rôle : croissance
+4. Poids des références;MT;;SCM;Pearl 1kg;poids_%_taux_revu;30,0;rôle : croissance
+5. Assortiment;Boutique;A;;;sku_cibles;15;
+5. Assortiment;Boutique;A;;;min_sku_presents;10;
+5. Assortiment;Boutique;A;;;heros_obligatoires;oui;héros = références de rôle phare
+5. Assortiment;Boutique;B;;;sku_cibles;12;
+5. Assortiment;Boutique;B;;;min_sku_presents;8;
+5. Assortiment;Boutique;B;;;heros_obligatoires;oui;héros = références de rôle phare
+5. Assortiment;Boutique;C;;;sku_cibles;11;
+5. Assortiment;Boutique;C;;;min_sku_presents;5;
+5. Assortiment;Boutique;C;;;heros_obligatoires;oui;héros = références de rôle phare
+5. Assortiment;Minimarket;A;;;sku_cibles;15;
+5. Assortiment;Minimarket;A;;;min_sku_presents;10;
+5. Assortiment;Minimarket;A;;;heros_obligatoires;oui;héros = références de rôle phare
+5. Assortiment;Minimarket;B;;;sku_cibles;12;
+5. Assortiment;Minimarket;B;;;min_sku_presents;8;
+5. Assortiment;Minimarket;B;;;heros_obligatoires;oui;héros = références de rôle phare
+5. Assortiment;Minimarket;C;;;sku_cibles;11;
+5. Assortiment;Minimarket;C;;;min_sku_presents;5;
+5. Assortiment;Minimarket;C;;;heros_obligatoires;oui;héros = références de rôle phare
+6. Visibilité et promotion;boutique;flagship;promotion;Dégustation;requis;oui;
+6. Visibilité et promotion;boutique;vip;promotion;Dégustation;requis;oui;
+6. Visibilité et promotion;boutique;core;promotion;Dégustation;requis;non;
+6. Visibilité et promotion;boutique;basic;promotion;Dégustation;requis;non;
+6. Visibilité et promotion;boutique;flagship;promotion;Hotesses;requis;oui;
+6. Visibilité et promotion;boutique;vip;promotion;Hotesses;requis;oui;
+6. Visibilité et promotion;boutique;core;promotion;Hotesses;requis;non;
+6. Visibilité et promotion;boutique;basic;promotion;Hotesses;requis;non;
+6. Visibilité et promotion;boutique;flagship;promotion;Standard;requis;oui;
+6. Visibilité et promotion;boutique;vip;promotion;Standard;requis;oui;
+6. Visibilité et promotion;boutique;core;promotion;Standard;requis;oui;
+6. Visibilité et promotion;boutique;basic;promotion;Standard;requis;oui;
+6. Visibilité et promotion;boutique;flagship;visibilite;Affiche;requis;oui;emplacement : exterieure
+6. Visibilité et promotion;boutique;vip;visibilite;Affiche;requis;oui;emplacement : exterieure
+6. Visibilité et promotion;boutique;core;visibilite;Affiche;requis;oui;emplacement : exterieure
+6. Visibilité et promotion;boutique;basic;visibilite;Affiche;requis;oui;emplacement : exterieure
+6. Visibilité et promotion;boutique;flagship;visibilite;Flèche;requis;oui;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;vip;visibilite;Flèche;requis;oui;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;core;visibilite;Flèche;requis;oui;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;basic;visibilite;Flèche;requis;non;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;flagship;visibilite;Full branding;requis;oui;emplacement : exterieure
+6. Visibilité et promotion;boutique;vip;visibilite;Full branding;requis;non;emplacement : exterieure
+6. Visibilité et promotion;boutique;core;visibilite;Full branding;requis;non;emplacement : exterieure
+6. Visibilité et promotion;boutique;basic;visibilite;Full branding;requis;non;emplacement : exterieure
+6. Visibilité et promotion;boutique;flagship;visibilite;Guirlande;requis;oui;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;vip;visibilite;Guirlande;requis;oui;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;core;visibilite;Guirlande;requis;non;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;basic;visibilite;Guirlande;requis;non;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;flagship;visibilite;Hanger;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;vip;visibilite;Hanger;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;core;visibilite;Hanger;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;basic;visibilite;Hanger;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;flagship;visibilite;Maison BR;requis;oui;emplacement : interieure
+6. Visibilité et promotion;boutique;vip;visibilite;Maison BR;requis;oui;emplacement : interieure
+6. Visibilité et promotion;boutique;core;visibilite;Maison BR;requis;oui;emplacement : interieure
+6. Visibilité et promotion;boutique;basic;visibilite;Maison BR;requis;oui;emplacement : interieure
+6. Visibilité et promotion;boutique;flagship;visibilite;Merchandising;requis;oui;emplacement : interieure
+6. Visibilité et promotion;boutique;vip;visibilite;Merchandising;requis;oui;emplacement : interieure
+6. Visibilité et promotion;boutique;core;visibilite;Merchandising;requis;oui;emplacement : interieure
+6. Visibilité et promotion;boutique;basic;visibilite;Merchandising;requis;oui;emplacement : interieure
+6. Visibilité et promotion;boutique;flagship;visibilite;Panneau privilège;requis;oui;emplacement : exterieure
+6. Visibilité et promotion;boutique;vip;visibilite;Panneau privilège;requis;oui;emplacement : exterieure
+6. Visibilité et promotion;boutique;core;visibilite;Panneau privilège;requis;non;emplacement : exterieure
+6. Visibilité et promotion;boutique;basic;visibilite;Panneau privilège;requis;non;emplacement : exterieure
+6. Visibilité et promotion;boutique;flagship;visibilite;Plaque BR;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;vip;visibilite;Plaque BR;requis;non;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;core;visibilite;Plaque BR;requis;non;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;basic;visibilite;Plaque BR;requis;non;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;flagship;visibilite;Présentoire;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;vip;visibilite;Présentoire;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;core;visibilite;Présentoire;requis;non;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;basic;visibilite;Présentoire;requis;non;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;flagship;visibilite;Reglette;requis;oui;emplacement : interieure
+6. Visibilité et promotion;boutique;vip;visibilite;Reglette;requis;oui;emplacement : interieure
+6. Visibilité et promotion;boutique;core;visibilite;Reglette;requis;oui;emplacement : interieure
+6. Visibilité et promotion;boutique;basic;visibilite;Reglette;requis;oui;emplacement : interieure
+6. Visibilité et promotion;boutique;flagship;visibilite;sign board;requis;oui;emplacement : exterieure
+6. Visibilité et promotion;boutique;vip;visibilite;sign board;requis;oui;emplacement : exterieure
+6. Visibilité et promotion;boutique;core;visibilite;sign board;requis;non;emplacement : exterieure
+6. Visibilité et promotion;boutique;basic;visibilite;sign board;requis;non;emplacement : exterieure
+6. Visibilité et promotion;boutique;flagship;visibilite;TG;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;vip;visibilite;TG;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;core;visibilite;TG;requis;non;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;basic;visibilite;TG;requis;non;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;flagship;visibilite;Wobler;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;vip;visibilite;Wobler;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;core;visibilite;Wobler;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;boutique;basic;visibilite;Wobler;requis;non;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;kiosque_aboki;flagship;promotion;Promotion;requis;oui;
+6. Visibilité et promotion;kiosque_aboki;vip;promotion;Promotion;requis;oui;
+6. Visibilité et promotion;kiosque_aboki;core;promotion;Promotion;requis;oui;
+6. Visibilité et promotion;kiosque_aboki;basic;promotion;Promotion;requis;non;
+6. Visibilité et promotion;kiosque_aboki;flagship;visibilite;AFFICHE;requis;oui;emplacement : exterieure
+6. Visibilité et promotion;kiosque_aboki;vip;visibilite;AFFICHE;requis;oui;emplacement : exterieure
+6. Visibilité et promotion;kiosque_aboki;core;visibilite;AFFICHE;requis;oui;emplacement : exterieure
+6. Visibilité et promotion;kiosque_aboki;basic;visibilite;AFFICHE;requis;oui;emplacement : exterieure
+6. Visibilité et promotion;kiosque_aboki;flagship;visibilite;CARAFE;requis;oui;emplacement : interieure
+6. Visibilité et promotion;kiosque_aboki;vip;visibilite;CARAFE;requis;oui;emplacement : interieure
+6. Visibilité et promotion;kiosque_aboki;core;visibilite;CARAFE;requis;oui;emplacement : interieure
+6. Visibilité et promotion;kiosque_aboki;basic;visibilite;CARAFE;requis;non;emplacement : interieure
+6. Visibilité et promotion;kiosque_aboki;flagship;visibilite;CHASUBLE;requis;oui;emplacement : interieure
+6. Visibilité et promotion;kiosque_aboki;vip;visibilite;CHASUBLE;requis;oui;emplacement : interieure
+6. Visibilité et promotion;kiosque_aboki;core;visibilite;CHASUBLE;requis;non;emplacement : interieure
+6. Visibilité et promotion;kiosque_aboki;basic;visibilite;CHASUBLE;requis;non;emplacement : interieure
+6. Visibilité et promotion;kiosque_aboki;flagship;visibilite;FULL BRANDING;requis;oui;emplacement : exterieure
+6. Visibilité et promotion;kiosque_aboki;vip;visibilite;FULL BRANDING;requis;non;emplacement : exterieure
+6. Visibilité et promotion;kiosque_aboki;core;visibilite;FULL BRANDING;requis;non;emplacement : exterieure
+6. Visibilité et promotion;kiosque_aboki;basic;visibilite;FULL BRANDING;requis;non;emplacement : exterieure
+6. Visibilité et promotion;kiosque_aboki;flagship;visibilite;MAISON BR;requis;oui;emplacement : interieure
+6. Visibilité et promotion;kiosque_aboki;vip;visibilite;MAISON BR;requis;oui;emplacement : interieure
+6. Visibilité et promotion;kiosque_aboki;core;visibilite;MAISON BR;requis;oui;emplacement : interieure
+6. Visibilité et promotion;kiosque_aboki;basic;visibilite;MAISON BR;requis;non;emplacement : interieure
+6. Visibilité et promotion;kiosque_aboki;flagship;visibilite;NAPPE;requis;oui;emplacement : interieure
+6. Visibilité et promotion;kiosque_aboki;vip;visibilite;NAPPE;requis;oui;emplacement : interieure
+6. Visibilité et promotion;kiosque_aboki;core;visibilite;NAPPE;requis;non;emplacement : interieure
+6. Visibilité et promotion;kiosque_aboki;basic;visibilite;NAPPE;requis;non;emplacement : interieure
+6. Visibilité et promotion;kiosque_aboki;flagship;visibilite;THERMOS;requis;oui;emplacement : interieure
+6. Visibilité et promotion;kiosque_aboki;vip;visibilite;THERMOS;requis;oui;emplacement : interieure
+6. Visibilité et promotion;kiosque_aboki;core;visibilite;THERMOS;requis;non;emplacement : interieure
+6. Visibilité et promotion;kiosque_aboki;basic;visibilite;THERMOS;requis;non;emplacement : interieure
+6. Visibilité et promotion;kiosque_aboki;flagship;visibilite;VERRE;requis;oui;emplacement : interieure
+6. Visibilité et promotion;kiosque_aboki;vip;visibilite;VERRE;requis;oui;emplacement : interieure
+6. Visibilité et promotion;kiosque_aboki;core;visibilite;VERRE;requis;oui;emplacement : interieure
+6. Visibilité et promotion;kiosque_aboki;basic;visibilite;VERRE;requis;non;emplacement : interieure
+6. Visibilité et promotion;mt;flagship;promotion;Hôtesses;requis;oui;
+6. Visibilité et promotion;mt;vip;promotion;Hôtesses;requis;oui;
+6. Visibilité et promotion;mt;core;promotion;Hôtesses;requis;oui;
+6. Visibilité et promotion;mt;basic;promotion;Hôtesses;requis;oui;
+6. Visibilité et promotion;mt;flagship;promotion;Plot;requis;oui;
+6. Visibilité et promotion;mt;vip;promotion;Plot;requis;non;
+6. Visibilité et promotion;mt;core;promotion;Plot;requis;non;
+6. Visibilité et promotion;mt;basic;promotion;Plot;requis;non;
+6. Visibilité et promotion;mt;flagship;promotion;TG (activités promotionnelles);requis;oui;
+6. Visibilité et promotion;mt;vip;promotion;TG (activités promotionnelles);requis;oui;
+6. Visibilité et promotion;mt;core;promotion;TG (activités promotionnelles);requis;oui;
+6. Visibilité et promotion;mt;basic;promotion;TG (activités promotionnelles);requis;oui;
+6. Visibilité et promotion;mt;flagship;visibilite;Bacs;requis;oui;emplacement : interieure
+6. Visibilité et promotion;mt;vip;visibilite;Bacs;requis;oui;emplacement : interieure
+6. Visibilité et promotion;mt;core;visibilite;Bacs;requis;oui;emplacement : interieure
+6. Visibilité et promotion;mt;basic;visibilite;Bacs;requis;non;emplacement : interieure
+6. Visibilité et promotion;mt;flagship;visibilite;Niche;requis;oui;emplacement : interieure
+6. Visibilité et promotion;mt;vip;visibilite;Niche;requis;non;emplacement : interieure
+6. Visibilité et promotion;mt;core;visibilite;Niche;requis;non;emplacement : interieure
+6. Visibilité et promotion;mt;basic;visibilite;Niche;requis;non;emplacement : interieure
+6. Visibilité et promotion;mt;flagship;visibilite;Réglettes;requis;oui;emplacement : interieure
+6. Visibilité et promotion;mt;vip;visibilite;Réglettes;requis;oui;emplacement : interieure
+6. Visibilité et promotion;mt;core;visibilite;Réglettes;requis;oui;emplacement : interieure
+6. Visibilité et promotion;mt;basic;visibilite;Réglettes;requis;oui;emplacement : interieure
+6. Visibilité et promotion;mt;flagship;visibilite;Top shelf;requis;oui;emplacement : interieure
+6. Visibilité et promotion;mt;vip;visibilite;Top shelf;requis;non;emplacement : interieure
+6. Visibilité et promotion;mt;core;visibilite;Top shelf;requis;non;emplacement : interieure
+6. Visibilité et promotion;mt;basic;visibilite;Top shelf;requis;non;emplacement : interieure
+6. Visibilité et promotion;mt;flagship;visibilite;Wobbler;requis;oui;emplacement : interieure
+6. Visibilité et promotion;mt;vip;visibilite;Wobbler;requis;oui;emplacement : interieure
+6. Visibilité et promotion;mt;core;visibilite;Wobbler;requis;oui;emplacement : interieure
+6. Visibilité et promotion;mt;basic;visibilite;Wobbler;requis;oui;emplacement : interieure
+6. Visibilité et promotion;porridge;flagship;promotion;DEGUSTATION;requis;oui;
+6. Visibilité et promotion;porridge;vip;promotion;DEGUSTATION;requis;non;
+6. Visibilité et promotion;porridge;core;promotion;DEGUSTATION;requis;non;
+6. Visibilité et promotion;porridge;basic;promotion;DEGUSTATION;requis;non;
+6. Visibilité et promotion;porridge;flagship;promotion;STANDARD;requis;oui;
+6. Visibilité et promotion;porridge;vip;promotion;STANDARD;requis;oui;
+6. Visibilité et promotion;porridge;core;promotion;STANDARD;requis;oui;
+6. Visibilité et promotion;porridge;basic;promotion;STANDARD;requis;oui;
+6. Visibilité et promotion;porridge;flagship;visibilite;HANGER;requis;oui;emplacement : interieure
+6. Visibilité et promotion;porridge;vip;visibilite;HANGER;requis;oui;emplacement : interieure
+6. Visibilité et promotion;porridge;core;visibilite;HANGER;requis;oui;emplacement : interieure
+6. Visibilité et promotion;porridge;basic;visibilite;HANGER;requis;oui;emplacement : interieure
+6. Visibilité et promotion;porridge;flagship;visibilite;NAPPE;requis;oui;emplacement : interieure
+6. Visibilité et promotion;porridge;vip;visibilite;NAPPE;requis;oui;emplacement : interieure
+6. Visibilité et promotion;porridge;core;visibilite;NAPPE;requis;oui;emplacement : interieure
+6. Visibilité et promotion;porridge;basic;visibilite;NAPPE;requis;non;emplacement : interieure
+6. Visibilité et promotion;porridge;flagship;visibilite;PARASOLS;requis;oui;emplacement : exterieure
+6. Visibilité et promotion;porridge;vip;visibilite;PARASOLS;requis;oui;emplacement : exterieure
+6. Visibilité et promotion;porridge;core;visibilite;PARASOLS;requis;non;emplacement : exterieure
+6. Visibilité et promotion;porridge;basic;visibilite;PARASOLS;requis;non;emplacement : exterieure
+6. Visibilité et promotion;porridge;flagship;visibilite;TABLIER;requis;oui;emplacement : interieure
+6. Visibilité et promotion;porridge;vip;visibilite;TABLIER;requis;non;emplacement : interieure
+6. Visibilité et promotion;porridge;core;visibilite;TABLIER;requis;non;emplacement : interieure
+6. Visibilité et promotion;porridge;basic;visibilite;TABLIER;requis;non;emplacement : interieure
+6. Visibilité et promotion;porridge;flagship;visibilite;VERRE JETABLE;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;porridge;vip;visibilite;VERRE JETABLE;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;porridge;core;visibilite;VERRE JETABLE;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;porridge;basic;visibilite;VERRE JETABLE;requis;non;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;pushcart;flagship;promotion;Promotion;requis;oui;
+6. Visibilité et promotion;pushcart;vip;promotion;Promotion;requis;oui;
+6. Visibilité et promotion;pushcart;core;promotion;Promotion;requis;oui;
+6. Visibilité et promotion;pushcart;basic;promotion;Promotion;requis;oui;
+6. Visibilité et promotion;pushcart;flagship;visibilite;AFFICHE;requis;non;emplacement : exterieure
+6. Visibilité et promotion;pushcart;vip;visibilite;AFFICHE;requis;oui;emplacement : exterieure
+6. Visibilité et promotion;pushcart;core;visibilite;AFFICHE;requis;oui;emplacement : exterieure
+6. Visibilité et promotion;pushcart;basic;visibilite;AFFICHE;requis;oui;emplacement : exterieure
+6. Visibilité et promotion;pushcart;flagship;visibilite;CHASUBLE;requis;oui;emplacement : interieure
+6. Visibilité et promotion;pushcart;vip;visibilite;CHASUBLE;requis;oui;emplacement : interieure
+6. Visibilité et promotion;pushcart;core;visibilite;CHASUBLE;requis;non;emplacement : interieure
+6. Visibilité et promotion;pushcart;basic;visibilite;CHASUBLE;requis;non;emplacement : interieure
+6. Visibilité et promotion;pushcart;flagship;visibilite;FULL BRANDING;requis;oui;emplacement : exterieure
+6. Visibilité et promotion;pushcart;vip;visibilite;FULL BRANDING;requis;non;emplacement : exterieure
+6. Visibilité et promotion;pushcart;core;visibilite;FULL BRANDING;requis;non;emplacement : exterieure
+6. Visibilité et promotion;pushcart;basic;visibilite;FULL BRANDING;requis;non;emplacement : exterieure
+6. Visibilité et promotion;pushcart;flagship;visibilite;THERMOS;requis;oui;emplacement : interieure
+6. Visibilité et promotion;pushcart;vip;visibilite;THERMOS;requis;oui;emplacement : interieure
+6. Visibilité et promotion;pushcart;core;visibilite;THERMOS;requis;oui;emplacement : interieure
+6. Visibilité et promotion;pushcart;basic;visibilite;THERMOS;requis;non;emplacement : interieure
+6. Visibilité et promotion;pushcart;flagship;visibilite;VERRE JETABLE;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;pushcart;vip;visibilite;VERRE JETABLE;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;pushcart;core;visibilite;VERRE JETABLE;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;pushcart;basic;visibilite;VERRE JETABLE;requis;non;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;flagship;promotion;Dégustation;requis;oui;
+6. Visibilité et promotion;superette;vip;promotion;Dégustation;requis;oui;
+6. Visibilité et promotion;superette;core;promotion;Dégustation;requis;non;
+6. Visibilité et promotion;superette;basic;promotion;Dégustation;requis;non;
+6. Visibilité et promotion;superette;flagship;promotion;Hotesses;requis;oui;
+6. Visibilité et promotion;superette;vip;promotion;Hotesses;requis;oui;
+6. Visibilité et promotion;superette;core;promotion;Hotesses;requis;oui;
+6. Visibilité et promotion;superette;basic;promotion;Hotesses;requis;non;
+6. Visibilité et promotion;superette;flagship;promotion;Standard;requis;oui;
+6. Visibilité et promotion;superette;vip;promotion;Standard;requis;oui;
+6. Visibilité et promotion;superette;core;promotion;Standard;requis;oui;
+6. Visibilité et promotion;superette;basic;promotion;Standard;requis;oui;
+6. Visibilité et promotion;superette;flagship;visibilite;Affiche;requis;oui;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;vip;visibilite;Affiche;requis;oui;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;core;visibilite;Affiche;requis;oui;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;basic;visibilite;Affiche;requis;oui;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;flagship;visibilite;Espace BR;requis;oui;emplacement : interieure
+6. Visibilité et promotion;superette;vip;visibilite;Espace BR;requis;oui;emplacement : interieure
+6. Visibilité et promotion;superette;core;visibilite;Espace BR;requis;oui;emplacement : interieure
+6. Visibilité et promotion;superette;basic;visibilite;Espace BR;requis;oui;emplacement : interieure
+6. Visibilité et promotion;superette;flagship;visibilite;Flèche (Entrée et sortie);requis;oui;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;vip;visibilite;Flèche (Entrée et sortie);requis;oui;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;core;visibilite;Flèche (Entrée et sortie);requis;oui;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;basic;visibilite;Flèche (Entrée et sortie);requis;non;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;flagship;visibilite;Merchandising;requis;oui;emplacement : interieure
+6. Visibilité et promotion;superette;vip;visibilite;Merchandising;requis;oui;emplacement : interieure
+6. Visibilité et promotion;superette;core;visibilite;Merchandising;requis;oui;emplacement : interieure
+6. Visibilité et promotion;superette;basic;visibilite;Merchandising;requis;oui;emplacement : interieure
+6. Visibilité et promotion;superette;flagship;visibilite;Panneau privilège lumineux;requis;oui;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;vip;visibilite;Panneau privilège lumineux;requis;non;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;core;visibilite;Panneau privilège lumineux;requis;non;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;basic;visibilite;Panneau privilège lumineux;requis;non;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;flagship;visibilite;Plaque BR;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;vip;visibilite;Plaque BR;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;core;visibilite;Plaque BR;requis;non;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;basic;visibilite;Plaque BR;requis;non;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;flagship;visibilite;Présentoire;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;vip;visibilite;Présentoire;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;core;visibilite;Présentoire;requis;non;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;basic;visibilite;Présentoire;requis;non;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;flagship;visibilite;Reglette;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;vip;visibilite;Reglette;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;core;visibilite;Reglette;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;basic;visibilite;Reglette;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;flagship;visibilite;sign board lumineux;requis;oui;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;vip;visibilite;sign board lumineux;requis;non;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;core;visibilite;sign board lumineux;requis;non;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;basic;visibilite;sign board lumineux;requis;non;"emplacement : exterieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;flagship;visibilite;TG;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;vip;visibilite;TG;requis;non;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;core;visibilite;TG;requis;non;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;basic;visibilite;TG;requis;non;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;flagship;visibilite;Wobler rayon;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;vip;visibilite;Wobler rayon;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;core;visibilite;Wobler rayon;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;superette;basic;visibilite;Wobler rayon;requis;non;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;table_top;flagship;promotion;Promotion;requis;oui;
+6. Visibilité et promotion;table_top;vip;promotion;Promotion;requis;oui;
+6. Visibilité et promotion;table_top;core;promotion;Promotion;requis;oui;
+6. Visibilité et promotion;table_top;basic;promotion;Promotion;requis;non;
+6. Visibilité et promotion;table_top;flagship;visibilite;HANGER;requis;oui;emplacement : interieure
+6. Visibilité et promotion;table_top;vip;visibilite;HANGER;requis;oui;emplacement : interieure
+6. Visibilité et promotion;table_top;core;visibilite;HANGER;requis;oui;emplacement : interieure
+6. Visibilité et promotion;table_top;basic;visibilite;HANGER;requis;oui;emplacement : interieure
+6. Visibilité et promotion;table_top;flagship;visibilite;NAPPE;requis;oui;emplacement : interieure
+6. Visibilité et promotion;table_top;vip;visibilite;NAPPE;requis;oui;emplacement : interieure
+6. Visibilité et promotion;table_top;core;visibilite;NAPPE;requis;oui;emplacement : interieure
+6. Visibilité et promotion;table_top;basic;visibilite;NAPPE;requis;non;emplacement : interieure
+6. Visibilité et promotion;table_top;flagship;visibilite;PARASOLS;requis;oui;emplacement : exterieure
+6. Visibilité et promotion;table_top;vip;visibilite;PARASOLS;requis;non;emplacement : exterieure
+6. Visibilité et promotion;table_top;core;visibilite;PARASOLS;requis;non;emplacement : exterieure
+6. Visibilité et promotion;table_top;basic;visibilite;PARASOLS;requis;non;emplacement : exterieure
+6. Visibilité et promotion;table_top;flagship;visibilite;TABLIER;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;table_top;vip;visibilite;TABLIER;requis;oui;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;table_top;core;visibilite;TABLIER;requis;non;"emplacement : interieure ; optionnel : hors calcul du taux"
+6. Visibilité et promotion;table_top;basic;visibilite;TABLIER;requis;non;"emplacement : interieure ; optionnel : hors calcul du taux"
+7. Type de PDV -> segment de disponibilité;Aboki;A;;Aboki A;type_pdv;Aboki A;
+7. Type de PDV -> segment de disponibilité;Aboki;B;;Aboki B;type_pdv;Aboki B;
+7. Type de PDV -> segment de disponibilité;Boutique;A;;Boutique A;type_pdv;Boutique A;
+7. Type de PDV -> segment de disponibilité;Boutique;B;;Boutique B;type_pdv;Boutique B;
+7. Type de PDV -> segment de disponibilité;Boutique;C;;Boutique C;type_pdv;Boutique C;
+7. Type de PDV -> segment de disponibilité;Kiosque;A;;Kiosk A;type_pdv;Kiosque A;
+7. Type de PDV -> segment de disponibilité;Kiosque;B;;Kiosk B;type_pdv;Kiosque B;
+7. Type de PDV -> segment de disponibilité;Minimarket;A;;Superettes A;type_pdv;Supérette A;
+7. Type de PDV -> segment de disponibilité;Minimarket;B;;Superettes B;type_pdv;Supérette B;
+7. Type de PDV -> segment de disponibilité;Minimarket;C;;Superettes C;type_pdv;Supérette C;
+7. Type de PDV -> segment de disponibilité;Porridge;A;;Porridge;type_pdv;Bouillie (porridge);
+7. Type de PDV -> segment de disponibilité;Pushcart;A;;Pushcard A;type_pdv;Pushcart A (chariot ambulant);
+7. Type de PDV -> segment de disponibilité;Pushcart;B;;Pushcard B;type_pdv;Pushcart B (chariot ambulant);
+7. Type de PDV -> segment de disponibilité;SupermarcheMT;A;;Hypermarket;type_pdv;Hypermarché;
+7. Type de PDV -> segment de disponibilité;SupermarcheMT;A;;Supermarket A;type_pdv;Supermarché A;
+7. Type de PDV -> segment de disponibilité;SupermarcheMT;B;;Supermarket B;type_pdv;Supermarché B;
+7. Type de PDV -> segment de disponibilité;SupermarcheMT;C;;Supermarket C;type_pdv;Supermarché C;
+7. Type de PDV -> segment de disponibilité;TableTop;A;;Table Top;type_pdv;Table top;
+8. Type de PDV -> segment de visibilité;boutique;;;Boutique A;type_pdv;Boutique A;
+8. Type de PDV -> segment de visibilité;boutique;;;Boutique B;type_pdv;Boutique B;
+8. Type de PDV -> segment de visibilité;boutique;;;Boutique C;type_pdv;Boutique C;
+8. Type de PDV -> segment de visibilité;kiosque_aboki;;;Aboki A;type_pdv;Aboki A;
+8. Type de PDV -> segment de visibilité;kiosque_aboki;;;Aboki B;type_pdv;Aboki B;
+8. Type de PDV -> segment de visibilité;kiosque_aboki;;;Horeca coffee;type_pdv;Café HORECA;
+8. Type de PDV -> segment de visibilité;kiosque_aboki;;;Kiosk A;type_pdv;Kiosque A;
+8. Type de PDV -> segment de visibilité;kiosque_aboki;;;Kiosk B;type_pdv;Kiosque B;
+8. Type de PDV -> segment de visibilité;mt;;;Hypermarket;type_pdv;Hypermarché;
+8. Type de PDV -> segment de visibilité;mt;;;Supermarket A;type_pdv;Supermarché A;
+8. Type de PDV -> segment de visibilité;mt;;;Supermarket B;type_pdv;Supermarché B;
+8. Type de PDV -> segment de visibilité;mt;;;Supermarket C;type_pdv;Supermarché C;
+8. Type de PDV -> segment de visibilité;porridge;;;Porridge;type_pdv;Bouillie (porridge);
+8. Type de PDV -> segment de visibilité;pushcart;;;Pushcard A;type_pdv;Pushcart A (chariot ambulant);
+8. Type de PDV -> segment de visibilité;pushcart;;;Pushcard B;type_pdv;Pushcart B (chariot ambulant);
+8. Type de PDV -> segment de visibilité;superette;;;Superettes A;type_pdv;Supérette A;
+8. Type de PDV -> segment de visibilité;superette;;;Superettes B;type_pdv;Supérette B;
+8. Type de PDV -> segment de visibilité;superette;;;Superettes C;type_pdv;Supérette C;
+8. Type de PDV -> segment de visibilité;table_top;;;Open Market Table Top;type_pdv;Table top de marché ouvert;
+8. Type de PDV -> segment de visibilité;table_top;;;Table Top;type_pdv;Table top;
