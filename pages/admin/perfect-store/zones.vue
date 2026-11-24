@@ -12,7 +12,7 @@
         <PeriodFilter v-model="periode" />
       </div>
       <div class="grid grid-cols-2 gap-2 sm:grid-cols-4">
-        <UFormGroup label="Division (North/South)" size="xs">
+        <UFormGroup label="Région" size="xs">
           <USelectMenu v-model="fDivision" :options="divisionOptions" placeholder="Toutes" size="xs" searchable />
         </UFormGroup>
         <UFormGroup label="Distributeur" size="xs">
@@ -70,7 +70,7 @@
                 <th class="th-c">À jour</th>
                 <th class="th-c">En retard</th>
                 <th class="th-c">Dispo moy.</th>
-                <th class="th-c">Perfect Store</th>
+                <th class="th-c">Conformité</th>
                 <th class="th-c">Alertes</th>
               </tr>
             </thead>
@@ -151,7 +151,7 @@
                 <td class="px-4 py-2 text-center">
                   <UBadge :color="p.etat === 'jamais_visite' ? 'red' : 'amber'" variant="soft" size="xs">{{ etatLabel(p.etat) }}</UBadge>
                 </td>
-                <td class="px-4 py-2 text-center text-sm">{{ p.niveau ? p.niveau.toUpperCase() : '—' }}</td>
+                <td class="px-4 py-2 text-center text-sm">{{ libelleNiveau(p.niveau, '—') }}</td>
               </tr>
               <tr v-if="!alertes.length">
                 <td colspan="8" class="px-4 py-8 text-center text-sm text-slate-400">Aucune alerte sur ce territoire.</td>
@@ -297,7 +297,7 @@ function exporter() {
       'En retard': z.en_retard,
       'Jamais visités': z.jamais_visites,
       'Dispo moyenne %': z.dispo_moyenne ?? '',
-      'Perfect Store %': z.perfect_store_pct ?? '',
+      'Conformité %': z.perfect_store_pct ?? '',
       Alertes: z.alertes,
       'Alertes (ancien calcul)': z.alertes_toutes,
     })),

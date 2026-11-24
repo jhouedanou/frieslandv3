@@ -1,5 +1,5 @@
 // composables/useFieldCoaching.ts
-// Field coaching (lot 4) : référentiels (engins, distributeurs, SKU), CRUD,
+// Accompagnement terrain (lot 4) : référentiels (engins, distributeurs, SKU), CRUD,
 // transfert. Repli hors ligne sur ENGINS_DEFAUT.
 import type { FieldCoaching } from '~/types'
 import { ENGINS_DEFAUT } from '~/utils/fieldCoaching'

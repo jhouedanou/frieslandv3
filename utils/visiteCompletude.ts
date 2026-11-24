@@ -3,7 +3,7 @@
 //
 // Pourquoi ce fichier. Mesuré en base le 7 septembre 2026 : sur les 6 098
 // visites depuis le 1er avril, 17 seulement (0,3 %) portent une quantité par
-// SKU et 16 une visibilité. Or `dispo_rayon`, le score Perfect Store et
+// SKU et 16 une visibilité. Or `dispo_rayon`, le score de conformité et
 // l'analyse des gaps (`v_perfect_store_manques`) se calculent exclusivement à
 // partir de ces deux blocs : sans eux, tous les tableaux de bord affichent
 // zéro. On mesure donc explicitement ce qui est renseigné, pour le montrer à la
@@ -35,12 +35,12 @@ export interface Completude {
 }
 
 const LIBELLES: Record<string, string> = {
-  evap: 'EVAP',
-  imp: 'IMP',
-  scm: 'SCM',
-  uht: 'UHT',
-  yaourt: 'Yaourt',
-  cereales: 'Céréales',
+  evap: 'Gamme A',
+  imp: 'Gamme B',
+  scm: 'Gamme C',
+  uht: 'Gamme D',
+  yaourt: 'Gamme E',
+  cereales: 'Gamme F',
   visibilite: 'Visibilité',
 }
 

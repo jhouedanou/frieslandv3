@@ -354,12 +354,12 @@ export const usePDVStore = defineStore('pdv', () => {
       position_routing: r['Position dans le routing'] ? parseInt(r['Position dans le routing']) : null,
       canal_routing: r['Canal de routing'] || null,
       sales_rep_routing: r['Sales Rep routing'] || null,
-      // Référentiels (migration 020) + Perfect Store
+      // Référentiels (migration 020) + Conformité
       territory_code: r['Territoire'] || r['Territory'] || null,
       area_code: r['Area'] || null,
       distributor_name: r['Distributeur'] || r['Distributor'] || null,
-      objectif_perfect_store: ['FLAGSHIP', 'VIP', 'CORE', 'BASIC'].includes((r['Objectif Perfect Store'] || '').trim().toUpperCase())
-        ? (r['Objectif Perfect Store'] || '').trim().toUpperCase()
+      objectif_perfect_store: ['FLAGSHIP', 'VIP', 'CORE', 'BASIC'].includes((r['Objectif de conformité'] || '').trim().toUpperCase())
+        ? (r['Objectif de conformité'] || '').trim().toUpperCase()
         : null,
     }))
 

@@ -1,5 +1,5 @@
 // composables/useVisibilityConformity.ts
-// Conformité "à la Perfect Store" : reproduit calculer_taux_standard côté client.
+// Conformité "à la Conformité" : reproduit calculer_taux_standard côté client.
 // Pour un (segment, niveau, pilier[, emplacement]) : taux = éléments REQUIS présents
 // / éléments REQUIS, où requis = standard_visibilite.requis ET NON element.optionnel.
 // C'est un GATE : le score PS valide un niveau si le taux visibilité = 100.

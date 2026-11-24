@@ -3,7 +3,7 @@
 // pdv.canal stocke un libellé ('General trade' | 'Modern trade') ;
 // le référentiel (categorie_pdv.canal) stocke un code ('GT' | 'MT').
 // Le canal d'un PDV se DÉRIVE de sa catégorie : ne jamais le saisir à la main,
-// sinon il diverge du calcul Perfect Store qui lit categorie_pdv.canal.
+// sinon il diverge du calcul de conformité qui lit categorie_pdv.canal.
 
 import type { CanalType } from '~/types'
 

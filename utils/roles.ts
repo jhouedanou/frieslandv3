@@ -9,7 +9,7 @@ type RoleLike = { role?: UserRole | string | null } | null | undefined
 export const ROLES_PRIVILEGIES: readonly string[] = ['admin', 'superviseur']
 export const ROLES_ECRITURE_TERRAIN: readonly string[] = ['admin', 'superviseur', 'merchandiser']
 
-// Écrans de pilotage : suivi des visites de l'équipe, field coaching. Le
+// Écrans de pilotage : suivi des visites de l'équipe, accompagnement terrain. Le
 // merchandiseur en est exclu — il ne voit que ce qui lui est assigné. Miroir
 // des politiques de la migration 20260910120000.
 export const ROLES_CONSULTATION_COMMERCIALE: readonly string[] = ['admin', 'superviseur', 'commercial']
@@ -18,7 +18,7 @@ export function isPrivilegedRole(role?: string | null): boolean {
   return !!role && ROLES_PRIVILEGIES.includes(role)
 }
 
-// Peut consulter le travail des autres : visites de l'équipe, field coaching.
+// Peut consulter le travail des autres : visites de l'équipe, accompagnement terrain.
 export function canConsulterEquipe(role?: string | null): boolean {
   return !!role && ROLES_CONSULTATION_COMMERCIALE.includes(role)
 }
@@ -68,11 +68,11 @@ const NAV_PDV: MobileNavItem = { key: 'pdv', label: 'PDV', to: '/mobile/pdv', ar
 const NAV_MORE: MobileNavItem = { key: 'more', label: 'Plus', to: '/mobile/more', ariaLabel: 'Voir les autres écrans' }
 const NAV_EQUIPE: MobileNavItem = { key: 'equipe', label: 'Équipe', to: '/mobile/equipe', ariaLabel: "Voir les visites de l'équipe" }
 const NAV_ACTIONS: MobileNavItem = { key: 'actions', label: 'Actions', to: '/mobile/actions', ariaLabel: 'Voir les actions commerciales' }
-const NAV_COACHING: MobileNavItem = { key: 'coaching', label: 'Coaching', to: '/mobile/coaching', ariaLabel: 'Remplir un field coaching' }
+const NAV_COACHING: MobileNavItem = { key: 'coaching', label: 'Coaching', to: '/mobile/coaching', ariaLabel: 'Remplir un accompagnement terrain' }
 
 // Onglets du bas d'écran mobile selon le rôle. Le commercial ne saisit pas de
 // visite et n'a pas de tournée : il suit son équipe, ses PDV, ses actions et
-// remplit des field coachings (geste quotidien, d'où l'onglet plutôt que le
+// remplit des accompagnements terrain (geste quotidien, d'où l'onglet plutôt que le
 // menu « Plus »). Les rôles terrain gardent les quatre onglets historiques
 // (les actions qui leur sont assignées sont dans « Plus » et sur la fiche PDV).
 export function mobileNavItems(role?: string | null): MobileNavItem[] {

@@ -3,7 +3,7 @@
     <div v-if="loading" class="flex items-center justify-center py-20">
       <UIcon name="i-heroicons-arrow-path" class="h-8 w-8 animate-spin text-fc-red" />
     </div>
-    <div v-else-if="!c" class="px-4 py-20 text-center text-gray-400">Field coaching introuvable</div>
+    <div v-else-if="!c" class="px-4 py-20 text-center text-gray-400">Accompagnement introuvable</div>
     <div v-else class="space-y-4 px-4 py-4">
       <div class="mobile-card space-y-2 p-4">
         <div class="flex items-start justify-between gap-2">

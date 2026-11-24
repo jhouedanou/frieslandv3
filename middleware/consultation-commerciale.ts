@@ -1,6 +1,6 @@
 // middleware/consultation-commerciale.ts
 // Écrans de pilotage réservés à l'encadrement : suivi des visites de l'équipe
-// et field coaching. Le merchandiseur ne voit que ce qui lui est assigné, il
+// et accompagnement terrain. Le merchandiseur ne voit que ce qui lui est assigné, il
 // n'a donc rien à faire ici. Miroir des politiques field_coaching_select et
 // action_commerciale_select (migration 20260910120000), qui refusent déjà les
 // lignes : on lui évite d'atterrir sur un écran vide.

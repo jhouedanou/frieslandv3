@@ -295,10 +295,10 @@ const visibiliteMarques = computed(() => {
 })
 
 const concurrenceCategories = [
-  { key: 'evap', label: 'EVAP' },
-  { key: 'imp', label: 'IMP' },
-  { key: 'scm', label: 'SCM' },
-  { key: 'uht', label: 'UHT' },
+  { key: 'evap', label: 'Gamme A' },
+  { key: 'imp', label: 'Gamme B' },
+  { key: 'scm', label: 'Gamme C' },
+  { key: 'uht', label: 'Gamme D' },
 ]
 
 // Lit les deux formats : `autres[]` (depuis juillet 2026) et l'ancien

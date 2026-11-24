@@ -1,0 +1,9 @@
+01|Big Faïve Force. La force de vente, maîtrisée.
+02|Vos équipes saisissent sur le terrain. Vous pilotez depuis le siège.
+03|Sur le terrain, une visite se saisit en quelques gestes. Le point de vente le plus proche est proposé, et les quantités se remplissent en un clic.
+04|Chaque visite est vérifiée par G P S, sur place. Vous savez que le relevé a été fait dans le magasin.
+05|Au siège, tout est visible dès la connexion : combien de points de vente sont conformes, et à quel niveau.
+06|Un clic ouvre le détail d'une visite, avec son score. La synthèse par zone montre aussitôt où agir.
+07|Chacun ne voit que son périmètre : l'administrateur, le commercial, le merchandiseur.
+08|Et l'application prend vos couleurs en trois clics : votre nom, votre logo, votre palette.
+09|Big Faïve Force. Demandez votre démonstration.

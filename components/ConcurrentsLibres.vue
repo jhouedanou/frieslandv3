@@ -18,7 +18,7 @@
           <label class="text-sm font-medium text-gray-600">Nom du concurrent *</label>
           <UInput
             :model-value="c.nom"
-            placeholder="Ex. Cowmilk"
+            placeholder="Ex. Concurrent A"
             size="lg"
             @update:model-value="majChamp(idx, 'nom', $event)"
           />

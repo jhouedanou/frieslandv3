@@ -12,7 +12,7 @@
         <PeriodFilter v-model="periode" />
       </div>
       <div class="grid grid-cols-2 gap-2 sm:grid-cols-5">
-        <UFormGroup label="Division (North/South)" size="xs">
+        <UFormGroup label="Région" size="xs">
           <USelectMenu v-model="fDivision" :options="divisionOptions" placeholder="Toutes" size="xs" searchable />
         </UFormGroup>
         <UFormGroup label="Territoire" size="xs">
@@ -139,10 +139,10 @@
                 <td class="text-sm">{{ m.type_pdv || '—' }}</td>
                 <td>
                   <UBadge :color="m.niveau_actuel ? 'blue' : 'red'" variant="subtle" size="xs">
-                    {{ m.niveau_actuel || 'Non conforme' }}
+                    {{ libelleNiveau(m.niveau_actuel) }}
                   </UBadge>
                 </td>
-                <td class="text-sm">{{ m.niveau_cible }}</td>
+                <td class="text-sm">{{ libelleNiveau(m.niveau_cible, '—') }}</td>
                 <td class="px-4 py-2 text-center text-sm tabular-nums">
                   <span v-if="m.dispo_rayon == null" class="text-slate-400">—</span>
                   <span v-else :class="m.dispo_manque ? 'font-semibold text-fc-red' : 'text-slate-500'">
@@ -187,7 +187,7 @@
 // Le moteur existe depuis juillet et n'était exposé que dans un encart de
 // pages/admin/index.vue : la vue `v_perfect_store_manques` (en-tête « gap to
 // next level ») calcule, pour la DERNIÈRE visite de chaque PDV, ce qui manque
-// pour atteindre le niveau Perfect Store suivant — disponibilité, assortiment,
+// pour atteindre le niveau de conformité suivant — disponibilité, assortiment,
 // éléments de visibilité et de promotion. Cette page lui donne un écran à part
 // entière, avec le périmètre géographique complet.
 //

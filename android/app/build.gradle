@@ -28,10 +28,10 @@ if (!keystorePropertiesFile.exists()) {
 def signingReady = (signingProblem == null)
 
 android {
-    namespace "com.bdco.bonnetrouge"
+    namespace "com.bigfive.force"
     compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.bdco.bonnetrouge"
+        applicationId "com.bigfive.force"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 13

@@ -244,7 +244,7 @@ const toast = useToast()
 const { posTypes, fetchReferentiels } = useReferentiels()
 const { typePdvLabel, categoriePdvLabel, fetchTypePdvLabels } = useTypePdvLabels()
 // Options {label: nom_fr, value: nom EN} : affichage français, valeur stockée
-// inchangée (nom EN du référentiel, utilisé par le matching Perfect Store).
+// inchangée (nom EN du référentiel, utilisé par le matching de conformité).
 const categorieOptions = computed(() => {
   const byNom = new Map(posTypes.value.filter(p => p.level3_group).map(p => [p.level3_group, p.level3_fr]))
   return [...byNom.entries()]
@@ -252,7 +252,7 @@ const categorieOptions = computed(() => {
     .sort((a, b) => a.label.localeCompare(b.label, 'fr'))
 })
 // Canal dérivé de la catégorie (categorie_pdv.canal), aligné sur le calcul
-// Perfect Store — plus de saisie manuelle.
+// Conformité — plus de saisie manuelle.
 const derivedCanal = computed(() => {
   const pos = posTypes.value.find(p => p.level3_group === form.value.categorie_pdv)
   return canalLabelFromCode((pos as any)?.canal)

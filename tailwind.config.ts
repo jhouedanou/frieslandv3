@@ -1,5 +1,12 @@
 import type { Config } from 'tailwindcss'
 
+const teinte = (n: number) => `rgb(var(--marque-${n}) / <alpha-value>)`
+const paletteMarque = {
+  50: teinte(50), 100: teinte(100), 200: teinte(200), 300: teinte(300), 400: teinte(400),
+  500: teinte(500), 600: teinte(600), 700: teinte(700), 800: teinte(800), 900: teinte(900),
+  DEFAULT: teinte(500),
+}
+
 export default <Config>{
   darkMode: 'class',
   content: [
@@ -17,32 +24,11 @@ export default <Config>{
   theme: {
     extend: {
       colors: {
-        'fc-blue': {
-          50: '#FDE8EC',
-          100: '#FAC5CF',
-          200: '#F58B9F',
-          300: '#F0516F',
-          400: '#D92040',
-          500: '#C8102E',
-          600: '#9B0D23',
-          700: '#6E0919',
-          800: '#41060F',
-          900: '#140305',
-          DEFAULT: '#C8102E',
-        },
-        'fc-red': {
-          50: '#FDE8EC',
-          100: '#FAC5CF',
-          200: '#F58B9F',
-          300: '#F0516F',
-          400: '#D92040',
-          500: '#C8102E',
-          600: '#9B0D23',
-          700: '#6E0919',
-          800: '#41060F',
-          900: '#140305',
-          DEFAULT: '#C8102E',
-        },
+        // Couleur de marque : variables CSS posées par composables/useMarque.ts
+        // (valeurs par défaut dans assets/css/main.css). Les deux noms sont
+        // historiques et désignent la même palette.
+        'fc-blue': paletteMarque,
+        'fc-red': paletteMarque,
       },
       fontFamily: {
         sans: ['"Nunito Sans Variable"', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],

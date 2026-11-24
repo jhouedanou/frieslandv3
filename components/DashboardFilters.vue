@@ -77,7 +77,7 @@
 
         <!-- Cascade géographique : Division > Sous-région > Territoire > Area > Quartier.
              Chaque niveau restreint les options du suivant. -->
-        <UFormGroup v-if="showRegion" label="Division (North/South)" size="sm">
+        <UFormGroup v-if="showRegion" label="Région" size="sm">
           <USelectMenu v-model="model.division" :options="divisionOptions" placeholder="Toutes" size="sm" :loading="!refsLoaded" />
         </UFormGroup>
 

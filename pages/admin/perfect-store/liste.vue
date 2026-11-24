@@ -1,8 +1,8 @@
 <template>
   <div class="space-y-5">
     <AdminPageHeader
-      title="Perfect Store — liste par niveau"
-      eyebrow="Perfect Store"
+      title="Conformité — liste par niveau"
+      eyebrow="Conformité"
     />
 
     <AdminListToolbar
@@ -32,7 +32,7 @@
           </div>
         </div>
 
-        <!-- Filtre période (réunion 23/07) : un PDV Perfect Store cette semaine
+        <!-- Filtre période (réunion 23/07) : un PDV conforme cette semaine
              peut ne plus l'être la suivante. -->
         <PeriodFilter v-model="periode" :show-resume="false" />
       </template>
@@ -78,7 +78,7 @@
               <td class="px-4 py-2.5 text-center">
                 <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold" :class="niveauBadge(row.niveau)">
                   <span class="h-1.5 w-1.5 rounded-full" :class="niveauDot(row.niveau)" />
-                  {{ row.niveau }}
+                  {{ libelleNiveau(row.niveau) }}
                 </span>
               </td>
               <td class="px-4 py-2.5 text-center text-sm font-semibold tabular-nums text-gray-900 dark:text-gray-100">{{ pct(row.score_global) }}</td>

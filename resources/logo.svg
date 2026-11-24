@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs><linearGradient id="fond" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#603080"/><stop offset="1" stop-color="#403080"/></linearGradient></defs>
+  <rect width="1024" height="1024" rx="224" fill="url(#fond)"/>
+  <g id="glyphe" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M512 196c-126 0-228 100-228 224 0 162 228 408 228 408s228-246 228-408c0-124-102-224-228-224z" stroke-width="56"/>
+    <path d="M412 428l72 72 136-148" stroke-width="60"/>
+  </g>
+</svg>

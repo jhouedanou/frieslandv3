@@ -61,13 +61,13 @@ export interface MarqueConcurrente {
  * lui, un merchandiser sans réseau perdrait tout le relevé concurrence.
  */
 export const MARQUES_CONCURRENTES_DEFAUT: MarqueConcurrente[] = [
-  { famille: 'evap', code: 'cowmilk', nom: 'Cowmilk', ordre: 1 },
-  { famille: 'evap', code: 'nido_150g', nom: 'NIDO 150g', ordre: 2 },
-  { famille: 'imp', code: 'nido', nom: 'Nido', ordre: 1 },
-  { famille: 'imp', code: 'laity', nom: 'Laity', ordre: 2 },
-  { famille: 'imp', code: 'top_lait', nom: 'Top Lait', ordre: 3 },
-  { famille: 'scm', code: 'top_saho', nom: 'Top Saho', ordre: 1 },
-  { famille: 'uht', code: 'candia', nom: 'Candia', ordre: 1 },
+  { famille: 'evap', code: 'cowmilk', nom: 'Concurrent D', ordre: 1 },
+  { famille: 'evap', code: 'nido_150g', nom: 'Concurrent G', ordre: 2 },
+  { famille: 'imp', code: 'nido', nom: 'Concurrent F', ordre: 1 },
+  { famille: 'imp', code: 'laity', nom: 'Concurrent E', ordre: 2 },
+  { famille: 'imp', code: 'top_lait', nom: 'Concurrent I', ordre: 3 },
+  { famille: 'scm', code: 'top_saho', nom: 'Concurrent J', ordre: 1 },
+  { famille: 'uht', code: 'candia', nom: 'Concurrent B', ordre: 1 },
 ]
 
 /** SKU concurrent du référentiel `marque_concurrente_sku` (lot 6, 1.0.4). */
@@ -92,25 +92,25 @@ export interface SkuConcurrent {
  * doit rester possible.
  */
 export const SKUS_CONCURRENTS_DEFAUT: SkuConcurrent[] = [
-  { marque_id: 'evap:cowmilk', famille: 'evap', marque_code: 'cowmilk', code: 'cowmilk_160g', libelle: 'Cowmilk 160g', grammage_g: 160, ordre: 1 },
-  { marque_id: 'evap:laity', famille: 'evap', marque_code: 'laity', code: 'laity_150g', libelle: 'Laity 150g', grammage_g: 150, ordre: 1 },
-  { marque_id: 'evap:soleil', famille: 'evap', marque_code: 'soleil', code: 'soleil_400g', libelle: 'Soleil 400g', grammage_g: 400, ordre: 1 },
-  { marque_id: 'imp:nido', famille: 'imp', marque_code: 'nido', code: 'nido_15g', libelle: 'Nido 15g', grammage_g: 15, ordre: 1 },
-  { marque_id: 'imp:nido', famille: 'imp', marque_code: 'nido', code: 'nido_350g', libelle: 'Nido 350g', grammage_g: 350, ordre: 2 },
-  { marque_id: 'imp:nido', famille: 'imp', marque_code: 'nido', code: 'nido_400g', libelle: 'Nido 400g', grammage_g: 400, ordre: 3 },
-  { marque_id: 'imp:nido', famille: 'imp', marque_code: 'nido', code: 'nido_800g', libelle: 'Nido 800g', grammage_g: 800, ordre: 4 },
-  { marque_id: 'imp:nido', famille: 'imp', marque_code: 'nido', code: 'nido_2500g', libelle: 'Nido 2500g', grammage_g: 2500, ordre: 5 },
-  { marque_id: 'imp:top_lait', famille: 'imp', marque_code: 'top_lait', code: 'top_lait_12g', libelle: 'Top lait 12g', grammage_g: 12, ordre: 1 },
-  { marque_id: 'imp:top_lait', famille: 'imp', marque_code: 'top_lait', code: 'top_lait_400g', libelle: 'Top lait 400g', grammage_g: 400, ordre: 2 },
-  { marque_id: 'imp:laity', famille: 'imp', marque_code: 'laity', code: 'laity_18g', libelle: 'Laity 18g', grammage_g: 18, ordre: 1 },
-  { marque_id: 'imp:laity', famille: 'imp', marque_code: 'laity', code: 'laity_360g', libelle: 'Laity 360g', grammage_g: 360, ordre: 2 },
-  { marque_id: 'imp:laity', famille: 'imp', marque_code: 'laity', code: 'laity_400g', libelle: 'Laity 400g', grammage_g: 400, ordre: 3 },
-  { marque_id: 'imp:laity', famille: 'imp', marque_code: 'laity', code: 'laity_900g', libelle: 'Laity 900g', grammage_g: 900, ordre: 4 },
-  { marque_id: 'imp:biblos', famille: 'imp', marque_code: 'biblos', code: 'biblos_16g', libelle: 'Biblos FC 16g', grammage_g: 16, ordre: 1 },
-  { marque_id: 'imp:biblos', famille: 'imp', marque_code: 'biblos', code: 'biblos_360g', libelle: 'Biblos Full Cream 360g', grammage_g: 360, ordre: 2 },
-  { marque_id: 'imp:biblos', famille: 'imp', marque_code: 'biblos', code: 'biblos_900g', libelle: 'Biblos Fat Filled 900g', grammage_g: 900, ordre: 3 },
-  { marque_id: 'imp:captain', famille: 'imp', marque_code: 'captain', code: 'captain_12g', libelle: 'Captain 12g', grammage_g: 12, ordre: 1 },
-  { marque_id: 'imp:captain', famille: 'imp', marque_code: 'captain', code: 'captain_22g', libelle: 'Captain 22g', grammage_g: 22, ordre: 2 },
+  { marque_id: 'evap:cowmilk', famille: 'evap', marque_code: 'cowmilk', code: 'cowmilk_160g', libelle: 'Concurrent D 160g', grammage_g: 160, ordre: 1 },
+  { marque_id: 'evap:laity', famille: 'evap', marque_code: 'laity', code: 'laity_150g', libelle: 'Concurrent E 150g', grammage_g: 150, ordre: 1 },
+  { marque_id: 'evap:soleil', famille: 'evap', marque_code: 'soleil', code: 'soleil_400g', libelle: 'Concurrent H 400g', grammage_g: 400, ordre: 1 },
+  { marque_id: 'imp:nido', famille: 'imp', marque_code: 'nido', code: 'nido_15g', libelle: 'Concurrent F 15g', grammage_g: 15, ordre: 1 },
+  { marque_id: 'imp:nido', famille: 'imp', marque_code: 'nido', code: 'nido_350g', libelle: 'Concurrent F 350g', grammage_g: 350, ordre: 2 },
+  { marque_id: 'imp:nido', famille: 'imp', marque_code: 'nido', code: 'nido_400g', libelle: 'Concurrent F 400g', grammage_g: 400, ordre: 3 },
+  { marque_id: 'imp:nido', famille: 'imp', marque_code: 'nido', code: 'nido_800g', libelle: 'Concurrent F 800g', grammage_g: 800, ordre: 4 },
+  { marque_id: 'imp:nido', famille: 'imp', marque_code: 'nido', code: 'nido_2500g', libelle: 'Concurrent F 2500g', grammage_g: 2500, ordre: 5 },
+  { marque_id: 'imp:top_lait', famille: 'imp', marque_code: 'top_lait', code: 'top_lait_12g', libelle: 'Concurrent I 12g', grammage_g: 12, ordre: 1 },
+  { marque_id: 'imp:top_lait', famille: 'imp', marque_code: 'top_lait', code: 'top_lait_400g', libelle: 'Concurrent I 400g', grammage_g: 400, ordre: 2 },
+  { marque_id: 'imp:laity', famille: 'imp', marque_code: 'laity', code: 'laity_18g', libelle: 'Concurrent E 18g', grammage_g: 18, ordre: 1 },
+  { marque_id: 'imp:laity', famille: 'imp', marque_code: 'laity', code: 'laity_360g', libelle: 'Concurrent E 360g', grammage_g: 360, ordre: 2 },
+  { marque_id: 'imp:laity', famille: 'imp', marque_code: 'laity', code: 'laity_400g', libelle: 'Concurrent E 400g', grammage_g: 400, ordre: 3 },
+  { marque_id: 'imp:laity', famille: 'imp', marque_code: 'laity', code: 'laity_900g', libelle: 'Concurrent E 900g', grammage_g: 900, ordre: 4 },
+  { marque_id: 'imp:biblos', famille: 'imp', marque_code: 'biblos', code: 'biblos_16g', libelle: 'Concurrent A 16g', grammage_g: 16, ordre: 1 },
+  { marque_id: 'imp:biblos', famille: 'imp', marque_code: 'biblos', code: 'biblos_360g', libelle: 'Concurrent A 360g', grammage_g: 360, ordre: 2 },
+  { marque_id: 'imp:biblos', famille: 'imp', marque_code: 'biblos', code: 'biblos_900g', libelle: 'Concurrent A 900g', grammage_g: 900, ordre: 3 },
+  { marque_id: 'imp:captain', famille: 'imp', marque_code: 'captain', code: 'captain_12g', libelle: 'Concurrent C 12g', grammage_g: 12, ordre: 1 },
+  { marque_id: 'imp:captain', famille: 'imp', marque_code: 'captain', code: 'captain_22g', libelle: 'Concurrent C 22g', grammage_g: 22, ordre: 2 },
 ]
 
 /** Regroupe les SKU par « famille:marque_code », triés par ordre puis grammage. */

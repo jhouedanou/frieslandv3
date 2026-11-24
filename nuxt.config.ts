@@ -1,12 +1,19 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { fileURLToPath } from 'node:url'
+
 const isProduction = process.env.NODE_ENV === 'production'
 const devtoolsEnabled = process.env.NUXT_DEVTOOLS === 'true'
 // Build natif Capacitor : SPA statique, sans service worker PWA
 // (un SW dans la WebView provoque des caches fantômes après mise à jour d'APK).
 const isCapacitor = process.env.CAPACITOR_BUILD === '1'
+// Mode démo Big Five Force : aucune base Supabase. Les données vivent dans une
+// base embarquée dans le navigateur (dossier demo/). Voir README-FIELD-TRACK.md.
+const isDemo = process.env.FIELD_TRACK_DEMO === '1'
+const stubServeurDemo = fileURLToPath(new URL('./demo/server-stub.ts', import.meta.url))
 
 export default defineNuxtConfig({
-  ssr: !isCapacitor,
+  // Démo : les données sont dans le navigateur, rien à rendre côté serveur.
+  ssr: !isCapacitor && !isDemo,
 
   // buildDir isolé pour le build natif : évite d'écraser le .nuxt du
   // serveur `nuxt dev` (schéma corrompu si un build APK tourne en parallèle).
@@ -16,12 +23,22 @@ export default defineNuxtConfig({
 
   modules: [
     '@nuxt/ui',
-    '@nuxtjs/supabase',
+    ...(isDemo ? [] : ['@nuxtjs/supabase']),
     '@pinia/nuxt',
     ...(isProduction && !isCapacitor ? ['@vite-pwa/nuxt'] : []),
   ],
 
   css: ['~/assets/css/main.css'],
+
+  // Mode démo : faux composables Supabase, plugin d'ouverture de la base, et
+  // remplaçant de '#supabase/server' pour que les routes serveur compilent.
+  ...(isDemo
+    ? {
+        imports: { dirs: ['demo/composables'] },
+        plugins: ['~/demo/plugins/demo.client.ts'],
+        alias: { '#supabase/server': stubServeurDemo },
+      }
+    : {}),
 
   colorMode: {
     preference: 'light',
@@ -61,10 +78,10 @@ export default defineNuxtConfig({
   pwa: {
     registerType: 'autoUpdate',
     manifest: {
-      name: 'Friesland Bonnet Rouge',
-      short_name: 'Friesland',
-      description: 'Application de collecte terrain Friesland Bonnet Rouge',
-      theme_color: '#C8102E',
+      name: 'Big Five Force',
+      short_name: 'BF Force',
+      description: 'Application de collecte terrain Big Five Force',
+      theme_color: '#603080',
       background_color: '#ffffff',
       display: 'standalone',
       orientation: 'portrait',
@@ -82,7 +99,10 @@ export default defineNuxtConfig({
     },
     workbox: {
       navigateFallback: '/',
-      globPatterns: ['**/*.{js,css,html,png,svg,ico,woff2}'],
+      // Démo : la base embarquée (wasm, données, extensions) doit aussi être
+      // disponible hors ligne.
+      globPatterns: [isDemo ? '**/*.{js,css,html,png,svg,ico,woff2,wasm,data,gz}' : '**/*.{js,css,html,png,svg,ico,woff2}'],
+      ...(isDemo ? { maximumFileSizeToCacheInBytes: 20 * 1024 * 1024 } : {}),
       // Pas de cache sur /rest/v1 : les réponses dépendent de l'utilisateur
       // (RLS) mais le cache est indexé par URL seule — sur un navigateur
       // partagé, B hors ligne recevait les données de A. Le hors-ligne passe
@@ -90,7 +110,7 @@ export default defineNuxtConfig({
       // est purgé à la déconnexion (stores/auth.ts).
       runtimeCaching: [
         {
-          urlPattern: /^https:\/\/iirgolfjwdnnesamzcbd\.supabase\.co\/storage\/.*/i,
+          urlPattern: /^https:\/\/[a-z0-9]+\.supabase\.co\/storage\/.*/i,
           handler: 'CacheFirst',
           options: {
             cacheName: 'supabase-storage-cache',
@@ -111,10 +131,10 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Friesland Bonnet Rouge',
+      title: 'Big Five Force',
       meta: [
-        { name: 'description', content: 'Application de collecte terrain Friesland Bonnet Rouge' },
-        { name: 'theme-color', content: '#C8102E' },
+        { name: 'description', content: 'Application de collecte terrain Big Five Force' },
+        { name: 'theme-color', content: '#603080' },
         { name: 'mobile-web-app-capable', content: 'yes' },
         { name: 'apple-mobile-web-app-capable', content: 'yes' },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
@@ -134,6 +154,8 @@ export default defineNuxtConfig({
       // au prérendu : un écran réservé au web n'apparaît jamais, même le temps
       // d'une hydratation (voir composables/usePlateforme.ts).
       buildNatif: isCapacitor,
+      // Vrai quand l'application tourne sans Supabase, sur la base embarquée.
+      modeDemo: isDemo,
       geofenceRadius: 200, // TODO confirmer client (valeur réunion : 200 m)
       gpsMinAccuracy: 10,
       // Précision maximale acceptée pour enregistrer la position d'un PDV sans
@@ -157,6 +179,7 @@ export default defineNuxtConfig({
 
   // En-têtes de sécurité servis en HTTP (X-Frame-Options ne fonctionne pas en <meta>).
   nitro: {
+    ...(isDemo ? { alias: { '#supabase/server': stubServeurDemo } } : {}),
     routeRules: {
       '/**': {
         headers: {
@@ -188,6 +211,8 @@ export default defineNuxtConfig({
   },
 
   vite: {
+    // PGlite charge son wasm par URL relative : le pré-bundling de Vite la casse.
+    optimizeDeps: { exclude: ['@electric-sql/pglite'] },
     server: {
       watch: {
         ignored: [

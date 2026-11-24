@@ -2,7 +2,7 @@
   <div class="mobile-page">
     <div class="space-y-3 p-4">
       <UButton v-if="peutCreer" block size="lg" icon="i-heroicons-plus" class="bg-fc-red" @click="navigateTo('/mobile/coaching/new')">
-        Nouveau field coaching
+        Nouvel accompagnement terrain
       </UButton>
       <div class="flex gap-2 overflow-x-auto pb-1" aria-label="Filtrer">
         <button
@@ -58,8 +58,8 @@
       <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-red-50 dark:bg-red-950/30">
         <UIcon name="i-heroicons-academic-cap" class="h-8 w-8 text-fc-red" />
       </div>
-      <p class="font-semibold text-gray-700 dark:text-gray-200">Aucun field coaching</p>
-      <p class="mx-auto mt-1 max-w-[260px] text-sm text-gray-500 dark:text-gray-400">Les coachings de votre périmètre et ceux qui vous sont transférés apparaîtront ici.</p>
+      <p class="font-semibold text-gray-700 dark:text-gray-200">Aucun accompagnement terrain</p>
+      <p class="mx-auto mt-1 max-w-[260px] text-sm text-gray-500 dark:text-gray-400">Les accompagnements de votre périmètre et ceux qui vous sont transférés apparaîtront ici.</p>
     </div>
   </div>
 </template>
@@ -99,7 +99,7 @@ onMounted(async () => {
   if (!authStore.profile) await authStore.fetchProfile()
   void chargerReferentiels()
   try { coachings.value = await lister() }
-  catch (err) { console.warn('Field coaching : chargement impossible', err) }
+  catch (err) { console.warn('Accompagnement terrain : chargement impossible', err) }
   finally { loading.value = false }
 })
 </script>
